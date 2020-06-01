@@ -2,7 +2,7 @@ const path = require("path");
 
 module.exports = {
   context: __dirname,
-  entry: "/Users/spaceone/a:A/prfctpx/app/frontend/prfctpx.jsx",
+  entry: "./frontend/prfctpx.jsx",
   output: {
     path: path.resolve(__dirname, "app", "assets", "javascripts"),
     filename: "bundle.js",
