@@ -38,5 +38,9 @@
     "url": "https://github.com/glhkang/prfctPX/issues"
   },
   "homepage": "https://github.com/glhkang/prfctPX#readme",
-  "devDependencies": {}
+  "devDependencies": {},
+  "engines": {
+    "node": "10.13.0",
+    "npm": "6.4.1"
+  }
 }
