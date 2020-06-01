@@ -1,7 +1,20 @@
 {
   "name": "prfctpx",
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/preset-env": "^7.10.2",
+    "@babel/preset-react": "^7.10.1",
+    "babel-loader": "^8.1.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-redux": "^7.2.0",
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.0.5",
+    "redux-logger": "^3.0.6",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  },
   "description": "This README would normally document whatever steps are necessary to get the application up and running.",
   "version": "1.0.0",
   "main": "index.js",
@@ -10,7 +23,9 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "webpack",
+    "webpack": "webpack --watch --mode=development"
   },
   "repository": {
     "type": "git",
@@ -22,5 +37,6 @@
   "bugs": {
     "url": "https://github.com/glhkang/prfctPX/issues"
   },
-  "homepage": "https://github.com/glhkang/prfctPX#readme"
+  "homepage": "https://github.com/glhkang/prfctPX#readme",
+  "devDependencies": {}
 }
