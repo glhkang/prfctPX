@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :bigint           not null, primary key
+#  username        :string           not null
+#  email           :string           not null
+#  password_digest :string           not null
+#  session_token   :string           not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
 class User < ApplicationRecord
   attr_reader :password
 
@@ -38,7 +50,7 @@ class User < ApplicationRecord
 
   def generate_unique_session_token
     self.session_token = new_session_token
-    while User.find_By(session_token: self.session_token)
+    while User.find_by(session_token: self.session_token)
       self.session_token = new_session_token
     end
     self.session_token
