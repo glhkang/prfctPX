@@ -9,6 +9,7 @@ class User < ApplicationRecord
 
   #has many associations
 
+  #current user
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
     return nil unless user
