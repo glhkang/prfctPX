@@ -27,7 +27,7 @@ class LoginForm extends React.Component {
             onChange={this.handleInput('email')} />
 
           <input type='password'
-            value={this.state.password]}
+            value={this.state.password}
             onChange={this.handleInput('password')} />
 
             <button onClick={this.handleSubmit}>Sign In</button>

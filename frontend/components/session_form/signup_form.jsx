@@ -1,10 +1,10 @@
 import React from 'react';
 
 class SignupForm extends React.Component {
-  contructor(props) {
+  constructor(props) {
     super(props);
     this.state = {name: '', email: '', password:''}
-    this.handleSubmit = this.handleSubmit.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleInput(type) {
@@ -16,7 +16,7 @@ class SignupForm extends React.Component {
   render() {
     return (
       <div className='signup-form'>
-        <h3>Join prfctpx</h3>
+        <h3>Join prfctpx!</h3>
         <p>Discover and share incredible photos, gain global exposure, and get paid for your work.</p>
 
         <form>
@@ -36,5 +36,6 @@ class SignupForm extends React.Component {
     )
   }
 
-
 }
+
+export default SignupForm;
