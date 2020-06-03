@@ -4,7 +4,7 @@ const App = () => (
   <div>
     <header>
       <h1>prfctpx</h1>
-      <GreetingContainer />
+      {/* <GreetingContainer /> */}
     </header>
   </div>
 );
