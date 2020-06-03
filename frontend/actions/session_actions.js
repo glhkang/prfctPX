@@ -5,14 +5,18 @@ export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
 
 //reg
-export const receiveCurrentUser = currentUser => ({
-  type: RECEIVE_CURRENT_USER,
-  currentUser
-});
+export const receiveCurrentUser = currentUser => {
+  return {
+    type: RECEIVE_CURRENT_USER,
+    currentUser
+  }
+};
 
-export const logoutCurrentUser = () => ({
-  type: LOGOUT_CURRENT_USER,
-});
+export const logoutCurrentUser = () => {
+  return {
+    type: LOGOUT_CURRENT_USER,
+  }
+};
 
 export const receiveErrors = errors => {
   return {
@@ -22,12 +26,12 @@ export const receiveErrors = errors => {
 };
 
 //thunkZ
-export const signup = user => dispatch => (
-  APIUtil.signup(user)
+export const signup = user => dispatch => {
+  return APIUtil.signup(user)
     .then(user => (dispatch(receiveCurrentUser(user))), 
     error => (dispatch(receiveErrors(error.responseJSON))
   ))
-);
+};
 
 export const login = user => dispatch => {
   return APIUtil.login(user)
@@ -35,8 +39,8 @@ export const login = user => dispatch => {
     error => dispatch(receiveErrors(error.responseJSON))
 };
 
-export const logout = () => dispatch => (
-  APIUtil.logout()
+export const logout = () => dispatch => {
+  return APIUtil.logout()
     .then(user => dispatch(logoutCurrentUser()
   ))
-);
+};
