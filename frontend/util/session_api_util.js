@@ -1,3 +1,5 @@
+import $ from "jquery"; 
+
 export const signup = user => {
   return $.ajax({
     url: `/api/users`,
@@ -6,6 +8,13 @@ export const signup = user => {
   });
 };
 
+// export const login = user => (
+//   $.ajax({
+//     url: `/api/session`,
+//     method: 'POST',
+//     data: { user }
+//   })
+// );
 export const login = user => {
   return $.ajax({
     url: `/api/session`,
@@ -14,7 +23,7 @@ export const login = user => {
   });
 };
 
-export const logout =() => {
+export const logout = () => {
   return $.ajax({
     url: `/api/session`,
     method: 'DELETE'

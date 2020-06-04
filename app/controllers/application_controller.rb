@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
   helper_method :current_user, :logged_in?
+  #added below line..... ?
+  skip_before_action :verify_authenticity_token
 
   private
   def current_user

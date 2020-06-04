@@ -1,0 +1,24 @@
+.session-form-container {
+  display: flex;
+  margin-top: 40px;
+  flex-direction: column;
+  height: 100px
+}
+
+.session-form-main {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  border: 2px solid black;
+  background: white;
+  margin: auto;
+}
+
+.session-form-input-label {
+  padding: 10px;
+}
+
+.session-errors {
+  color: orange;
+}
+

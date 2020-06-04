@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+
+ body {
+   background: white;
+   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+   margin: 0;
+   width: 100%;
+ }
+
+ .splash-image {
+   width: 100%;
+   height: auto;
+   box-sizing: border-box;
+ }
+

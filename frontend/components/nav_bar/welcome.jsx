@@ -1,6 +1,6 @@
 import React from 'react';
 import LoginFormContainer from '../session_form/login_form_container';
-import SignupFormContainer from '../session_form/signup_form_container';
+import SignupFormContainer from '../signup_form/signup_form_container';
 
 class Welcome extends React.Component {
   render() {
