@@ -5,7 +5,6 @@ export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR ERRORS'
 
-//reg
 export const receiveCurrentUser = currentUser => {
   return {
     type: RECEIVE_CURRENT_USER,
@@ -32,7 +31,6 @@ export const clearErrors = () => {
   }
 }
 
-//thunkZ
 export const signup = user => dispatch => {
   return SessionAPIUtil.signup(user)
     .then(currentUser => dispatch(receiveCurrentUser(currentUser)),

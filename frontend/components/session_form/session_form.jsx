@@ -1,10 +1,17 @@
 import React from 'react';
+import { withRouter } from 'react-router';
+import { Link } from "react-router-dom";
 
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {email: '', password: ''};
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.guestUserLogin = this.guestUserLogin.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.clearErrors();
   }
 
   handleInput(type) {
@@ -16,9 +23,16 @@ class LoginForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    // this.props.processForm(user);
-    this.props.action(user)
+    this.props.action(user);
+
   };
+
+ 
+  guestUserLogin(e) {
+    e.preventDefault()
+    const guestUser = { email: 'testing', password: 'testing'};
+    this.props.action(guestUser)
+  }
 
   renderErrors() {
     return (
@@ -35,13 +49,13 @@ class LoginForm extends React.Component {
     
     return (
       <div className='session-form-container'>
-        <form className='session-form-main' onSubmit={this.handleSubmit}>
-          <h2>{formTitle}</h2>
+        <form className='session-form' onSubmit={this.handleSubmit}>
+          <h3>{formTitle}</h3>
           
-          <div className='session-form-errors'>{this.renderErrors()}</div>
-
+          
           <label className='session-form-input-label'>
             Email or Username
+            <br />
             <input
               type='text'
               className='session-form-input-field'
@@ -52,6 +66,7 @@ class LoginForm extends React.Component {
 
 
           <label className='session-form-input-label'>Password
+            <br />
             <input
               type='password'
               className='session-form-input-field'
@@ -60,11 +75,14 @@ class LoginForm extends React.Component {
             />
           </label>
 
-          {/* demo user tbd*/}
+          <div className='session-form-errors'>{this.renderErrors()}</div>
+          
+          {/* guest user tbd*/}
           {/* <input 
             type='submit'
-            className='session-input-button'
-            value
+            className='input-session-button'
+            value='Guest Access'
+            onClick={this.guestUserLogin}
           /> */}
 
           <input 
@@ -72,10 +90,11 @@ class LoginForm extends React.Component {
             className='input-session-button'
             value={formType}
           />
+          <p>Don't have an account? Log in as a <Link to='/' onClick={this.guestUserLogin}>Guest!</Link></p>
         </form>
       </div>
     );
   }
 }
 
-export default LoginForm;
+export default withRouter(LoginForm);

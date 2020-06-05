@@ -19,9 +19,8 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token
 
-  #has many associations
+  #associations
 
-  #current user
   def self.find_by_credentials(username, password)
     user = User.find_by(email: username) || User.find_by(username: username)
     return nil unless user

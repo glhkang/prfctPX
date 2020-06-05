@@ -5,7 +5,6 @@ import SignupForm from './signup_form';
 
 const mSTP = ({ errors }) => {
   return {
-    // debugger
     formType: 'Sign up',
     formTitle: 'Join prfctpx',
     errors: errors.session,

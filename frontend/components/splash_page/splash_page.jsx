@@ -5,8 +5,8 @@ class SplashPage extends React.Component {
 
   render() {
     return (
-      <div className=''>
-        <img src={window.splashImage} className='splash-image' />
+      <div className='main-splash'>
+        <img src={window.splashImage} className='main-splash-image' />
       </div>
     )
   }

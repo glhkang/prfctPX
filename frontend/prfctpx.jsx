@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.signup = signup;
   window.login = login;
   window.logout = logout;
+ 
   //fin
   
   ReactDOM.render(<Root store={store} />, root);

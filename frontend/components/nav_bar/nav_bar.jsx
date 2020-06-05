@@ -2,11 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export default ({ currentUser, logout }) => {
-  // const clickDropdown = () => {
-  //   return document.getElementById("navDropdown").classList.toggle("show");
-  // };
+  const clickDropdown = () => {
+    return document.getElementById("navDropdown").classList.toggle("show");
+  };
 
-  window.onclick = function (e) {
+  window.onclick = function(e) {
     if (!e.target.matches('.user-dropdown-button')) {
       let dropdown = document.getElementsByClassName(
         'header-dropdown-nav'
@@ -22,34 +22,24 @@ export default ({ currentUser, logout }) => {
     }
   };
 
-  const realNav = currentUser ? (
+  const nav = currentUser ? (
     <>
       <div className='user-dropdown-nav'>
-        {/* <img
-          src={window.userHeaderIconURL}
+        <img
+          src={window.userIcon}
           onClick={() => clickDropdown()}
-          className="header-user-dropbtn header-user-icon"
-        /> */}
+          className='user-dropdown-header-icon'
+        />
         <div id='navDropdown' className='user-dropdown-nav-content'>
-          <Link to={`/users/${currentUser.id}`} className="dropdown-link">
-            Profile
+          <Link 
+            to={`/users/${currentUser}`} className="dropdown-link">Profile
           </Link>
-          {/* <Link
-            to={`/users/${currentUser.id}/my_information`}
-            className="dropdown-link"
-          > */}
-            {/* Settings
-          </Link> */}
+          <a className='dropdown-link' onClick={logout}>Log out</a>
           <br />
-          <a className="dropdown-link" onClick={logout}>
-            Log out
-          </a>
         </div>
       </div>
-      {/* <Link to="/upload" className="header-upload-button">
-        Upload
-      </Link> */}
     </>
+    
   ) : (
     <>
       <Link to="/login" className="header-login-button">
@@ -58,6 +48,8 @@ export default ({ currentUser, logout }) => {
       <Link to="/signup" className="header-signup-button">
         Sign Up
       </Link>
+      {/* test logout below... */}
+        {/* <button onClick={logout}>Log Out</button> */}
     </>
   );
 
@@ -69,13 +61,20 @@ export default ({ currentUser, logout }) => {
             prfctpx
           </Link>
         </div>
-        <div className="top-nav-link-container">
-          {/* <Link to="/discover" className="top-nav-link">
-            Discover
+        <div className="nav-links">
+          {/* <Link to="/" className="nav-link">
+           Discover
+          </Link> */}
+          {/* <Link to="/" className="nav-link">
+            Dummy Link
+          </Link>
+          <Link to="/" className="nav-link">
+            Dummy Link          
           </Link> */}
         </div>
+
+        <div className='right-nav'>{nav}</div>
       </div>
-      <div className='real-nav'>{realNav}</div>
     </div>
   );
 };
