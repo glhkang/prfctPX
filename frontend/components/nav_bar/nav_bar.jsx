@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default ({ currentUser, logout }) => {
   const clickDropdown = () => {
-    return document.getElementById("navDropdown").classList.toggle("show");
+    return document.getElementById("navDropdown").classList.toggleClass("show");
   };
 
   window.onclick = function(e) {
@@ -22,7 +22,8 @@ export default ({ currentUser, logout }) => {
     }
   };
 
-  const nav = currentUser ? (
+  const nav = 
+  !currentUser ? (
     <>
       <div className='user-dropdown-nav'>
         <img
