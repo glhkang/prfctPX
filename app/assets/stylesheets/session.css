@@ -3,7 +3,25 @@
   flex-direction: column;
   height: 100%;
   width: 100%;
-  background-color: #D8D8D8;
+  /* background-color: #edf2f3; */
+  /* light baby blue.. find a warmer blue???? */
+  /* background-color: #ebf0f7; */
+  /* lightest gray below */
+  /* background-color: rgb(249, 249, 249); */
+  /* another light gray */
+  background-color: #f9f9f9;
+  /* darker gray */
+  /* background-color: #D8D8D8; */
+  /* another light blue.. doens't quite match*/
+  /* background-color: #dce3e4; */
+  /* too aggressive dark gray blue*/
+  /* background-color: #acb3b8; */
+  /* background-color: #ebedee; */
+  /* background-color: #e0e3e5; */
+}
+
+.extra-space {
+  height: 400px
 }
 
 
@@ -11,30 +29,95 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 400px;
-  border: 1px black;
+  max-width: 250px;
+  /* height: 600px; */
+  /* border: 1px solid #D8D8D8; */
+  border: 1px solid #e1eaeb;
   background: white;
   margin: auto;
+  border-radius: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 7px;
+  padding-bottom: 20px;
 }
 
-.session-form-input-label {
-  padding: 25px;
+.session-signup-text {
+  text-align: center;
+  font-size: 13px;
+  /* color: #405368; */
+  color: #404968;
+}
+
+.session-form-label {
+  padding: 14px;
+  font-size: 13px;
+  color: #5a5a5a;
+}
+.session-form-field {
+  border: 1px solid #e1eaeb;
+  border-radius: 5px;
+  width: 195px;
+  height: 30px;
+}
+
+.already-account {
+  font-size: 13px;
+}
+
+.input-button {
+  width: 200px;
+  padding: 10px;
+  border-radius: 25px;
+  border: 0;
+  background-color: #7b92ad;
+  color: white;
+  font-size: 15px;
+}
+
+.input-button:hover {
+  background-color: #afbfca;
+}
+
+.signup-form {
+  background: white;
+  margin: auto;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 250px;
+  max-height: 400px;
+  margin: auto;
+  border: 1px solid #e1eaeb;
+  background: white;
+  margin: auto;
+  border-radius: 20px;
+  padding-top: 1px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.input-session-link {
+  text-decoration: none;
 }
 
 .session-form-errors {
   color:red;
   font-size: 12px;
+  display: flex;
+  align-self: center;
 }
 
-.input-session-button {
-  width: 200px;
-  padding: 10px;
-  border-radius: 25px;
-  border: 0;
-  background: rgb(8, 112, 209);
-  color: white;
-  font-size: 13px;
+.session-errors {
+  list-style: none;
+  margin-left: -50px;
+}
 
+.signup-errors {
+  list-style: none;
+  margin-left: -10px;
 }
 
 

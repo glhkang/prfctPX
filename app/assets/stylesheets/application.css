@@ -21,8 +21,8 @@
  }
 
  .main-splash-image {
+   box-sizing: border-box;
    width: 100%;
    height: auto;
-   box-sizing: border-box;
  }
 
