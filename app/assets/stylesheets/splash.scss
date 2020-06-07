@@ -1,0 +1,17 @@
+.main-splash {
+    position: relative;
+    height: 600px;
+    background-image: image_url('splash.jpg');
+    background-position: center center;
+    background-size: cover;
+}
+
+.main-splash-content {
+    max-width: 1440px;
+    display: flex;
+    justify-content: center;
+    padding-top: 340px;
+}
+
+.main-splash-content > div {
+    width: 620px;

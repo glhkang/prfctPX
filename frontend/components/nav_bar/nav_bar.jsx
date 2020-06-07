@@ -65,13 +65,6 @@ export default ({ currentUser, logout }) => {
       <div className='nav-logos'>
         <div className='nav-logo-links'>
           <div className='whitespace'>
-            {/* fix below logo
-            <img
-              src={window.prfctpx}
-              onClick={() => clicked()}
-              className='logo-link'
-            /> */}
-
             <Link 
               to="/" 
               className='logo-link'>
