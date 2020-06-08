@@ -3,7 +3,7 @@
 # Table name: users
 #
 #  id              :bigint           not null, primary key
-#  username        :string           not null
+#  username        :string
 #  email           :string           not null
 #  password_digest :string           not null
 #  session_token   :string           not null
@@ -19,7 +19,11 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token
 
-  #associations
+  has_many :photos,
+    class_name: :Photo,
+    foreign_key: :photographer_id
+
+  
 
   def self.find_by_credentials(username, password)
     user = User.find_by(email: username) || User.find_by(username: username)

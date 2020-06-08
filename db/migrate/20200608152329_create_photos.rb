@@ -9,6 +9,7 @@ class CreatePhotos < ActiveRecord::Migration[5.2]
       t.boolean :archived, default: false
       t.timestamps
     end
+    
     add_index :photos, :title
     add_index :photos, :location
     add_index :photos, :photographer_id
