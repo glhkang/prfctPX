@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_03_232559) do
+ActiveRecord::Schema.define(version: 2020_06_08_152329) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "photos", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "description"
+    t.integer "category", null: false
+    t.string "location"
+    t.integer "photographer_id", null: false
+    t.boolean "archived", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["archived"], name: "index_photos_on_archived"
+    t.index ["location"], name: "index_photos_on_location"
+    t.index ["photographer_id"], name: "index_photos_on_photographer_id"
+    t.index ["title"], name: "index_photos_on_title"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
