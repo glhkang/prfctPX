@@ -22,11 +22,6 @@
   /* background-color: #e0e3e5; */
 }
 
-/* .extra-space {
-  height: 400px
-} */
-
-
 .session-form {
   display: flex;
   flex-direction: column;
@@ -191,6 +186,16 @@
   font-size: 23px;
   font-family: 'Raleway', sans-serif;
   margin-bottom: 15px;
+}
+
+.input-session-link {
+  text-decoration: none;
+  margin-left: 2px;
+  cursor: pointer;
+  color: #565487
+}
+.input-session-link:hover {
+  text-decoration: underline;
 }
 
 
