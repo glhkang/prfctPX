@@ -47,92 +47,97 @@ class SignupForm extends React.Component {
   }
 
   render() {
-    const { formTitle, formType } = this.props;
+    const { formTitle, formType, errors } = this.props;
+    const allErrors = (
+      <div className="error-popup">
+        <div>
+          <ul>
+            {errors.map((error, i) => (
+              <li key={`error-${i}`}>{error}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    );
+
     
     const display =
       this.state.showForm === 0 ? (
-        <div className='session-form'>
+        <div className="session-form">
           <h2>{formTitle}</h2>
-          <span className='session-signup-text'>
+          <span className="session-signup-text">
             Discover and share incredible photos, gain global exposure, and get
             paid for your work.
           </span>
 
           <br />
           <input
-            type='button'
-            className='input-button'
-            value='Continue with Email'
+            type="button"
+            className="input-button"
+            value="Continue with Email"
             onClick={() => this.option(1)}
           />
-
-          <br />
           <input
-            type='button'
-            className='input-button'
-            value='Log in as a Guest!'
+            type="button"
+            className="input-button-2"
+            value="Log in as a Guest!"
             onClick={this.guestUserLogin}
           />
 
           <br />
-          <span className='already-account'>
-            Already have an account?
-            <Link to='/login' className='input-session-link'>
-              {' '}
+          <span className="already-account">
+            Already have an account?{" "}
+            <Link to="/login" className="input-session-link">
               Log In
             </Link>
           </span>
         </div>
       ) : (
-        <form className='session-form-container' onSubmit={this.handleSubmit}>
-          <div className='signup-form' onSubmit={this.handleSubmit}>
+        <form className="session-form-container" onSubmit={this.handleSubmit}>
+          <div className="signup-form" onSubmit={this.handleSubmit}>
             <h3>Sign Up for prfctpx!</h3>
-            <label className='session-form-label'>
+            <label className="session-form-label">
               Email
               <br />
               <input
-                type='email'
-                className='session-form-field'
+                type="email"
+                className="session-form-field"
                 value={this.state.email}
-                onChange={this.handleInput('email')}
+                onChange={this.handleInput("email")}
               />
             </label>
-            <label className='session-form-label'>
+            <label className="session-form-label">
               Password
               <br />
               <input
-                type='password'
-                className='session-form-field'
+                type="password"
+                className="session-form-field"
                 value={this.state.password}
-                onChange={this.handleInput('password')}
+                onChange={this.handleInput("password")}
               />
             </label>
-            <div className='session-form-errors'>{this.renderErrors()}</div>
-            <input type='submit' className='input-button' value={formType} />
+            {/* <div className="session-form-errors">{this.renderErrors()}</div> */}
+            <input type="submit" className="input-button" value={formType} />
             <br />
-            <span className='already-account'>
-              Already have an account?
-              <Link 
-                to='/login' 
-                className='input-session-link'
-              >
-                {' '}
+            <span className="already-account">
+              Already have an account?{" "}
+              <Link to="/login" className="input-session-link">
                 Log In
               </Link>
             </span>
-            <span className='already-account'>
-              Don't have an account? Log in as a
+            <span className="already-account">
+              Don't have an account? Log in as a{" "}
               <Link
-                to='/'
-                className='input-session-link'
+                to="/"
+                className="input-session-link"
                 onClick={this.guestUserLogin}
               >
-                {' '}
                 Guest!
               </Link>
             </span>
             <br />
           </div>
+          {errors.length > 0 && allErrors}
         </form>
       );
 

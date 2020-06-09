@@ -70,8 +70,11 @@ export default ({ currentUser, logout }) => {
               className='logo-link'>
               p r f c t p x
             </Link>
-            {/* ??? maybe add personal links?*/}
-
+              <div className='center-links'>
+              <a href='https://www.linkedin.com/in/glhkang' className='center-link'>LinkedIn</a>
+              <a href='https://github.com/glhkang' className='center-link'>Github</a>
+              <a href='#' className='center-link'>Gloria Kang</a>
+              </div>
           </div>
         </div>
       </div>

@@ -6,11 +6,21 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all'; %>
+
+    <%-# prfctpx logo link -%>
     <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Comfortaa' %>
+    
+    <%-# center links -%>
+    <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css2?family=Raleway&display=swap' %>
+    
     <%= javascript_include_tag 'application' %>
     <script type='text/javascript'>
       window.splashImage = '<%= image_url('splashbackground.jpg') %>';
-      window.userIcon = '<%= image_url('userpic.png') %>'; 
+      window.userIcon = '<%= image_url('userpic.png') %>';
+      window.growIcon = '<%= image_url('grow.png') %>';
+      window.buildIcon = '<%= image_url('build.png') %>';
+      window.performIcon = '<%= image_url('perform.png') %>';
+      window.bottomCover = '<%= image_url('bottom-cover.svg') %>';
     </script>
 
   </head>

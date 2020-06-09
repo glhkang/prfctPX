@@ -46,52 +46,70 @@ class LoginForm extends React.Component {
   }
 
   render() {
-    const { formTitle, formType } = this.props;
+    const { formTitle, formType, errors } = this.props;
+
+    const allErrors = (
+      <div className='error-popup'>
+          <div>
+            <ul>
+              {errors.map((error, i) => (
+                <li key={`error-${i}`}>{error}</li>
+              ))}
+            </ul>
+          </div>
+      </div>
+    );
     
-    return (
-      <div className='extra-space'>
-        <div className='session-form-container'>
-            <form className='session-form' onSubmit={this.handleSubmit}>
-              <h3>{formTitle}</h3>
+    return ( 
+      <div className='session-form-container'>
+          <form className='session-form' onSubmit={this.handleSubmit}>
+            <h3>{formTitle}</h3>
 
-              <label className='session-form-label'>
-                Email or Username
-                <br />
-                <input
-                  type='text'
-                  className='session-form-field'
-                  value={this.state.email}
-                  onChange={this.handleInput('email')}
-                />
-              </label>
-
-              <label className='session-form-label'>
-                Password
-                <br />
-                <input
-                  type='password'
-                  className='session-form-field'
-                  value={this.state.password}
-                  onChange={this.handleInput('password')}
-                />
-              </label>
-
-              <div className='session-form-errors'>{this.renderErrors()}</div>
-
-              <input
-                type='submit'
-                className='input-button'
-                value={formType}
-              />
+            <label className='session-form-label'>
+              Email or Username
               <br />
+              <input
+                type='text'
+                className='session-form-field'
+                value={this.state.email}
+                onChange={this.handleInput('email')}
+              />
+            </label>
+
+            <label className='session-form-label'>
+              Password
+              <br />
+              <input
+                type='password'
+                className='session-form-field'
+                value={this.state.password}
+                onChange={this.handleInput('password')}
+              />
+            </label>
+
+            {/* <div className='session-form-errors'>{this.renderErrors()}</div> */}
+
+
+            <input
+              type='submit'
+              className='input-button'
+              value={formType}
+            />
+            <br />
+            <div className='bottom-session-form'>
               <span className='already-account'>
-                Don't have an account? Log in as a{' '}
-                <Link className='input-session-link' to='/' onClick={this.guestUserLogin}>
-                  Guest!
+            Don't have an account?{' '}
+                <Link className='input-session-link' to='/signup'>Sign Up Here!
                 </Link>
               </span>
-          </form>
+              <span className='already-account'>
+            Or, check us out as a{' '}
+                <Link className='input-session-link' to='/' onClick={this.guestUserLogin}>Guest
+                </Link>
+              </span>
         </div>
+        </form>
+        {errors.length > 0 && allErrors}
       </div>
     );
   }

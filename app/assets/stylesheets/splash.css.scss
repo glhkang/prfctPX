@@ -9,8 +9,8 @@
 .main-splash-content {
   max-width: 1440px;
   display: flex;
-  margin-left: 50px;
-  padding-top: 200px;
+  margin-left: 62px;
+  padding-top: 150px;
 }
 
 .main-splash-content > div {
@@ -20,12 +20,37 @@
 .main-splash-content > div > h1 {
   font-size: 46px;
   font-weight: bolder;
+  border-bottom: 0px;
+  margin-bottom: -5px;
+  // margin-right: 200px;
+
 }
 
 .main-splash-content > div > p {
   line-height: 22px;
-  font-size: 20px;
-  margin-top: 20px;
+  font-size: 18px;
+  // margin-top: 15px;
+}
+
+.main-splash-content > a {
+    height: 64px;
+    min-width: 216px;
+    font-size: 24px;
+    border-radius: 32px;
+    text-decoration: none;
+    background-color: #7b92ad;
+    color:white;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    margin-top: 210px;
+    margin-left: -620px;
+    transition: color 0.1s ease 0s;
+}
+
+.main-splash-content > a:hover {
+  background-color: #afbfca;
 }
 
 .splash-cover {
@@ -39,3 +64,185 @@
     background-position: center bottom;
     background-repeat: no-repeat;
 }
+
+.splash-2 {
+  height: 700px;
+  padding: 20px;
+  margin-top: 50px;
+  // display: flex;
+  // justify-content: space-between;
+  // box-sizing: border-box
+  // margin: 50px;
+  position: relative;
+  
+}
+
+// .splash-2-cover {
+//     position: absolute;
+//     // background-color: purple;
+//     position: flex;
+//     width: 110%;
+//     top: 0px;
+//     left: 0px;
+//     bottom: -90px;
+//     right: 0px;
+//     background-image: url('https://web.500px.com/static/media/purple_swirl_mobile.017ee2a3.svg');
+//     // fill: purple;
+//     background-size: 100%;
+//     background-position: right bottom;
+//     background-repeat: no-repeat;
+//     z-index: -1;
+// }
+.splash-2-cover {
+    position: absolute;
+    // background-color: purple;
+    position: flex;
+    width: 110%;
+    top: 0px;
+    left: 0px;
+    bottom: -20px;
+    right: 0px;
+    background-image: url('bottom-cover.svg');
+    background-size: 80%;
+    // border-image: 
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+
+
+
+
+.splash-2-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.splash-2-header > h1 {
+  text-align: center;
+  margin: 0 auto;
+  font-size: 40px;
+
+}
+
+.splash-2-body {
+  display: flex;
+  margin-left: 70px;
+  margin-right: 70px;
+}
+
+.splash-2-icon {
+  display: flex;
+  height: 90px;
+  width: 90px;
+}
+
+.splash-2-body .splash-2-col {
+  padding: 20px;
+  width: 32%;
+  // height: 100px;
+  font-weight: lighter;
+}
+
+.splash-2-col > h3 {
+  font-size: 25px;
+}
+
+.bottom-splash {
+  // background-color:#5e6a97;
+  background-color:#545f87;
+  // margin-top: 20px;
+  // margin-bottom: 20px;
+  // padding-top: 20px;
+  padding-bottom: 40px;
+  color: white;
+  height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-left: 350px;
+  padding-right: 350px;
+  text-align: center;
+}
+
+
+.bottom-splash-header > h3 {
+  font-size: 38px;
+  margin-bottom: 0px;;
+}
+
+.bottom-splash-body > span {
+  font-size: 18px;
+}
+
+// .bottom-splash-signup {
+//   // margin: 10px;
+//   // display: flex;
+//   // align-items: center;
+// }
+
+// .bottom-splash-signup > p {
+//   // margin: 20px;
+//   // display: flex;
+//   // align-items: center;
+// }
+
+
+// .bottom-splash-signup> div > h1 {
+//   font-size: 50px;
+//   font-weight: bolder;
+//   margin: 0 auto;
+//   text-align: center;
+//   color: white;
+// }
+
+// .bottom-splash-signup > div > p {
+//   line-height: 22px;
+//   font-size: 18px;
+//   text-align: center;
+//   margin: 0 auto;
+//   color: white;
+  
+//   // margin-top: 15px;
+// }
+
+// a[href*='linkedin.com'] {
+//   background:url(https://www.linkedin.com/favicon.ico) no-repeat left center;
+//   padding-left:19px;
+// }
+
+// a[href*='github.com'] {
+//   background:url(https://github.com/favicon.ico) no-repeat left center;
+//   padding-left:19px;
+// }
+
+
+
+.bottom-splash-signup > a {
+    height: 64px;
+    min-width: 216px;
+    font-size: 24px;
+    border-radius: 32px;
+    text-decoration: none;
+    // background-color: #7b92ad;
+    background-color: white;
+    color: black;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    // margin-top: 250px;
+    // margin-left: -800px;
+    // margin-right: 800px;
+    transition: color 0.1s ease 0s;
+}
+
+
+
+.bottom-splash-signup > a:hover {
+  // color: #afbfca;
+  color: #545f87;
+}
+

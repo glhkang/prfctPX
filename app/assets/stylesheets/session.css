@@ -1,8 +1,10 @@
 .session-form-container {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  /* height: calc(100vh - 50px); */
+  height: calc(100vh - 62px);
   width: 100%;
+  /* padding-top: 15px; */
   /* background-color: #edf2f3; */
   /* light baby blue.. find a warmer blue???? */
   /* background-color: #ebf0f7; */
@@ -20,87 +22,222 @@
   /* background-color: #e0e3e5; */
 }
 
-.extra-space {
+/* .extra-space {
   height: 400px
-}
+} */
 
 
 .session-form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 250px;
-  /* height: 600px; */
+  width: 290px;
+  min-height: 300px;
+  /* height: 430px; */
   /* border: 1px solid #D8D8D8; */
   border: 1px solid #e1eaeb;
   background: white;
   margin: auto;
-  border-radius: 20px;
+  /* margin-left: 65px; */
+  /* border-radius: 20px; */
   padding-left: 50px;
   padding-right: 50px;
   padding-top: 7px;
   padding-bottom: 20px;
 }
 
+.session-form > h3 {
+  font-weight: normal;
+  font-size: 23px;
+  font-family: 'Raleway', sans-serif;
+  margin-bottom: 15px;
+  /* letter-spacing: 0.5px; */
+}
+.session-form > h2 {
+  font-weight: normal;
+  font-size: 23px;
+  font-family: 'Raleway', sans-serif;
+  margin-bottom: 15px;
+  /* letter-spacing: 0.5px; */
+}
+
 .session-signup-text {
   text-align: center;
-  font-size: 13px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  margin: 0px;
+  /* margin-right: 0px; */
   /* color: #405368; */
   color: #404968;
 }
 
 .session-form-label {
-  padding: 14px;
-  font-size: 13px;
+  padding: 15px;
+  font-size: 14px;
+  font-weight: lighter;
+  font-family: 'Raleway', sans-serif;
   color: #5a5a5a;
 }
 .session-form-field {
   border: 1px solid #e1eaeb;
+  margin-top: 7px;
   border-radius: 5px;
-  width: 195px;
-  height: 30px;
+  width: 340px;
+  height: 43px;
+  font-size: 15px;
+  font-weight: lighter;
+  font-family: 'Raleway', sans-serif;
+}
+
+.bottom-session-form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 30px;
+  margin-bottom: 7px;
+  justify-content: space-evenly;
 }
 
 .already-account {
-  font-size: 13px;
+  /* align-items: center; */
+  margin-bottom: 5px;
+  font-size: 15px;
+  font-family: 'Raleway', sans-serif;
+  color: gray;
+  /* justify-content: space-evenly; */
+}
+.already-account:hover {
+  /* align-items: center; */
+  margin-bottom: 5px;
+  font-size: 15px;
+  font-family: 'Raleway', sans-serif;
+  /* justify-content: space-evenly; */
 }
 
+
+
+.session-form a {
+  text-decoration: none;
+  margin-left: 2px;
+  cursor: pointer;
+  color: #565487
+}
+
+.session-form a:hover {
+  text-decoration: underline;
+}
+
+
+
 .input-button {
-  width: 200px;
+  width: 338px;
   padding: 10px;
-  border-radius: 25px;
+  height: 45px;
+  margin-top: 10px;
+  margin-bottom: 8px;
+  border-radius: 40px;
   border: 0;
   background-color: #7b92ad;
   color: white;
-  font-size: 15px;
+  font-size: 16px;
+  font-weight: bolder;
+}
+
+.input-button-2 {
+  width: 338px;
+  padding: 10px;
+  height: 45px;
+  margin-top: 10px;
+  margin-bottom: 8px;
+  border-radius: 40px;
+  border: 0;
+  background-color: #545f87;
+  color: white;
+  font-size: 16px;
+  font-weight: bolder;
 }
 
 .input-button:hover {
   background-color: #afbfca;
+
+}
+.input-button-2:hover {
+  background-color: #afbfca;
+
 }
 
 .signup-form {
-  background: white;
-  margin: auto;
-  border-radius: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  max-width: 250px;
-  max-height: 400px;
-  margin: auto;
+  width: 300px;
+  min-height: 200px;
+  max-height: 440px;
+  /* border: 1px solid #D8D8D8; */
   border: 1px solid #e1eaeb;
   background: white;
   margin: auto;
-  border-radius: 20px;
-  padding-top: 1px;
+  /* margin-left: 65px; */
+  /* border-radius: 20px; */
   padding-left: 50px;
   padding-right: 50px;
+  padding-top: 7px;
+  padding-bottom: 20px;
+
 }
+
+.signup-form > h3 {
+  font-weight: normal;
+  font-size: 23px;
+  font-family: 'Raleway', sans-serif;
+  margin-bottom: 15px;
+}
+
+
 
 .input-session-link {
   text-decoration: none;
+}
+
+.error-popup {
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    display: flex;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.error-popup > div {
+    border-radius: 5px;
+    position: absolute;
+    border-radius: 5px;
+    background-color: white;
+    -webkit-animation: fadeinout 1s linear forwards;
+    animation: fadeinout 3s linear forwards;
+    /* box-shadow: 0 4px 12px white; */
+}
+
+@-webkit-keyframes fadeinout {
+    0%,100% { opacity: 0; top:-30px; }
+    5%, 96% { opacity: 1; top:0px;}
+}
+  
+@keyframes fadeinout {
+    0%,100% { opacity: 0; top:-30px; }
+    5%, 96% { opacity: 1; top:0px;}
+}
+
+.error-popup > div > ul {
+    font-weight: lighter;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    margin: 0px;
+    padding: 10px;
+    border-radius: 5px;
+    background: #ad967b;
+    color: white;
 }
 
 .session-form-errors {
