@@ -9,7 +9,7 @@
 .main-splash-content {
   max-width: 1440px;
   display: flex;
-  margin-left: 62px;
+  margin-left: 69px;
   padding-top: 150px;
 }
 
@@ -97,20 +97,18 @@
     position: absolute;
     // background-color: purple;
     position: flex;
-    width: 110%;
+    width: 100%;
     top: 0px;
     left: 0px;
     bottom: -20px;
     right: 0px;
-    background-image: url('bottom-cover.svg');
+    background-image: url('bottom-cover.png');
     background-size: 80%;
     // border-image: 
     background-position: right bottom;
     background-repeat: no-repeat;
     z-index: -1;
 }
-
-
 
 
 .splash-2-header {
