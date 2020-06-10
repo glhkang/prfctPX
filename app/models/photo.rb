@@ -15,12 +15,13 @@
 class Photo < ApplicationRecord
   validates :title, presence: true
   validates :category, presence: true
-  validates :photographer_id, presence: true
+  # validates :photographer_id, presence: true
 
-  belongs_to :photographer,
-    class_name: :User,
-    foreign_key: :photographer_id
+  # belongs_to :photographer,
+  #   class_name: :User,
+  #   foreign_key: :photographer_id
 
-  has_one_attached :photo
+  has_one_attached :photo_file
+
   
 end

@@ -71,6 +71,38 @@
   color: #aac1ca;
 }
 
+.user-dropdown-nav {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  
+}
+.user-dropdown-nav > a {
+  display: flex;
+  height: 43px;
+  width: 80px;
+  align-self: center;
+  align-items: center;
+  padding: 0px 15px;
+  text-decoration: none;
+  
+  // font-family: Arial, Helvetica, sans-serif;
+  // font-family: 'Raleway', sans-serif;
+  font-size: 16px;
+  font-weight: lighter;
+  // letter-spacing: 1px;;
+  font-weight: bold;
+  // text-align: center;
+  color: black;
+  border: 2px solid black;
+  border-radius: 25px;
+
+}
+
+.header-upload-button:hover {
+  // background-color: #aab9ca;
+  background-color: #d9e0e7;
+} 
 
 .display-nav {
   float: right;

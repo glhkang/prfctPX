@@ -42,6 +42,11 @@ export default ({ currentUser, logout }) => {
             Log out
           </a>
         </div>
+        <Link 
+          to='/upload'
+          className='header-upload-button'>
+          &#8593;Upload
+        </Link>
       </div>
     </>
 

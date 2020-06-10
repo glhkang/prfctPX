@@ -69,30 +69,14 @@
   height: 700px;
   padding: 20px;
   margin-top: 50px;
-  // display: flex;
-  // justify-content: space-between;
-  // box-sizing: border-box
-  // margin: 50px;
   position: relative;
   
 }
 
 // .splash-2-cover {
-//     position: absolute;
-//     // background-color: purple;
-//     position: flex;
-//     width: 110%;
-//     top: 0px;
-//     left: 0px;
-//     bottom: -90px;
-//     right: 0px;
 //     background-image: url('https://web.500px.com/static/media/purple_swirl_mobile.017ee2a3.svg');
-//     // fill: purple;
-//     background-size: 100%;
-//     background-position: right bottom;
-//     background-repeat: no-repeat;
-//     z-index: -1;
 // }
+
 .splash-2-cover {
     position: absolute;
     // background-color: purple;
@@ -104,7 +88,6 @@
     right: 0px;
     background-image: url('bottom-cover.png');
     background-size: 80%;
-    // border-image: 
     background-position: right bottom;
     background-repeat: no-repeat;
     z-index: -1;
@@ -175,48 +158,6 @@
 .bottom-splash-body > span {
   font-size: 18px;
 }
-
-// .bottom-splash-signup {
-//   // margin: 10px;
-//   // display: flex;
-//   // align-items: center;
-// }
-
-// .bottom-splash-signup > p {
-//   // margin: 20px;
-//   // display: flex;
-//   // align-items: center;
-// }
-
-
-// .bottom-splash-signup> div > h1 {
-//   font-size: 50px;
-//   font-weight: bolder;
-//   margin: 0 auto;
-//   text-align: center;
-//   color: white;
-// }
-
-// .bottom-splash-signup > div > p {
-//   line-height: 22px;
-//   font-size: 18px;
-//   text-align: center;
-//   margin: 0 auto;
-//   color: white;
-  
-//   // margin-top: 15px;
-// }
-
-// a[href*='linkedin.com'] {
-//   background:url(https://www.linkedin.com/favicon.ico) no-repeat left center;
-//   padding-left:19px;
-// }
-
-// a[href*='github.com'] {
-//   background:url(https://github.com/favicon.ico) no-repeat left center;
-//   padding-left:19px;
-// }
-
 
 
 .bottom-splash-signup > a {

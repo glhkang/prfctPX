@@ -8,5 +8,8 @@
 
 
 User.destroy_all
+Photo.destroy_all
 
 user1 = User.create!(email: 'tester@gmail.com', password:'testertest', username: 'tester')
+
+photo1 = Photo.create!(title: 'selfie...myface', description: 'new age selfie.. of my face', category: 1, photographer_id: user1.id)
