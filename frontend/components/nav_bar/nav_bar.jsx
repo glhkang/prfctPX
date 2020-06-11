@@ -22,48 +22,39 @@ export default ({ currentUser, logout }) => {
 
   const displayNav = currentUser ? (
     <>
-      <div className='user-dropdown-nav'>
+      <div className="user-dropdown-nav">
         <img
           src={window.userIcon}
           onClick={() => clicked()}
-          className='user-dropdown-header-icon'
+          className="user-dropdown-header-icon"
         />
 
-        <div id='navDropdown' className='user-dropdown-nav-content'>
-          <Link
-            to={`/users/${currentUser}`} 
-            className="dropdown-link">
+        <div id="navDropdown" className="user-dropdown-nav-content">
+          <Link to={`/users/${currentUser}`} className="dropdown-link">
             Profile
           </Link>
           <br />
-          <a
-            className='dropdown-link' 
-            onClick={logout}>
+          <a className="dropdown-link" onClick={logout}>
             Log out
           </a>
         </div>
         <Link 
           to='/upload'
           className='header-upload-button'>
-          &#8593;Upload
+          &#8593; Upload
         </Link>
       </div>
     </>
-
   ) : (
-      <>
-      <Link 
-        to='/login' 
-        className='header-login-button'>
-          Log In
+    <>
+      <Link to="/login" className="header-login-button">
+        Log In
       </Link>
-        <Link 
-          to='/signup' 
-          className='header-signup-button'>
-          Sign Up
+      <Link to="/signup" className="header-signup-button">
+        Sign Up
       </Link>
-      </>
-    );
+    </>
+  );
 
   return (
     <div className='nav-main'>
