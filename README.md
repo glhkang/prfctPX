@@ -1,24 +1,28 @@
-# README
+# prfcpx
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+prfctpx is a full-stack, single-page appliation clone of 500px. Users can upload photos to share their work and view others' photos.
 
-Things you may want to cover:
+[Live Demo](http://prfctpx.herokuapp.com/#/)
 
-* Ruby version
+## Technologies Used
 
-* System dependencies
+### Backend
+* PostgreSQL
+* Ruby on Rails
 
-* Configuration
+### Frontend
+* React
+* Redux
 
-* Database creation
+### Packages/Apis
+* AWS for image hosting
 
-* Database initialization
+## Features
+* Full user authentication (sign-up, login, logout) with security
+* More to come! (Please see below :))
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Future Implementations
+* Upload images to user's account
+* Follow other users
+* Personalized homefeed, accessible only to logged-in users
+* Profile page, accessible only to logged-in users
