@@ -9,5 +9,5 @@ export const receiveUser = data => ({
 
 export const fetchUser = userId => dispatch => (
   UserAPIUtil.fetchUser(userId)
-    .then(data => dispatch(receieveUser(data)))
+    .then(data => dispatch(receiveUser(data)))
 );

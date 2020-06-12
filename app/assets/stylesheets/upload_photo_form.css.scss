@@ -1,73 +1,251 @@
+.upload-photo-title {
+  display: flex;
+  margin-left: 64px;
+  // font-family: 'Raleway', sans-serif;
+  font-family: sans-serif;
+  border-bottom: 10px black;
+  margin-bottom: 20px;
+  // height: 100px;
+}
 
+.upload-photo-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-top: 100px;
+}
+
+//EDIT BELOW
+.upload-photo-form {
+  margin-left: 60px;
+}
+
+.upload-photo-form > p {
+  margin-left: 32px;
+}
+
+.upload-icon-container {
+  display: flex;
+  padding-left: 66px;
+  padding-bottom: 18px;
+}
+
+.upload-icon {
+  display: flex;
+  // position: inherit;
+  align-items: center;
+}
+
+
+.upload-form-bottom {
+  // padding-top: 0px;
+  width: 390px;
+  background-color: #e9e9e9;
+  padding: 12px;
+  margin:12px;
+  font-family: sans-serif;
+
+}
+
+.upload-form-bottom {
+  padding-left: 15px;
+}
+
+.form-bottom-text {
+  padding-bottom: 12px;
+}
+
+.form-bottom-text > h4 {
+  font-size: 15px;
+  padding-top:3px;
+  padding-bottom: 0px;
+  margin: 3px;
+}
+
+.form-bottom-text > ul {
+  padding: 0px;
+  margin: 0px;
+  margin-left: 5px;
+  
+}
+
+.form-bottom-text > ul > li {
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+
+}
 
 .input[type='file'] {
-  color: transparent;   
+  color: transparent;
+  opacity:0;
 }
 
+
+//removes default choose file button to upload a photo
 .custom-file-input::-webkit-file-upload-button {
   visibility: hidden;
+
 }
+
+.custom-file-input{
+  border: 0;
+  outline: none;
+  -webkit-appearance: none;
+  
+}
+
 .custom-file-input::before {
   content: 'Choose a Photo';
-  display: inline-block;
-  background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
-  border: 1px solid #999;
-  border-radius: 3px;
-  padding: 5px 8px;
+  display: flex;
+  align-self: center;
+  background: #545f87;
+  align-content: center;
+  // margin-left: 80px;
+  width: 140px;
+  // padding: 10px;
+  // height: 45px;
+  // margin-top: 10px;
+  // margin-bottom: 8px;
+  // margin-left: 20px;
+  padding: 20px;
+  border-radius: 40px;
+  border: 0;
+  background-color: #545f87;
+  color: white;
+  font-size: 16px;
+  font-weight: bolder;
+  letter-spacing: 1px;;
+  // background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
+  // border: 1px solid #999;
+  // border-radius: 3px;
+  // // padding: 5px 8px;
   outline: none;
   white-space: nowrap;
   -webkit-user-select: none;
-  cursor: pointer;
-  text-shadow: 1px 1px #fff;
-  font-weight: 700;
-  font-size: 10pt;
+  // cursor: pointer;
+  // text-shadow: 1px 1px #fff;
+  // font-weight: 700;
+  // font-size: 10pt;
+  // -webkit-appearance: none;
 }
 
+// .custom-file-input:active::hover {
+//   color: #aac1ca;
+// }
 .custom-file-input:hover::before {
-  border-color: black;
-}
-.custom-file-input:active::before {
-  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+  background-color: #aac1ca;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//with modal below
-// .modal-background {
-//   position: fixed;
-//   top: 0;
-//   bottom: 0;
-//   right: 0;
-//   left: 0;
-//   background: rgba(0, 0, 0, 0.7);
-//   z-index: 2000;
+// .custom-file-input:active::before {
+//   background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
 // }
 
-// .modal-child {
-//   position: absolute;
-//   top: 50%;
-//   left: 50%;
-//   transform: translate(-50%, -50%);
-//   width: 75%;
-//   height: 75%;
-//   background-color: white;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// }
+////
 
+
+.upload-form-container {
+  padding-left: 63px;
+  padding-right: 30px;
+  // padding-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  // flex-direction: row;
+}
+
+.upload-form-preview {
+  display: flex;
+  flex-direction: row;
+  // padding-top: 20px;
+
+}
+
+.upload-form-preview > img {
+  width: 500px;
+  height: auto;
+}
+
+
+.upload-form > form {
+  // display: flex;
+  // flex-direction: column;
+  // margin: -63px;
+  padding: 15px;
+  width: 345px;
+  // height: 500px;
+  // border-style: solid;
+  // border-color: lightgray;
+  border: 2px solid #e1eaeb;
+  align-items: center;
+}
+
+.upload-form form > div {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.upload-form label {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #4a4a4a;
+}
+
+.upload-form input {
+  font-size: 14px;
+  font-family: sans-serif;
+  padding: 10px 14px;
+  color: #525558;
+  border-radius: 3px;
+  border: 1px solid rgba(185, 185, 185, 0.5);
+}
+
+.upload-form textarea {
+  font-size: 14px;
+  font-family: sans-serif;
+  padding: 8px 10px;
+  color: #525558;
+  border-radius: 3px;
+  border: 1px solid rgba(185, 185, 185, 0.5);
+}
+
+
+.upload-form select {
+  font-size: 14px;
+  color: #525558;
+  border: 1px solid rgba(185, 185, 185, 0.5);
+  border-radius: 3px;
+  background-color: white;
+  padding: 8px 32px 8px 12px;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+
+
+.upload-form button {
+  display: flex;
+  margin-top: 15px;
+  margin-left: 70px;
+  background-color: #545f87;
+  // padding: 0,10px;
+  width: 180px;
+  height: 40px;
+  color: white;
+  display: block;
+  align-self: center;
+  border-radius: 20px;
+  border: 0;
+  font-size: 16px;
+  font-weight: bolder;
+  align-items: center;
+  justify-content: center;
+  // transition: color 0.1s ease 0s;
+  -webkit-appearance: none;
+  //this gets rid of click-border
+  outline: none;
+}
+
+.upload-form button:hover {
+  background-color: #aac1ca;
+}

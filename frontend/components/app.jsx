@@ -9,9 +9,12 @@ import SignupFormContainer from './signup_form/signup_form_container';
 import UploadPhotoFormContainer from './upload_photo/upload_photo_form_container';
 import DisplayPhotoContainer from './display_photo/display_photo_container'
 
+// test
+// import PhotoIndexContainer from './photos_index';
 
 
 const App = () => (
+
   <div>
    <header className='header-nav-bar'>
       <Route path='/' component={NavBarContainer} />
@@ -23,6 +26,9 @@ const App = () => (
         <AuthRoute path='/signup' component={SignupFormContainer} />
         <ProtectedRoute path='/upload' component={UploadPhotoFormContainer} />
         <Route path='/photos/:photoId' component={DisplayPhotoContainer} />
+        {/* test index */}
+        {/* <Route path='/photos' component={PhotoIndexContainer} /> */}
+
 
       </Switch>
   </div>

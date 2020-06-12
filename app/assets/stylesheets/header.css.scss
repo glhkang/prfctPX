@@ -9,7 +9,7 @@
   display: flex;
   background: white;
   width: 100%;
-  margin: 0;
+  margin-left: 7px;
   /* height: 50px; */
   height: 65px;
   box-sizing: border-box;
@@ -44,7 +44,8 @@
   color: black;
   text-decoration: none;
   font-family: sans-serif;
-  font-size: 16px;
+  font-size: 15px;
+  letter-spacing: 0.2px;
   height: 28px;
   border: 2px solid black;
   border-radius: 20px;
@@ -56,13 +57,16 @@
   color: #aac1ca;
 }
 
+
+
 .header-login-button {
   display: flex;
   align-items: center;
   padding: 0px 15px;
   text-decoration: none;
   font-family: sans-serif;
-  font-size: 16px;
+  font-size: 15px;
+  letter-spacing: 0.2px;;
   font-weight: bold;
   color: black;
 }
@@ -77,33 +81,46 @@
   flex-direction: row;
   
 }
+
 .user-dropdown-nav > a {
   display: flex;
-  height: 42px;
-  width: 88px;
   align-self: center;
   align-items: center;
-  flex-direction: row;
-  padding: 0px 10px;
+  direction: row;
+  color: black;
   text-decoration: none;
   font-family: sans-serif;
   // font-family: Arial, Helvetica, sans-serif;
-  // font-family: 'Raleway', sans-serif;
-  font-size: 16px;
-  font-weight: lighter;
-  // letter-spacing: 0.5px;;
-  font-weight: bold;
-  text-align: center;
-  color: black;
+  font-size: 15.6px;
+  letter-spacing: 0.3px;
+  height: 43px;
+  width: 88px;
   border: 2px solid black;
   border-radius: 25px;
+  font-weight: bold;
+  padding: 0px 15px;
 
 }
+
+.upload-arrow-icon {
+  margin-right: 8px;
+}
+
 
 .header-upload-button:hover {
   // background-color: #aab9ca;
   background-color: #d9e0e7;
 } 
+
+
+//inverting upload button.. need to fix so when on loading page button disappears
+// .header-upload-button:focus {
+//   // background-color: #545f87;
+//   -webkit-filter: invert(100%); /* safari 6.0 - 9.0 */
+//       filter: invert(100%);
+//   // color: white;
+// }
+
 
 .display-nav {
   float: right;
@@ -177,20 +194,46 @@
   /* display: flex; */
   /* flex-direction: column; */
   justify-content: space-between;
+  // padding: 15px 32px 10px 16px;
 
+}
+
+.user-dropdown-header-icon {
+  position: relative;
+  width: 35px;
+  height: 35px;
+  vertical-align: middle;
+  padding: 10px;
+  margin-right: 25px;
+  margin-left: 10px;
+  border: 0px;
+  border-radius: 50%;
+
+}
+
+.user-dropdown-header-icon:hover {
+  cursor: pointer;
+  // transition: all 0.5s ease;
+}
+
+.dropdown-link-container {
+  padding-top: 10px;
+  padding-bottom: 14px;
 }
 
 .user-dropdown-nav-content {
   position: absolute;
   display: none;
   background-color: white;
-  width: 140px;
-  margin-top: 86px;
+  width: 160px;
+  // height: 150px;
+  margin-top: 84px;
   box-shadow: #afbfca 0px 2px 9px, white 0px 0px 2px;
-  margin-left: -10px;
+  margin-left: -4px;
   border-top-width: 1px;
   border-top-color: rgb(255, 255, 255);
-  padding: 8px 0px;
+  font-family: sans-serif;
+  font-size: 15px;
   border-radius: 5px;
   box-sizing: border-box;
   content: '';
@@ -198,14 +241,34 @@
   pointer-events: auto;
 }
 
-.user-dropdown-nav-content:after {
-    border-right: 10px solid transparent;
-    border-bottom: 20px solid #efefef;
-    top: -20px;
-    right: 100px;
-    content: '';
-    position: absolute;
+.show {
+  display: block;
 }
+
+// cool effect
+.user-dropdown-nav-content:after {
+  position: absolute;
+  width: 0; 
+  height: 0; 
+  top: -10px;
+  right: 108px;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  content: '';
+  border-bottom: 10px solid #dde4e8;
+}
+
+
+
+    // border-right: 8px solid transparent;
+    // border-bottom: 12px solid #efefef;
+    // // border-right: 30px solid transparent;
+    // // border-bottom: 20px solid #efefef;
+    // top: -20px;
+    // right: 100px;
+    // content: '';
+    // position: absolute;
+
 // .user-dropdown-nav-content:after {
 //     border-left: 20px solid transparent;
 //     border-top: 20px solid #efefef;
@@ -215,41 +278,25 @@
 //     right: 20px;
 // }
 
-.show {
-  display: block;
-}
-
-.user-dropdown-header-icon {
-  position: relative;
-  width: 35px;
-  height: 35px;
-  vertical-align: middle;
-  padding: 10px;
-  margin-right: 20px;
-  margin-left: 10px;
-  border: 0px;
-  border-radius: 50%;
-
-}
-
-.user-dropdown-header-icon:hover {
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
 .user-dropdown-nav-content:hover {
   display: block;
+  cursor: pointer;
+  // background-color: ;
 }
 
+// pad around links
 .user-dropdown-nav-content a {
   display: block;
   padding: 10px;
   color: black;
+  // margin: 5px; do not margin
 }
 
 .dropdown-link {
   color: black;
   text-decoration: none;
+  padding-left: 50px;
+  // padding-left: 50px;
 }
 
 .dropdown-link:hover {

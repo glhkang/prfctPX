@@ -9,7 +9,8 @@ export const receiveAllPhotos = data => ({
 });
 
 export const receivePhoto = data => ({
-  type: RECEIVE_PHOTO, data
+  type: RECEIVE_PHOTO, 
+  data
 });
 
 export const fetchPhotos = () => dispatch => (
@@ -22,7 +23,11 @@ export const fetchPhoto = photoId => dispatch => (
     .then(data => dispatch(receivePhoto(data)))
 );
 
+export const createPhoto = photoFormData => dispatch => (
+  PhotoAPIUtil.createPhoto(photoFormData)
+);
+
 export const postPhoto = formData => dispatch => (
-  PhotoAPIUtil.receievePhoto(formData)
+  PhotoAPIUtil.receivePhoto(formData)
     .then(data => dispatch(receivePhoto(data)))
 );

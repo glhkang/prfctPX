@@ -1,6 +1,12 @@
 class Api::PhotosController < ApplicationController
   
   #fix up index below...
+  def index
+    render :index
+
+  end
+
+
   # def index
   #   if params[:filters]
   #     limit = params[:filters][:limit]
@@ -29,20 +35,26 @@ class Api::PhotosController < ApplicationController
   #   end
   # end
 
-  # def create
-  #   @photo = Photo.new(photo_params)
-
-  #   if @photo.save
-  #     render :show
-  #   else
-  #     render json: @photo.errors.full_messages, status: 422
-  #   end
-  # end
-
+  
   def show
     @photo = Photo.find(params[:id])
-    render :show
+    if @photo.save
+      render :show
+    else
+      render json: @photo.errors.full_messages, status: 422
+    end
   end
+
+      def create
+        @photo = Photo.new(photo_params)
+        if @photo.save
+            render :show
+        else
+            render json: @photo.errors.full_messages, status: 422
+        end
+    end
+
+
   
   # def show
   #   @photo = Photo.includes(:photographer).find_by_id(params[:id])
@@ -64,3 +76,4 @@ class Api::PhotosController < ApplicationController
   #   params.require(:photo).permit(:title, :description, :category, :location, :photographer_id, :photo_file)
   # end
 end
+
