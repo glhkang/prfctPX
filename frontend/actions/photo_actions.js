@@ -8,10 +8,10 @@ export const receiveAllPhotos = data => ({
   data
 });
 
-export const receivePhoto = data => ({
-  type: RECEIVE_PHOTO, 
-  data
-});
+// export const receivePhoto = data => ({
+//   type: RECEIVE_PHOTO, 
+//   data
+// });
 
 export const fetchPhotos = () => dispatch => (
   PhotoAPIUtil.fetchPhotos()
