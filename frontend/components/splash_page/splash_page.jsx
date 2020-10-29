@@ -72,9 +72,9 @@ class SplashPageContainer extends React.Component {
           <div className='copyright-logo'> &copy; prfctpx </div>
           <div className="footer-links">
             <ul>
-              <li className='footer-link'><a href='https://www.linkedin.com/in/glhkang'>LinkedIn</a></li>
-              <li className='footer-link'><a href='https://github.com/glhkang'>GitHub</a></li>
-              <li className='footer-link'><a href=''>Gloria Kang</a></li>
+              <li className='footer-link'><a href='https://bit.ly/glorias-linkedin' target="_blank">LinkedIn</a></li>
+              <li className='footer-link'><a href='https://bit.ly/glorias-github' target="_blank">GitHub</a></li>
+              <li className='footer-link'><a href='https://bit.ly/glorias-portfolio' target='_blank'>Gloria Kang</a></li>
             </ul>
           </div>
         </footer>

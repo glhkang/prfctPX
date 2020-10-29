@@ -1,53 +1,26 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
+import { withRouter } from "react-router";
 
 class UploadPhotoForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: "",
-      description: "",
-      archived: false,
-      location: "",
+      id: this.props.photo.id || "",
+      title: this.props.photo.title,
+      description: this.props.photo.description || "",
+      category: this.props.photo.category,
+      location: this.props.photo.location || "",
+      photographer_id: this.props.photo.photographer_id,
+      archived: this.props.photo.archived,
+      photoFile: [],
+      photoUrl: [],
+      redirect: false,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    this.props.createPhoto(formData).then(() => {
-      this.setState({
-        photoFile: null,
-        photoUrl: null,
-        title: "",
-        description: "",
-        privacy: 1,
-        location: "",
-        category: 1,
-        photographerId: this.props.currentUserId,
-      });
-    });
-  }
-
-  handleFile(e) {
-    const file = e.currentTarget.files[0];
-    const fileReader = new FileReader();
-    fileReader.onloadend = () => {
-      const image = new Image();
-      image.src = fileReader.result;
-
-      image.onload = () => {
-        this.setState({
-          photoFile: file,
-          photoUrl: fileReader.result,
-          photographerId: this.props.currentUserId,
-          title: file.name,
-        });
-      };
-    };
-    if (file) {
-      fileReader.readAsDataURL(file);
-    }
+    this.handleFile = this.handleFile.bind(this);
+    this.updateState = this.updateState.bind(this);
   }
 
   updateState(type) {
@@ -58,12 +31,121 @@ class UploadPhotoForm extends React.Component {
     };
   }
 
+  // handleFile(e) {
+  //   const file = e.currentTarget.files[0];
+  //   const fileReader = new FileReader();
+  //   fileReader.onloadend = () => {
+  //     const image = new Image();
+  //     image.src = fileReader.result;
+
+  //     image.onload = () => {
+  //       this.setState({
+  //         photoFile: file,
+  //         photoUrl: fileReader.result,
+  //         photographerId: this.props.currentUserId,
+  //         // title: file.name,
+  //         title: e.value,
+  //       });
+  //     };
+  //   };
+  //   if (file) {
+  //     fileReader.readAsDataURL(file);
+  //   }
+  // }
+
+  handleFile(e) {
+    const files = Array.from(e.currentTarget.files);
+    let newFiles = [];
+
+    files.forEach((file) => {
+      const fileReader = new FileReader();
+
+      if (file) {
+        fileReader.readAsDataURL(file);
+      } else {
+        this.setState({
+          photoUrl: [],
+          photoFile: [],
+          photographer_id: this.props.photo.photographer_id,
+        });
+      }
+
+      fileReader.onloadend = () => {
+        newFiles.push(fileReader.result);
+        this.setState({
+          photoUrl: newFiles,
+          photoFile: files,
+          photographer_id: this.props.photo.photographer_id,
+        });
+      };
+    });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    debugger;
+    const formData = new FormData();
+    debugger;
+    if (this.state.id) {
+      formData.append("photo[id]", this.state.id);
+    }
+    formData.append("photo[title]", this.state.title);
+    formData.append("photo[description]", this.state.description);
+    formData.append("photo[category]", this.state.category);
+    formData.append("photo[location]", this.state.location);
+    formData.append("photo[photographer_id]", this.state.photographer_id);
+    formData.append("photo[archived]", this.state.archived);
+    if (this.state.photoFile) {
+      for (let i = 0; i < this.state.photoFile.length; i++) {
+        formData.append("photo[photo][]", this.state.photoFile[i]);
+      }
+    }
+
+    // debugger
+    this.props.action(formData).then(
+      this.setState({
+        title: "",
+        body: "",
+        photoFile: [],
+        photoUrl: [],
+        redirect: true,
+      })
+    );
+  }
+
   render() {
+    const { formType, photo, errors } = this.props;
     const { photoUrl } = this.state;
+    console.log(this.state, "this is the", formType);
+
+    if (errors) {
+      const err = errors.map((error, i) => {
+        return <li key={i}>{error}</li>;
+      });
+    }
+
+    let uploadButton = formType === "Create Photo" ? "Upload" : "Save Changes";
+    // let uploadButton = formType === "Edit Photo" ? "Save Changes" : "Upload";
+
+    // const formPreview = { photoUrl };
+    // const formPreview =
+    //   // console.log(photoUrl);
+    //   photoUrl.map((url, i) => {
+    //     return (
+    //       <li key={i}>
+    //         <img className="upload-image" onClick={this.selectImg} src={url} />
+    //       </li>
+    //     );
+    //   });
+
+    if (this.state.redirect) {
+      return <Redirect to="/photos" />;
+    }
+
     const upload = (
       <>
         <div className="upload-photo-title">
-          <h3>Upload</h3>
+          {formType === "Upload Photo" ? "Upload" : "Photo Manager"}
         </div>
         <div className="upload-photo-container">
           <div className="upload-photo-form">
@@ -77,9 +159,6 @@ class UploadPhotoForm extends React.Component {
               />
             </div>
 
-            {/* <svg width='100%' height='100%' viewbox='0 0 36 36' fill='none' xmns='http://www.w3.org/2000/svg' class='upload-arrow-icon-form'>
-              <path fill-rule='evenodd' clip-rule='evenodd' d='M8.66029 0.285116C8.29559 -0.0950387 7.70441 -0.0950387 7.33971 0.285116L0.302564 7.62259C0.0497699 7.86442 -0.0555065 8.23131 0.0283622 8.57817C0.112231 8.92503 0.371741 9.19603 0.70428 9.28399C1.03682 9.37196 1.38884 9.26275 1.62116 8.99953L7.06608 3.32224V15.0262C7.06608 15.564 7.48421 16 8 16C8.51579 16 8.93392 15.564 8.93392 15.0262V3.32224L14.3788 8.99953C14.6112 9.26275 14.9632 9.37196 15.2957 9.28399C15.6283 9.19603 15.8878 8.92503 15.9716 8.57817C16.0555 8.23131 15.9502 7.86442 15.6974 7.62259L8.66029 0.285116Z' fill='#222222' />
-            </svg> */}
             <p>Upload a photo</p>
             <input
               type="file"
@@ -90,7 +169,7 @@ class UploadPhotoForm extends React.Component {
               title="  "
               style={{ color: "transparent" }}
               //^removes default 'choose a file text
-              onChange={this.handleFile.bind(this)}
+              onChange={this.handleFile}
             />
           </div>
           <div className="upload-form-bottom-container">
@@ -126,6 +205,7 @@ class UploadPhotoForm extends React.Component {
           <div className="upload-form-preview-container">
             <div className="upload-form-preview">
               <img src={photoUrl} />
+              {/* {formPreview} */}
             </div>
           </div>
 
@@ -144,7 +224,7 @@ class UploadPhotoForm extends React.Component {
                 </div>
 
                 <div>
-                  <label for="title">Title</label>
+                  <label htmlFor="title">Title</label>
                   <input
                     type="text"
                     id="title"
@@ -152,9 +232,6 @@ class UploadPhotoForm extends React.Component {
                     onChange={this.updateState("title")}
                     placeholder="e.g. Young man surfing in the ocean"
                   />
-                  {/* <small>
-                {this.state.titleValid ? '' : 'Please enter a title.'}
-              </small> */}
                 </div>
 
                 <div>
@@ -167,7 +244,7 @@ class UploadPhotoForm extends React.Component {
                 </div>
 
                 <div>
-                  <label for="location">Location</label>
+                  <label htmlFor="location">Location</label>
                   <input
                     type="text"
                     id="location"
@@ -219,7 +296,12 @@ class UploadPhotoForm extends React.Component {
                   </select>
                 </div>
 
-                <button onClick={this.handleSubmit}>Upload</button>
+                {/* <button onClick={this.handleSubmit}>Upload</button> */}
+                <input
+                  type="submit"
+                  className="upload-button"
+                  value={uploadButton}
+                />
               </form>
             </div>
           </div>
@@ -227,9 +309,13 @@ class UploadPhotoForm extends React.Component {
       </>
     );
 
-    return <div>{photoUrl ? uploadForm : upload}</div>;
-    // return <div>{photoUrl ? uploadForm : uploadForm}</div>;
+    // return <div>{formPreview.includes(photoUrl) ? uploadForm : upload}</div>;
+    // return <div>{photoUrl ? uploadForm : upload}</div>;
+
+    // return <div>{photoUrl.length > 0 ? uploadForm : upload}</div>;
+    return <div>{photoUrl.length > 0 ? uploadForm : upload}</div>;
+    // return <div>{upload}</div>;
   }
 }
 
-export default UploadPhotoForm;
+export default withRouter(UploadPhotoForm);

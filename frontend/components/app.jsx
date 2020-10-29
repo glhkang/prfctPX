@@ -1,38 +1,50 @@
 import React from "react";
-import { Route, Switch } from 'react-router-dom';
-import { AuthRoute, ProtectedRoute } from '../util/route_util';
-import { withRouter } from 'react-router';
-import NavBarContainer from './nav_bar/nav_bar_container';
-import SplashPageContainer from './splash_page/splash_page';
-import LoginFormContainer from './session_form/login_form_container';
-import SignupFormContainer from './signup_form/signup_form_container';
-import UploadPhotoFormContainer from './upload_photo/upload_photo_form_container';
-import DisplayPhotoContainer from './display_photo/display_photo_container'
+import { Route, Switch, Router } from "react-router-dom";
+import { AuthRoute, ProtectedRoute } from "../util/route_util";
+import { withRouter } from "react-router";
+import { createBrowserHistory } from "history";
+import NavBarContainer from "./nav_bar/nav_bar_container";
+import SplashPageContainer from "./splash_page/splash_page";
+import LoginFormContainer from "./session_form/login_form_container";
+import SignupFormContainer from "./signup_form/signup_form_container";
+import UploadPhotoFormContainer from "./photos/upload_photo_form_container";
+import PhotoIndexContainer from "./photos/photo_index_container";
+import HomefeedContainer from "./homefeed/homefeed_container";
+import PhotoShowContainer from "./photos/photo_show_container";
+import EditPhotoFormContainer from "./photos/edit_photo_form_container";
 
-// test
-// import PhotoIndexContainer from './photos_index';
-
+export const history = createBrowserHistory();
 
 const App = () => (
-
+  // <Router history={history}>
+  // <Router>
   <div>
-   <header className='header-nav-bar'>
-      <Route path='/' component={NavBarContainer} />
-  </header>
+    <header className="header-nav-bar">
+      <Route path="/" component={NavBarContainer} />
+    </header>
 
-      <Switch>
-        <AuthRoute exact path='/' component={SplashPageContainer} />
-        <AuthRoute path='/login' component={LoginFormContainer} />
-        <AuthRoute path='/signup' component={SignupFormContainer} />
-        <ProtectedRoute path='/upload' component={UploadPhotoFormContainer} />
-        <Route path='/photos/:photoId' component={DisplayPhotoContainer} />
-        {/* test index */}
-        {/* <Route path='/photos' component={PhotoIndexContainer} /> */}
+    <Switch>
+      <AuthRoute exact path="/" component={SplashPageContainer} />
+      <AuthRoute exact path="/login" component={LoginFormContainer} />
+      <AuthRoute exact path="/signup" component={SignupFormContainer} />
+      <ProtectedRoute exact path="/home" component={HomefeedContainer} />
+      <ProtectedRoute
+        exact
+        path="/upload"
+        component={UploadPhotoFormContainer}
+      />
+      <ProtectedRoute exact path="/photos" component={PhotoIndexContainer} />
+      <Route path="/photos/:photoId" component={PhotoShowContainer} />
 
-
-      </Switch>
+      <ProtectedRoute
+        // exact path="/photos/:photoId/edit"
+        exact
+        path="/edit"
+        component={EditPhotoFormContainer}
+      />
+    </Switch>
   </div>
+  // </Router>
 );
-
 
 export default withRouter(App);

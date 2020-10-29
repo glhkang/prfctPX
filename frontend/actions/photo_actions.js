@@ -1,33 +1,74 @@
-import * as PhotoAPIUtil from '../util/photo_api_util';
+import * as PhotoAPIUtil from "../util/photo_api_util";
 
-export const RECEIVE_ALL_PHOTOS = 'RECEIVE_ALL_PHOTOS';
-export const RECEIVE_PHOTO = 'RECEIVE_PHOTO';
+export const RECEIVE_ALL_PHOTOS = "RECEIVE_ALL_PHOTOS";
+export const RECEIVE_PHOTO = "RECEIVE_PHOTO";
+export const REMOVE_PHOTO = "REMOVE_PHOTO";
+export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
+export const CLEAR_ERRORS = "CLEAR_ERRORS";
 
-export const receiveAllPhotos = data => ({
+// export const receiveAllPhotos = data => ({
+const receiveAllPhotos = (photos) => ({
   type: RECEIVE_ALL_PHOTOS,
-  data
+  photos,
 });
 
-export const receivePhoto = data => ({
-  type: RECEIVE_PHOTO, 
-  data
+// export const receivePhoto = data => ({
+const receivePhoto = (photo) => ({
+  type: RECEIVE_PHOTO,
+  photo,
 });
 
-export const fetchPhotos = () => dispatch => (
-  PhotoAPIUtil.fetchPhotos()
-    .then(data => dispatch(receiveAllPhotos(data)))
-);
+const removePhoto = (photoId) => ({
+  type: REMOVE_PHOTO,
+  photoId,
+});
 
-export const fetchPhoto = photoId => dispatch => (
-  PhotoAPIUtil.fetchPhoto(photoId)
-    .then(data => dispatch(receivePhoto(data)))
-);
+export const receiveErrors = (errors) => ({
+  type: RECEIVE_ERRORS,
+  errors: errors.responseJSON,
+});
 
-export const createPhoto = photoFormData => dispatch => (
-  PhotoAPIUtil.createPhoto(photoFormData)
-);
+export const clearErrors = () => ({
+  type: CLEAR_ERRORS,
+});
 
-export const postPhoto = formData => dispatch => (
-  PhotoAPIUtil.receivePhoto(formData)
-    .then(data => dispatch(receivePhoto(data)))
-);
+export const fetchPhotos = () => (dispatch) =>
+  PhotoAPIUtil.fetchPhotos().then((data) => dispatch(receiveAllPhotos(data)));
+
+export const fetchPhoto = (photoId) => (dispatch) =>
+  PhotoAPIUtil.fetchPhoto(photoId).then((data) => dispatch(receivePhoto(data)));
+
+// export const createPhoto = (photo) => (dispatch) =>
+//   PhotoAPIUtil.createPhoto(photo)
+//     .then((createPhoto) => {
+//       dispatch(receivePhoto(createPhoto));
+//       dispatch(clearErrors());
+//     })
+//     // .fail((err) => dispatch(receiveErrors(err)));;
+//     .fail(() => dispatch(console.log("you fucked up")));
+
+export const createPhoto = (photo) => (dispatch) => {
+  // debugger;
+  return (
+    PhotoAPIUtil.createPhoto(photo)
+      .then((createPhoto) => {
+        dispatch(receivePhoto(createPhoto));
+        dispatch(clearErrors());
+      })
+      // .fail((err) => dispatch(receiveErrors(err)));;
+      .fail(() => dispatch(console.log("you fucked up")))
+  );
+};
+
+export const updatePhoto = (photo) => (dispatch) =>
+  PhotoAPIUtil.updatePhoto(photo)
+    .then((updatePhoto) => {
+      dispatch(receivePhoto(updatePhoto));
+      dispatch(clearErrors());
+    })
+    .fail((err) =>
+      dispatch(receiveErrors(err), console.log("you didn't update"))
+    );
+
+export const deletePhoto = (photoId) => (dispatch) =>
+  PhotoAPIUtil.deletePhoto(photoId).then(() => dispatch(removePhoto(photoId)));

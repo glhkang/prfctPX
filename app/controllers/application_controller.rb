@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
   helper_method :current_user, :logged_in?
   # protect_from_forgery with: :exception
-  #added below line..... ?
+  
+  #commented out
   skip_before_action :verify_authenticity_token
 
   private

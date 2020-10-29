@@ -7,6 +7,7 @@ import configureStore from "./store/store";
 import { signup, login, logout } from './util/session_api_util';
 
 document.addEventListener('DOMContentLoaded', () => {
+  const root = document.getElementById('root');
   let store;
   if (window.currentUser) {
     const preloadedState = {
@@ -22,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
     store = configureStore();
   }
   
-  const root = document.getElementById('root');
   
   //testing stuff
   window.getState = store.getState;
@@ -30,7 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
   window.signup = signup;
   window.login = login;
   window.logout = logout;
- 
   //fin
   
   ReactDOM.render(<Root store={store} />, root);

@@ -1,61 +1,48 @@
 class Api::PhotosController < ApplicationController
-  
-  #fix up index below...
+#  before_action :require_logged_in, only: [:create, :update, :destroy]
+
   def index
-    render :index
-
+    @photos = Photo.all
+    render 'api/photos/index'
   end
-
-
-  # def index
-  #   if params[:filters]
-  #     limit = params[:filters][:limit]
-  #     offset = params[:filters][:offset]
-  #     @photos = []
-      
-  #     if logged_in?
-  #       #following logic
-  #       following_ids = current_user.following.pluck(:id)
-  #       following_ids.push(current_user.id)
-  #       @photos = Photo.all.limit(limit).offset(offset)
-  #         .where.not(author_id: following_ids)
-  #         .order(updated_at: :desc)
-  #     else 
-  #       @photos = Photo.all.limit(limit).offset(offset)
-  #         .order(updated_at: :desc)
-  #     end
-
-  #     @has_more = @photos.length == limit.to_i
-  #     render :filtered_photos
-  #   else
-  #     @users = logged_in? ?
-  #       #add logic below for followers 
-  #       current_user.following.includes(:photos) : []
-  #     render :index
-  #   end
-  # end
-
   
   def show
-    @photo = Photo.find(params[:id])
+    # @photo = Photo.with_attached_photos.find(params[:id])
+    @photo = Photo.find_by(id: params[:id])
+    # if @photo.save && @photo.photographer_id == current_user.id
+    #   render :show
+    # else
+    #   render json: @photo.errors.full_messages, status: 422
+    # end
+  end
+
+  def create
+    @photo = Photo.new(photo_params)
     if @photo.save
-      render :show
+        render 'api/photos/show'
+      else
+        render json: @photo.errors.full_messages, status: 422
+    end
+  end
+
+  def update
+    #debugger
+    @photo = Photo.find_by(id: params[:id])
+    if @photo.photographer_id == current_user && @photo && @photo.update(photo_params)
+      render 'api/photos/show'
     else
       render json: @photo.errors.full_messages, status: 422
     end
   end
 
-      def create
-        @photo = Photo.new(photo_params)
-        if @photo.save
-            render :show
-        else
-            render json: @photo.errors.full_messages, status: 422
-        end
+  def destroy
+    @photo = Photo.find_by(id: params[:id])
+    if @photo.photographer_id == current_user.id
+      @photo.destroy
+      render 'api/photos/show'
     end
+  end
 
-
-  
   # def show
   #   @photo = Photo.includes(:photographer).find_by_id(params[:id])
 
@@ -69,11 +56,12 @@ class Api::PhotosController < ApplicationController
   #   else
   #     render json: ['Photo does not exist'], status: 404
   #   end
+  #commented out code
   # end
 
-  # private
-  # def photo_params
-  #   params.require(:photo).permit(:title, :description, :category, :location, :photographer_id, :photo_file)
-  # end
+  private
+  def photo_params
+    params.require(:photo).permit(:title, :category, :photographer_id, photo: [])
+  end
 end
 

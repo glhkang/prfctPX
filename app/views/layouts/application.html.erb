@@ -1,7 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>prfctpx</title>
+    <title>BAD prfctPX</title>
+    <meta name='description' content='prfctPX, a 500px clone, is an app for inspiration and creative discovery, where photographers share their own work and explore others.' />
+    <meta name='keywords' content='glhkang, gloria kang, gloria kang nyc, app academy gloria kang, 500px.com, photography, software engineer, software developer, react project, fullstack' />
+    <meta name='author' content='Gloria Kang' />
+
+    <meta property="og:type" content="website" />
+    <meta property='og:title' content='prfctPX'/>
+    <meta property='og:image' content='#' />
+    <meta property='og:description' content='prfctPX, a 500px clone, is an app for inspiration and creative discovery, where photographers share their own work and explore others.'/>
+    <meta property='og:url' content='https://prfctpx.herokuapp.com/'/>
+    <meta property="og:site_name" content="Gloria Kang"/>
+    
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -22,8 +33,17 @@
       window.performIcon = '<%= image_url('perform.png') %>';
       window.bottomCover = '<%= image_url('/Users/spaceone/a:A/prfctpx/app/assets/images/bottom-cover.png') %>';
       window.uploadIcon = '<%= image_url('up-icon.png') %>'
+      window.moreIcon = '<%= image_url('more-icon.svg') %>'
     </script>
 
+    <% if logged_in? %>
+      <script type="text/javascript">
+          window.currentUser =
+          <%= render("api/users/user.json.jbuilder", user: current_user).html_safe %>
+      </script>
+    <% end %>
+
+    <%= favicon_link_tag asset_path('prfctpx-favicon.png') %>
   </head>
 
   <body>

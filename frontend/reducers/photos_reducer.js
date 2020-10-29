@@ -1,22 +1,25 @@
-import { RECEIVE_ALL_PHOTOS, RECEIVE_PHOTO } from '../actions/photo_actions';
-//import user profile from user actions
+import {
+  RECEIVE_ALL_PHOTOS,
+  RECEIVE_PHOTO,
+  REMOVE_PHOTO,
+} from "../actions/photo_actions";
 
-const photosReducer = (oldState = {}, action) => {
+const PhotosReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
-  // let nextState = Object.assign({}, state);
+  let nextState = Object.assign({}, oldState);
 
   switch (action.type) {
     case RECEIVE_ALL_PHOTOS:
-      return action.photos
+      return action.photos;
     case RECEIVE_PHOTO:
-      return Object.assign({}, state, action.photos)
-    //user profile case
+      nextState[action.photo.id] = action.photo;
+      return nextState;
+    case REMOVE_PHOTO:
+      delete nextState[action.photoId];
+      return nextState;
     default:
       return oldState;
   }
-}
+};
 
-// NOT COMPLETED
-
-
-export default photosReducer;
+export default PhotosReducer;

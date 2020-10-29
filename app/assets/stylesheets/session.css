@@ -44,21 +44,21 @@
 .session-form > h3 {
   font-weight: normal;
   font-size: 23px;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   margin-bottom: 15px;
   /* letter-spacing: 0.5px; */
 }
 .session-form > h2 {
   font-weight: normal;
   font-size: 23px;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   margin-bottom: 15px;
   /* letter-spacing: 0.5px; */
 }
 
 .session-signup-text {
   text-align: center;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 15px;
   margin: 0px;
   /* margin-right: 0px; */
@@ -70,7 +70,7 @@
   padding: 15px;
   font-size: 14px;
   font-weight: lighter;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   color: #5a5a5a;
 }
 .session-form-field {
@@ -81,7 +81,7 @@
   height: 43px;
   font-size: 15px;
   font-weight: lighter;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 
 .bottom-session-form {
@@ -97,7 +97,7 @@
   /* align-items: center; */
   margin-bottom: 5px;
   font-size: 15px;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   color: gray;
   /* justify-content: space-evenly; */
 }
@@ -105,24 +105,20 @@
   /* align-items: center; */
   margin-bottom: 5px;
   font-size: 15px;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   /* justify-content: space-evenly; */
 }
-
-
 
 .session-form a {
   text-decoration: none;
   margin-left: 2px;
   cursor: pointer;
-  color: #565487
+  color: #565487;
 }
 
 .session-form a:hover {
   text-decoration: underline;
 }
-
-
 
 .input-button {
   width: 338px;
@@ -136,6 +132,7 @@
   color: white;
   font-size: 16px;
   font-weight: bolder;
+  outline: none;
 }
 
 .input-button-2 {
@@ -150,15 +147,14 @@
   color: white;
   font-size: 16px;
   font-weight: bolder;
+  outline: none;
 }
 
 .input-button:hover {
   background-color: #afbfca;
-
 }
 .input-button-2:hover {
   background-color: #afbfca;
-
 }
 
 .signup-form {
@@ -178,13 +174,12 @@
   padding-right: 50px;
   padding-top: 7px;
   padding-bottom: 20px;
-
 }
 
 .signup-form > h3 {
   font-weight: normal;
   font-size: 23px;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   margin-bottom: 15px;
 }
 
@@ -192,61 +187,75 @@
   text-decoration: none;
   margin-left: 2px;
   cursor: pointer;
-  color: #565487
+  color: #565487;
 }
 .input-session-link:hover {
   text-decoration: underline;
 }
-
-
 
 .input-session-link {
   text-decoration: none;
 }
 
 .error-popup {
-    position:fixed;
-    top:0;
-    left:0;
-    right:0;
-    display: flex;
-    justify-content: center;
-    z-index: 2000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  z-index: 2000;
 }
 
 .error-popup > div {
-    border-radius: 5px;
-    position: absolute;
-    border-radius: 5px;
-    background-color: white;
-    -webkit-animation: fadeinout 1s linear forwards;
-    animation: fadeinout 3s linear forwards;
-    /* box-shadow: 0 4px 12px white; */
+  border-radius: 5px;
+  position: absolute;
+  border-radius: 5px;
+  background-color: white;
+  -webkit-animation: fadeinout 1s linear forwards;
+  animation: fadeinout 3s linear forwards;
+  /* box-shadow: 0 4px 12px white; */
 }
 
 @-webkit-keyframes fadeinout {
-    0%,100% { opacity: 0; top:-30px; }
-    5%, 96% { opacity: 1; top:0px;}
+  0%,
+  100% {
+    opacity: 0;
+    top: -30px;
+  }
+  5%,
+  96% {
+    opacity: 1;
+    top: 0px;
+  }
 }
-  
+
 @keyframes fadeinout {
-    0%,100% { opacity: 0; top:-30px; }
-    5%, 96% { opacity: 1; top:0px;}
+  0%,
+  100% {
+    opacity: 0;
+    top: -30px;
+  }
+  5%,
+  96% {
+    opacity: 1;
+    top: 0px;
+  }
 }
 
 .error-popup > div > ul {
-    font-weight: lighter;
-    font-family: 'Raleway', sans-serif;
-    font-size: 14px;
-    margin: 0px;
-    padding: 10px;
-    border-radius: 5px;
-    background: #ad967b;
-    color: white;
+  font-weight: lighter;
+  font-family: "Raleway", sans-serif;
+  font-size: 14px;
+  margin: 0px;
+  padding: 10px;
+  border-radius: 5px;
+  background: #ad967b;
+  color: white;
 }
 
 .session-form-errors {
-  color:red;
+  color: red;
   font-size: 12px;
   display: flex;
   align-self: center;
@@ -261,5 +270,3 @@
   list-style: none;
   margin-left: -10px;
 }
-
-
