@@ -5,7 +5,6 @@ import { fetchPhotos } from "../../actions/photo_actions";
 const mSTP = (state) => {
   return {
     photos: Object.values(state.entities.photos),
-    // like: state.entities.like,
     session: state.session.id,
   };
 };

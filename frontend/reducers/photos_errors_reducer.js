@@ -1,6 +1,7 @@
-const { RECEIVE_ERRORS, CLEAR_ERRORS } = require("../actions/photo_actions");
+// const { RECEIVE_ERRORS, CLEAR_ERRORS } = require("../actions/photo_actions");
+import { RECEIVE_ERRORS, CLEAR_ERRORS } from "../actions/photo_actions";
 
-const PhotoErrorsReducer = (state = {}, action) => {
+const photoErrorsReducer = (state = {}, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_ERRORS:
@@ -12,4 +13,4 @@ const PhotoErrorsReducer = (state = {}, action) => {
   }
 };
 
-export default PhotoErrorsReducer;
+export default photoErrorsReducer;

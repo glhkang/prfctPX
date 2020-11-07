@@ -1,12 +1,13 @@
 import { connect } from "react-redux";
 import {
   fetchPhoto,
-  updatePhoto,
   deletePhoto,
+  updatePhoto,
 } from "../../actions/photo_actions";
 import EditPhotoForm from "./edit_photo_form";
 
 const mSTP = (state, ownProps) => {
+  // debugger;
   return {
     errors: Object.values(state.errors.photos),
     photo: state.entities.photos[ownProps.match.params.photoId],

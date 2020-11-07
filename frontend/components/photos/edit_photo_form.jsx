@@ -1,44 +1,42 @@
 import React from "react";
 import { Redirect, withRouter } from "react-router";
-import UploadPhotoFormContainer from "./upload_photo_form_container";
+import UploadPhotoForm from "./upload_photo_form";
+// import PhotoForm from "./photo_form";
 
 class EditPhotoForm extends React.Component {
+  // constructor(props) {
+  //   super(props);
+  // }
+
   componentDidMount() {
     this.props.fetchPhoto(this.props.match.params.photoId);
-    // this.props.fetchPhoto(this.props.match.params.id);
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.match.params.id !== prevProps.match.params.id) {
-      this.props.fetchPhoto(this.props.params.photoId);
-      // this.props.fetchPhoto(this.props.params.id);
-    }
-  }
+  // componentDidUpdate(prevProps) {
+  //   if (this.match.params.id !== prevProps.match.params.id) {
+  //     this.props.fetchPhoto(this.props.params.photoId);
+
+  //   }
+  // }
 
   render() {
     // const { action, formType, photo, session, deletephoto, cancelModal, closeModal } = this.props;
     const { action, formType, photo, session, deletePhoto } = this.props;
-    // const {
-    //   id,
-    //   title,
-    //   description,
-    //   category,
-    //   location,
-    //   photographer_id,
-    // } = this.state;
 
     console.log(
       "this is the formtype",
-      formType
+      formType,
       // "this is the user",
-      // this.props.photo.photographer_id
+      // this.props.photo.photographer_id,
+      "this is THE PHOTOTOTOTOTOT",
+      photo
     );
 
     if (!photo || photo.photographer_id !== session) return null;
 
     return (
       <div>
-        <UploadPhotoFormContainer
+        <UploadPhotoForm
           action={action}
           formType={formType}
           photo={photo}
@@ -50,4 +48,4 @@ class EditPhotoForm extends React.Component {
   }
 }
 
-export default withRouter(EditPhotoForm);
+export default EditPhotoForm;

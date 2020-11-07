@@ -6,13 +6,11 @@ export const REMOVE_PHOTO = "REMOVE_PHOTO";
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
 
-// export const receiveAllPhotos = data => ({
 const receiveAllPhotos = (photos) => ({
   type: RECEIVE_ALL_PHOTOS,
   photos,
 });
 
-// export const receivePhoto = data => ({
 const receivePhoto = (photo) => ({
   type: RECEIVE_PHOTO,
   photo,
@@ -38,15 +36,6 @@ export const fetchPhotos = () => (dispatch) =>
 export const fetchPhoto = (photoId) => (dispatch) =>
   PhotoAPIUtil.fetchPhoto(photoId).then((data) => dispatch(receivePhoto(data)));
 
-// export const createPhoto = (photo) => (dispatch) =>
-//   PhotoAPIUtil.createPhoto(photo)
-//     .then((createPhoto) => {
-//       dispatch(receivePhoto(createPhoto));
-//       dispatch(clearErrors());
-//     })
-//     // .fail((err) => dispatch(receiveErrors(err)));;
-//     .fail(() => dispatch(console.log("you fucked up")));
-
 export const createPhoto = (photo) => (dispatch) => {
   // debugger;
   return (
@@ -55,8 +44,8 @@ export const createPhoto = (photo) => (dispatch) => {
         dispatch(receivePhoto(createPhoto));
         dispatch(clearErrors());
       })
-      // .fail((err) => dispatch(receiveErrors(err)));;
-      .fail(() => dispatch(console.log("you fucked up")))
+      // .fail((err) => dispatch(console.log("you fucked up")));
+      .fail((err) => dispatch(receiveErrors(err), console.log("you fucked up")))
   );
 };
 
@@ -67,7 +56,8 @@ export const updatePhoto = (photo) => (dispatch) =>
       dispatch(clearErrors());
     })
     .fail((err) =>
-      dispatch(receiveErrors(err), console.log("you didn't update"))
+      // dispatch(receiveErrors(err), console.log("you didn't update"))
+      dispatch(console.log("you didn't update"))
     );
 
 export const deletePhoto = (photoId) => (dispatch) =>

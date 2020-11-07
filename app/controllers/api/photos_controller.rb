@@ -26,9 +26,11 @@ class Api::PhotosController < ApplicationController
   end
 
   def update
-    #debugger
     @photo = Photo.find_by(id: params[:id])
-    if @photo.photographer_id == current_user && @photo && @photo.update(photo_params)
+    #render json: params
+    
+    #if @photo.photographer_id == current_user.id && @photo && @photo.update(photo_params)
+    if @photo.update(photo_params)
       render 'api/photos/show'
     else
       render json: @photo.errors.full_messages, status: 422
@@ -37,31 +39,17 @@ class Api::PhotosController < ApplicationController
 
   def destroy
     @photo = Photo.find_by(id: params[:id])
-    if @photo.photographer_id == current_user.id
+    if @photo.photographer_id
+    # if @photo.photographer_id == current_user.id
       @photo.destroy
       render 'api/photos/show'
     end
   end
 
-  # def show
-  #   @photo = Photo.includes(:photographer).find_by_id(params[:id])
-
-  #   if @photo
-  #     if (logged_in? && current_user.id != @photo.photographer_id) || !logged_in?
-  #       #counting views? if so, add logic here
-  #       @photo.save
-  #     end
-  #     render :show
-
-  #   else
-  #     render json: ['Photo does not exist'], status: 404
-  #   end
-  #commented out code
-  # end
-
   private
   def photo_params
-    params.require(:photo).permit(:title, :category, :photographer_id, photo: [])
+    params.require(:photo).permit(:title, :description, :category, :location, :photographer_id, photo: [])
+    #params.permit(:id, :title, :description, :category, :location, :photographer_id, photo: [])
   end
 end
 

@@ -10,10 +10,10 @@ class PhotoIndex extends React.Component {
     const { photos, session, currentUser } = this.props;
     if (!this.props.photos) return null;
 
-console.log("this is the session", session)
+    console.log("this is the session", session);
     const userPhotos = photos.map((photo) => {
       if (photo.photographer_id === session) {
-        return <AllPhotos key={photo.id} photo={photo} currentUser={session}/>;
+        return <AllPhotos key={photo.id} photo={photo} currentUser={session} />;
       }
     });
 
@@ -23,7 +23,6 @@ console.log("this is the session", session)
       userPhotos[i] = userPhotos[j];
       userPhotos[j] = temp;
     }
-
 
     console.log("this is photo index", this.state, photos, userPhotos);
 
@@ -35,7 +34,7 @@ console.log("this is the session", session)
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 export default PhotoIndex;

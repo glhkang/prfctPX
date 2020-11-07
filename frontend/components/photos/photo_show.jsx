@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import EditPhotoFormContainer from "./edit_photo_form_container";
 
 class PhotoShow extends React.Component {
@@ -8,11 +8,11 @@ class PhotoShow extends React.Component {
     // this.props.fetchLikes()
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.match.params.photoId !== this.props.match.params.photoId) {
-      this.props.fetchPhoto(this.props.match.params.photoId);
-    }
-  }
+  // componentDidUpdate(prevProps) {
+  //   if (prevProps.match.params.photoId !== this.props.match.params.photoId) {
+  //     this.props.fetchPhoto(this.props.match.params.photoId);
+  //   }
+  // }
 
   addRemove() {
     // const {like, photo, deleteLike, createLike, session } = this.props
@@ -31,14 +31,15 @@ class PhotoShow extends React.Component {
       return (
         <div className="photo-show-navbar">
           <Link to="/upload">upload icon here?</Link>
-          <Link
-            to={`/photos/edit`}
-            // to={`/photos/${photo.id}/edit`}
-            // component={EditPhotoFormContainer}
-          >
-            {/* <Link to={`/photos/${photo.id}/edit`}> */}
+          <Link to={`/photos/${photo.id}/edit`}>
             <img src={window.moreIcon} className="more-icon" />
           </Link>
+
+          {/* <Route
+            path="/photos/:photoId/edit"
+            component={EditPhotoFormContainer}
+            value="EDIT"
+          /> */}
         </div>
       );
     } else {
@@ -77,6 +78,12 @@ class PhotoShow extends React.Component {
       : [photo.photoUrl];
 
     console.log("this is photo show", this.props.session, photo);
+    console.log(
+      "this is the photoArray",
+      photoArray
+      // "this is the photoUrl",
+      // photoUrl
+    );
 
     const thePhoto = photoArray.map((url, i) => {
       return <img src={url} key={i} className="photo-show-img" />;
@@ -92,11 +99,12 @@ class PhotoShow extends React.Component {
             <div className="photo-show-info-parent">
               <div className="photo-show-info">
                 {this.addRemove()}
-
                 <h5>{photo.title}</h5>
+                <p>{photo.description}</p>
+                <p>{photo.category}</p>
+                <p>{photo.location}</p>
                 <h6>by {photo.user}</h6>
                 <p>Taken: {photo.created_at}</p>
-                <p>{photo.body}</p>
               </div>
               <div className="photo-comments">
                 {/* THIS WILL BE A COMMENT CONTAINER */}

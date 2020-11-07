@@ -1,146 +1,13 @@
-// import React from "react";
-// import { Redirect } from "react-router-dom";
-// import { withRouter } from "react-router";
-
-// class UploadPhotoForm extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       id: this.props.photo.id || "",
-//       title: this.props.photo.title,
-//       description: this.props.photo.description || "",
-//       category: this.props.photo.category,
-//       location: this.props.photo.location || "",
-//       photographer_id: this.props.photo.photographer_id,
-//       archived: this.props.photo.archived,
-//       photoFile: [],
-//       photoUrl: [],
-//       redirect: false,
-//     };
-
-//     this.handleSubmit = this.handleSubmit.bind(this);
-//     this.handleFile = this.handleFile.bind(this);
-//     this.updateState = this.updateState.bind(this);
-//   }
-
-//   updateState(type) {
-//     return (e) => {
-//       this.setState({
-//         [type]: e.currentTarget.value,
-//       });
-//     };
-//   }
-
-//   // handleFile(e) {
-//   //   const file = e.currentTarget.files[0];
-//   //   const fileReader = new FileReader();
-//   //   fileReader.onloadend = () => {
-//   //     const image = new Image();
-//   //     image.src = fileReader.result;
-
-//   //     image.onload = () => {
-//   //       this.setState({
-//   //         photoFile: file,
-//   //         photoUrl: fileReader.result,
-//   //         photographerId: this.props.currentUserId,
-//   //         // title: file.name,
-//   //         title: e.value,
-//   //       });
-//   //     };
-//   //   };
-//   //   if (file) {
-//   //     fileReader.readAsDataURL(file);
-//   //   }
-//   // }
-
-//   handleFile(e) {
-//     const files = Array.from(e.currentTarget.files);
-//     let newFiles = [];
-
-//     files.forEach((file) => {
-//       const fileReader = new FileReader();
-
-//       if (file) {
-//         fileReader.readAsDataURL(file);
-//       } else {
-//         this.setState({
-//           photoUrl: [],
-//           photoFile: [],
-//           photographer_id: this.props.photo.photographer_id,
-//         });
-//       }
-
-//       fileReader.onloadend = () => {
-//         newFiles.push(fileReader.result);
-//         this.setState({
-//           photoUrl: newFiles,
-//           photoFile: files,
-//           photographer_id: this.props.photo.photographer_id,
-//         });
-//       };
-//     });
-//   }
-
-//   handleSubmit(e) {
-//     e.preventDefault();
-//     const formData = new FormData();
-
-//     if (this.state.id) {
-//       formData.append("photo[id]", this.state.id);
-//     }
-
-//     formData.append("photo[title]", this.state.title);
-//     formData.append("photo[description]", this.state.description);
-//     formData.append("photo[category]", this.state.category);
-//     formData.append("photo[location]", this.state.location);
-//     formData.append("photo[photographer_id]", this.state.photographer_id);
-//     formData.append("photo[archived]", this.state.archived);
-
-//     if (this.state.photoFile) {
-//       for (let i = 0; i < this.state.photoFile.length; i++) {
-//         formData.append("photo[photo][]", this.state.photoFile[i]);
-//       }
-//     }
-
-//     this.props.action(formData).then(
-//       this.setState({
-//         title: "",
-//         body: "",
-//         photoFile: [],
-//         photoUrl: [],
-//         redirect: true,
-//       })
-//     );
-//   }
-
-//   render() {
-//     const { formType, photo, errors } = this.props;
-//     const { photoUrl } = this.state;
-//     console.log("the state is", this.state, "this is the form = ", formType);
-
-//     if (errors) {
-//       const err = errors.map((error, i) => {
-//         return <li key={i}>{error}</li>;
-//       });
-//     }
-
-//     let uploadButton = formType == "Create Photo" ? "Upload" : "Save Changes";
-
-//     if (this.state.redirect) {
-//       return <Redirect to="/photos" />;
-//     }
-//   }
-// }
-
 import React from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import { withRouter } from "react-router";
+// import PhotoFormContainer from "./photo_form_container";
 
 class UploadPhotoForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: this.props.photo.id || "",
+      id: this.props.photo.id,
       title: this.props.photo.title,
       description: this.props.photo.description || "",
       category: this.props.photo.category,
@@ -154,40 +21,19 @@ class UploadPhotoForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFile = this.handleFile.bind(this);
-    this.updateState = this.updateState.bind(this);
+    // this.update = this.update.bind(this);
   }
 
-  updateState(type) {
+  update(property) {
     return (e) => {
       this.setState({
-        [type]: e.currentTarget.value,
+        [property]: e.currentTarget.value,
       });
     };
   }
 
-  // handleFile(e) {
-  //   const file = e.currentTarget.files[0];
-  //   const fileReader = new FileReader();
-  //   fileReader.onloadend = () => {
-  //     const image = new Image();
-  //     image.src = fileReader.result;
-
-  //     image.onload = () => {
-  //       this.setState({
-  //         photoFile: file,
-  //         photoUrl: fileReader.result,
-  //         photographerId: this.props.currentUserId,
-  //         // title: file.name,
-  //         title: e.value,
-  //       });
-  //     };
-  //   };
-  //   if (file) {
-  //     fileReader.readAsDataURL(file);
-  //   }
-  // }
-
   handleFile(e) {
+    e.preventDefault();
     const files = Array.from(e.currentTarget.files);
     let newFiles = [];
 
@@ -218,59 +64,116 @@ class UploadPhotoForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     // debugger;
-    const formData = new FormData();
-    // debugger;
-    if (this.state.id) {
-      formData.append("photo[id]", this.state.id);
-    }
-    formData.append("photo[title]", this.state.title);
-    formData.append("photo[description]", this.state.description);
-    formData.append("photo[category]", this.state.category);
-    formData.append("photo[location]", this.state.location);
-    formData.append("photo[photographer_id]", this.state.photographer_id);
-    formData.append("photo[archived]", this.state.archived);
-    if (this.state.photoFile) {
-      for (let i = 0; i < this.state.photoFile.length; i++) {
-        formData.append("photo[photo][]", this.state.photoFile[i]);
-      }
-    }
+    const {
+      id,
+      title,
+      description,
+      category,
+      location,
+      photographer_id,
+      archived,
+      photoFile,
+    } = this.state;
 
-    // debugger
-    this.props.action(formData).then(
-      this.setState({
-        title: "",
-        body: "",
-        photoFile: [],
-        photoUrl: [],
-        redirect: true,
-      })
+    if (Boolean(title) && Boolean(photographer_id)) {
+      const formData = new FormData();
+      formData.append("photo[id]", id);
+      formData.append("photo[title]", title);
+      formData.append("photo[description]", description);
+      formData.append("photo[category]", category);
+      formData.append("photo[location]", location);
+      formData.append("photo[photographer_id]", photographer_id);
+      formData.append("photo[archived]", archived);
+
+      if (photoFile) {
+        for (let i = 0; i < photoFile.length; i++) {
+          formData.append("photo[photo][]", photoFile[i]);
+        }
+      }
+
+      this.props.action(formData).then(
+        this.setState({
+          // id: "",
+          // title: "",
+          // description: "",
+          // category: 1,
+          // location: "",
+          // photographer_id: "",
+          // archived: "",
+          // photoFile: [],
+          // photoUrl: [],
+          // redirect: true,
+          id: id,
+          title: title,
+          description: description,
+          category: category,
+          location: location,
+          photographer_id: photographer_id,
+          archived: archived,
+          photoFile: [],
+          photoUrl: [],
+          redirect: true,
+        })
+        // (data) => this.props.history.push(`/photos/${data.photo.id}`)
+      );
+    }
+  }
+
+  deleteButton() {
+    const { photo } = this.props;
+    return (
+      <button
+        className="deleteButton"
+        onClick={() => this.props.deletePhoto(photo.id)}
+      >
+        Delete photo
+      </button>
     );
   }
 
   render() {
+    // const { formType, photo, errors } = this.props;
     const { formType, photo, errors } = this.props;
     const { photoUrl } = this.state;
+
     console.log(this.state, "this is the", formType);
 
-    if (errors) {
-      const err = errors.map((error, i) => {
-        return <li key={i}>{error}</li>;
-      });
-    }
+    // console.log(
+    //   "this is the !!!!!!!photoUrl!!!!!!!!!",
+    //   photoUrl,
+    //   // // "this is formPreview",
+    //   // // formPreview,
+    //   // "these are the errors",
+    //   // errors,
+    //   "this is the formTYPE",
+    //   formType,
+    //   "this is DA PHOTO in upload photo",
+    //   photo,
+    //   "WHITE SPACE",
+    //   // photo.photo.length,
+    //   "this.state.id",
+    //   this.state.id,
+    //   "this.state.photoFile",
+    //   this.state.photoFile
+    // );
+    // if (errors) {
+    //   const err = errors.map((error, i) => {
+    //     return <li key={i}>{error}</li>;
+    //   });
+    // }
 
-    let uploadButton = formType === "Create Photo" ? "Upload" : "Save Changes";
-    // let uploadButton = formType === "Edit Photo" ? "Save Changes" : "Upload";
+    // let uploadButton = photo.photographer_id ? "Save Changes" : "Upload";
+    let uploadButton = formType === "Edit Photo" ? "Save Changes" : "Upload";
 
     // const formPreview = { photoUrl };
-    // const formPreview =
-    //   // console.log(photoUrl);
-    //   photoUrl.map((url, i) => {
-    //     return (
-    //       <li key={i}>
-    //         <img className="upload-image" onClick={this.selectImg} src={url} />
-    //       </li>
-    //     );
-    //   });
+    // const formPreview = console.log("this is the photoURL!!!", photoUrl);
+    // photoUrl.map((url, i) => {
+    //   return (
+    //     <li key={i}>
+    //       <img className="upload-image" onClick={this.photoUrl} src={url} />
+    //     </li>
+    //   );
+    // });
 
     if (this.state.redirect) {
       return <Redirect to="/photos" />;
@@ -279,7 +182,7 @@ class UploadPhotoForm extends React.Component {
     const upload = (
       <>
         <div className="upload-photo-title">
-          {formType === "Upload Photo" ? "Upload" : "Photo Manager"}
+          <h3>Upload</h3>
         </div>
         <div className="upload-photo-container">
           <div className="upload-photo-form">
@@ -287,7 +190,7 @@ class UploadPhotoForm extends React.Component {
               <img
                 src={window.uploadIcon}
                 className="upload-
-                icon"
+                  icon"
                 height="40"
                 width="40"
               />
@@ -332,13 +235,17 @@ class UploadPhotoForm extends React.Component {
     const uploadForm = (
       <>
         <div className="upload-photo-title">
-          <h3>Upload</h3>
+          <h3>{formType === "Create Photo" ? "Upload" : "Photo Manager"}</h3>
+          {/* <h3>{photo.photographer_id ? "Photo Manager" : "Create Photo"}</h3> */}
         </div>
 
         <div className="upload-form-container">
           <div className="upload-form-preview-container">
             <div className="upload-form-preview">
-              <img src={photoUrl} />
+              <img
+                src={formType === "Create Photo" ? photoUrl : photo.photoUrl}
+              />
+              {/* {photo.photoUrl} */}
               {/* {formPreview} */}
             </div>
           </div>
@@ -350,7 +257,7 @@ class UploadPhotoForm extends React.Component {
                   <label>Photo Privacy</label>
                   <select
                     value={this.state.privacy}
-                    onChange={this.updateState("privacy")}
+                    onChange={this.update("privacy")}
                   >
                     <option value="1">Public</option>
                     <option value="2">Unlisted</option>
@@ -363,7 +270,7 @@ class UploadPhotoForm extends React.Component {
                     type="text"
                     id="title"
                     value={this.state.title}
-                    onChange={this.updateState("title")}
+                    onChange={this.update("title")}
                     placeholder="e.g. Young man surfing in the ocean"
                   />
                 </div>
@@ -372,7 +279,7 @@ class UploadPhotoForm extends React.Component {
                   <label>Description</label>
                   <textarea
                     value={this.state.description}
-                    onChange={this.updateState("description")}
+                    onChange={this.update("description")}
                     placeholder="e.g. Low angle view of young man surfing in the ocean with a clear blue sky"
                   />
                 </div>
@@ -383,7 +290,7 @@ class UploadPhotoForm extends React.Component {
                     type="text"
                     id="location"
                     value={this.state.location}
-                    onChange={this.updateState("location")}
+                    onChange={this.update("location")}
                   />
                   {/* <small>
                 {this.state.locationValid ? '' : 'This field is required.'}
@@ -394,7 +301,7 @@ class UploadPhotoForm extends React.Component {
                   <label>Category</label>
                   <select
                     value={this.state.category}
-                    onChange={this.updateState("category")}
+                    onChange={this.update("category")}
                   >
                     <option value="1">Uncategorized</option>
                     <option value="2">Abstract</option>
@@ -436,6 +343,12 @@ class UploadPhotoForm extends React.Component {
                   className="upload-button"
                   value={uploadButton}
                 />
+
+                {/* <button className="cancel-button">Cancel</button> */}
+                <br />
+                <Link to="/photos">Cancel</Link>
+
+                {formType === "Edit Photo" ? this.deleteButton() : null}
               </form>
             </div>
           </div>
@@ -443,13 +356,19 @@ class UploadPhotoForm extends React.Component {
       </>
     );
 
-    // return <div>{formPreview.includes(photoUrl) ? uploadForm : upload}</div>;
-    // return <div>{photoUrl ? uploadForm : upload}</div>;
+    return (
+      // <div>{photo.photo.length === 0 && !photoUrl ? uploadForm : upload}</div>
 
-    return <div>{photoUrl.length > 0 ? uploadForm : upload}</div>;
-    // return <div>{photoUrl.length > 0 ? uploadForm : upload}</div>;
-    // return <div>{uploadForm}</div>;
+      // <div>{photoUrl.length > 0 ? uploadForm : upload}</div>
+
+      <div>
+        {(photoUrl.length > 0 && formType === "Create Photo") ||
+        formType === "Edit Photo"
+          ? uploadForm
+          : upload}
+      </div>
+    );
   }
 }
 
-export default withRouter(UploadPhotoForm);
+export default UploadPhotoForm;
