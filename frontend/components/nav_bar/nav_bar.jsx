@@ -32,7 +32,7 @@ export default ({ currentUser, logout }) => {
             {/* <Link to={`/users/${currentUser}`} className="dropdown-link">
               Profile
             </Link> */}
-            <Link to={`/photos`} className="dropdown-link">
+            <Link to={`/user/${currentUser.id}`} className="dropdown-link">
               Profile
             </Link>
             <br />
@@ -90,13 +90,17 @@ export default ({ currentUser, logout }) => {
               >
                 LinkedIn
               </a>
-              <a href="https://bit.ly/glorias-github" className="center-link"
-              target="_blank"
+              <a
+                href="https://bit.ly/glorias-github"
+                className="center-link"
+                target="_blank"
               >
                 Github
               </a>
-              <a href="https://bit.ly/glorias-portfolio" className="center-link"
-              target="_blank"
+              <a
+                href="https://bit.ly/glorias-portfolio"
+                className="center-link"
+                target="_blank"
               >
                 Gloria Kang
               </a>

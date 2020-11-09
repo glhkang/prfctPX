@@ -1,13 +1,8 @@
 import React from "react";
 import { Redirect, withRouter } from "react-router";
 import UploadPhotoForm from "./upload_photo_form";
-// import PhotoForm from "./photo_form";
 
 class EditPhotoForm extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  // }
-
   componentDidMount() {
     this.props.fetchPhoto(this.props.match.params.photoId);
   }

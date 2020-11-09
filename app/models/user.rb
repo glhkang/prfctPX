@@ -23,6 +23,8 @@ class User < ApplicationRecord
     class_name: :Photo,
     foreign_key: :photographer_id
 
+  has_many :likes, dependent: :destroy
+
   def self.find_by_credentials(username, password)
     user = User.find_by(email: username) || User.find_by(username: username)
     return nil unless user

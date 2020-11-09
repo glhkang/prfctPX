@@ -1,31 +1,32 @@
 import React from "react";
 import { Link, Route } from "react-router-dom";
-import EditPhotoFormContainer from "./edit_photo_form_container";
 
 class PhotoShow extends React.Component {
   componentDidMount() {
     this.props.fetchPhoto(this.props.match.params.photoId);
-    // this.props.fetchLikes()
+    this.props.fetchLikes();
   }
 
-  // componentDidUpdate(prevProps) {
-  //   if (prevProps.match.params.photoId !== this.props.match.params.photoId) {
-  //     this.props.fetchPhoto(this.props.match.params.photoId);
-  //   }
-  // }
+  componentDidUpdate(prevProps) {
+    if (prevProps.match.params.photoId !== this.props.match.params.photoId) {
+      this.props.fetchPhoto(this.props.match.params.photoId);
+    }
+  }
 
   addRemove() {
-    // const {like, photo, deleteLike, createLike, session } = this.props
-    const { photo, session } = this.props;
-    // let liked = false
-    // let photoLikeId = []
+    const { photo, session, like, deleteLike, createLike } = this.props;
 
-    // for(let i = 0; i < like.length; i++) {
-    //   if (like && photo.id === like[i].photo_id) {
-    //     photoLikeId.push(like[i].id)
-    //     liked = true
-    //   }
-    // }
+    ////////edit
+
+    let liked = false;
+    let photoLikeId = [];
+
+    for (let i = 0; i < like.length; i++) {
+      if (like && photo.id === like[i].photo_id) {
+        photoLikeId.push(like[i].id);
+        liked = true;
+      }
+    }
 
     if (photo.photographer_id === session) {
       return (
@@ -34,28 +35,36 @@ class PhotoShow extends React.Component {
           <Link to={`/photos/${photo.id}/edit`}>
             <img src={window.moreIcon} className="more-icon" />
           </Link>
-
-          {/* <Route
-            path="/photos/:photoId/edit"
-            component={EditPhotoFormContainer}
-            value="EDIT"
-          /> */}
+          -{" "}
+          {photoLikeId.length === 1
+            ? photoLikeId.length + " like"
+            : photoLikeId.length + " likes"}{" "}
+          -
         </div>
       );
     } else {
       return (
         <div className="photo-show-navbar">
-          {/* {
-            liked ?
-              <button className='heart-button' 
-              onClick={() => deleteLike(photoLikeId[0])}>
-                {<i className="fas fa-heart fa-2x"></i>}
-              </button> :
-              <button className='heart-button' 
-              onClick={() => createLike(session, photo.id)}>
-                {<i className="far fa-heart fa-2x"></i>}
-              </button>
-          } */}
+          {liked ? (
+            <button
+              className="heart-button"
+              onClick={() => deleteLike(photoLikeId[0])}
+            >
+              {/* {<i className="fas fa-heart fa-2x"></i>} */}
+              ❤️
+            </button>
+          ) : (
+            <button
+              className="heart-button"
+              onClick={() => createLike(session, photo.id)}
+            >
+              {/* {<i className="far fa-heart fa-2x"></i>} */}
+              🤍
+            </button>
+          )}{" "}
+          {photoLikeId.length === 1
+            ? photoLikeId.length + " like"
+            : photoLikeId.length + " likes"}{" "}
         </div>
       );
     }
@@ -77,13 +86,16 @@ class PhotoShow extends React.Component {
       ? photo.photoUrl
       : [photo.photoUrl];
 
-    console.log("this is photo show", this.props.session, photo);
+    console.log("this is photo show", photo);
     console.log(
       "this is the photoArray",
-      photoArray
+      photoArray,
       // "this is the photoUrl",
       // photoUrl
+      "this is the session",
+      this.props.session
     );
+    console.log("these are the likes", this.props.like);
 
     const thePhoto = photoArray.map((url, i) => {
       return <img src={url} key={i} className="photo-show-img" />;
@@ -99,8 +111,10 @@ class PhotoShow extends React.Component {
             <div className="photo-show-info-parent">
               <div className="photo-show-info">
                 {this.addRemove()}
+
                 <h5>{photo.title}</h5>
                 <p>{photo.description}</p>
+                {/* <p>{likes.length}</p> */}
                 <p>{photo.category}</p>
                 <p>{photo.location}</p>
                 <h6>by {photo.user}</h6>

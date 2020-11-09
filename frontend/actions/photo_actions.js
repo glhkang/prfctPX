@@ -38,19 +38,18 @@ export const fetchPhoto = (photoId) => (dispatch) =>
 
 export const createPhoto = (photo) => (dispatch) => {
   // debugger;
-  return (
-    PhotoAPIUtil.createPhoto(photo)
-      .then((createPhoto) => {
-        dispatch(receivePhoto(createPhoto));
-        dispatch(clearErrors());
-      })
-      // .fail((err) => dispatch(console.log("you fucked up")));
-      .fail((err) => dispatch(receiveErrors(err), console.log("you fucked up")))
-  );
+  return PhotoAPIUtil.createPhoto(photo)
+    .then((createPhoto) => {
+      dispatch(receivePhoto(createPhoto));
+      dispatch(clearErrors());
+    })
+    .fail((err) => dispatch(console.log("you fucked up")));
+  // .fail((err) => dispatch(receiveErrors(err), console.log("you fucked up")))
 };
 
-export const updatePhoto = (photo) => (dispatch) =>
-  PhotoAPIUtil.updatePhoto(photo)
+export const updatePhoto = (photo) => (dispatch) => {
+  // debugger;
+  return PhotoAPIUtil.updatePhoto(photo)
     .then((updatePhoto) => {
       dispatch(receivePhoto(updatePhoto));
       dispatch(clearErrors());
@@ -59,6 +58,7 @@ export const updatePhoto = (photo) => (dispatch) =>
       // dispatch(receiveErrors(err), console.log("you didn't update"))
       dispatch(console.log("you didn't update"))
     );
+};
 
 export const deletePhoto = (photoId) => (dispatch) =>
   PhotoAPIUtil.deletePhoto(photoId).then(() => dispatch(removePhoto(photoId)));

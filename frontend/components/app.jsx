@@ -12,7 +12,7 @@ import EditPhotoFormContainer from "./photos/edit_photo_form_container";
 import PhotoIndexContainer from "./photos/photo_index_container";
 import HomefeedContainer from "./homefeed/homefeed_container";
 import PhotoShowContainer from "./photos/photo_show_container";
-
+import ProfileContainer from "./profile/profile_container";
 export const history = createBrowserHistory();
 
 const App = () => (
@@ -22,6 +22,7 @@ const App = () => (
     <header className="header-nav-bar">
       <Route path="/" component={NavBarContainer} />
     </header>
+
     <Switch>
       <ProtectedRoute
         exact
@@ -33,6 +34,7 @@ const App = () => (
         path="/upload"
         component={UploadPhotoFormContainer}
       />
+      <ProtectedRoute exact path="/user/:userId" component={ProfileContainer} />
 
       <Route path="/photos/:photoId" component={PhotoShowContainer} />
       <ProtectedRoute exact path="/home" component={HomefeedContainer} />

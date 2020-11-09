@@ -1,0 +1,84 @@
+.profile-container {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  flex-wrap: wrap;
+}
+
+.profile-header-container {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 45vh;
+  /* background-color: red; */
+  background-image: url("profile-header.jpg");
+  /* background-position: center; */
+  background-size: cover;
+}
+
+.profile-header-info {
+  display: flex;
+  position: absolute;
+  left: (90vw / 2);
+  top: 48vh;
+  text-align: center;
+  justify-content: flex-end;
+  flex-direction: column;
+  margin: 0 0 90px 0;
+}
+
+.profile-header-picture {
+  display: flex;
+  height: 100px;
+  width: 100px;
+  background-image: url("gloria_kang.jpg");
+  background-position: center;
+  background-size: 100px 100px;
+  border: 2px solid white;
+  border-radius: 50%;
+  /* position: absolute; */
+  align-self: center;
+  flex-direction: row;
+  margin-bottom: 25px;
+  /* left: (90vw / 2);
+  top: 38vh; */
+}
+
+/*.profile-header-picture {
+  display: flex;
+  height: 100px;
+  width: 100px;
+  background-image: url("gloria_kang.jpg");
+  background-position: center;
+  background-size: 100px 100px;
+  border: 2px solid white;
+  border-radius: 50%;
+  position: absolute;
+  align-self: center;
+  flex-direction: row;
+  left: (90vw / 2);
+  top: 38vh;
+}
+
+.profile-header-info {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  text-align: center;
+  height: 200px;
+  width: 100vw;
+  background-color: red;
+} */
+
+.profile-user-photos {
+  display: flex;
+  width: 100vw;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  list-style-type: none;
+  /* background-color: orange; */
+  margin-top: 120px;
+}

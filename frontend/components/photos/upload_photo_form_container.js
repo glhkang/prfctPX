@@ -8,6 +8,7 @@ const mSTP = ({ errors, session }) => {
     errors: Object.values(errors.photos),
     // photo: state.photo,
     photo: {
+      id: "",
       title: "",
       description: "",
       category: 1,

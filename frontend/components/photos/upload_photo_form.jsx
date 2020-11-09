@@ -1,7 +1,6 @@
 import React from "react";
 import { Redirect, Link } from "react-router-dom";
 import { withRouter } from "react-router";
-// import PhotoFormContainer from "./photo_form_container";
 
 class UploadPhotoForm extends React.Component {
   constructor(props) {
@@ -164,16 +163,6 @@ class UploadPhotoForm extends React.Component {
 
     // let uploadButton = photo.photographer_id ? "Save Changes" : "Upload";
     let uploadButton = formType === "Edit Photo" ? "Save Changes" : "Upload";
-
-    // const formPreview = { photoUrl };
-    // const formPreview = console.log("this is the photoURL!!!", photoUrl);
-    // photoUrl.map((url, i) => {
-    //   return (
-    //     <li key={i}>
-    //       <img className="upload-image" onClick={this.photoUrl} src={url} />
-    //     </li>
-    //   );
-    // });
 
     if (this.state.redirect) {
       return <Redirect to="/photos" />;

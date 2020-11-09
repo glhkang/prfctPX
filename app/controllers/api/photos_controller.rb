@@ -7,7 +7,6 @@ class Api::PhotosController < ApplicationController
   end
   
   def show
-    # @photo = Photo.with_attached_photos.find(params[:id])
     @photo = Photo.find_by(id: params[:id])
     # if @photo.save && @photo.photographer_id == current_user.id
     #   render :show
@@ -18,6 +17,7 @@ class Api::PhotosController < ApplicationController
 
   def create
     @photo = Photo.new(photo_params)
+    # if @photo.photographer_id == current_user.id && @photo.save
     if @photo.save
         render 'api/photos/show'
       else
@@ -28,8 +28,8 @@ class Api::PhotosController < ApplicationController
   def update
     @photo = Photo.find_by(id: params[:id])
     #render json: params
-    
-    #if @photo.photographer_id == current_user.id && @photo && @photo.update(photo_params)
+    # if @photo.photographer_id == current_user.id && @photo && @photo.update(photo_params)
+
     if @photo.update(photo_params)
       render 'api/photos/show'
     else
@@ -39,8 +39,9 @@ class Api::PhotosController < ApplicationController
 
   def destroy
     @photo = Photo.find_by(id: params[:id])
-    if @photo.photographer_id
     # if @photo.photographer_id == current_user.id
+
+    if @photo.photographer_id
       @photo.destroy
       render 'api/photos/show'
     end
@@ -48,8 +49,8 @@ class Api::PhotosController < ApplicationController
 
   private
   def photo_params
-    params.require(:photo).permit(:title, :description, :category, :location, :photographer_id, photo: [])
-    #params.permit(:id, :title, :description, :category, :location, :photographer_id, photo: [])
+    params.require(:photo).permit(:id, :title, :description, :category, :location, :photographer_id, photo: [])
   end
+
 end
 
