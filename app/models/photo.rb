@@ -26,7 +26,6 @@ class Photo < ApplicationRecord
 
   has_many :likes, dependent: :destroy
 
-
   def ensure_photo
     unless self.photo.attached?
       errors[:photo] << "must be attached"

@@ -1,3 +1,98 @@
 // Place all the styles related to the Photos controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.photo-show-parent-container {
+  display: flex;
+  flex-direction: column;
+}
+.photo-show-image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px;
+  border: 1px solid rgb(31, 31, 31);
+  background-color: rgb(31, 31, 31);
+  width: 100vw;
+}
+
+.photo-show-image-container img {
+  /* min-height: 200px;
+  min-width: 200px;
+  max-height: 500px;
+  max-width: 500px; */
+  min-height: 420px;
+  height: calc((100vh - 72px) - 198px);
+}
+
+.photo-show-info-bar {
+  display: flex;
+  align-items: flex-start;
+  margin: 45px;
+}
+
+.photo-bar {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 200px;
+  margin: 0;
+}
+.photo-bar img {
+  height: 30px;
+  width: 30px;
+}
+
+/* .photo-index-photos-container {
+  margin: 20px;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.photo-index-photos {
+  column-count: 4;
+  column-gap: 2em;
+  width: 100vw;
+  height: 100vh;
+  flex-wrap: wrap;
+  display: block;
+}
+
+.photo-index-image-li {
+  display: inline-block;
+  list-style-type: none;
+}
+*/
+
+.homefeed-container ul {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  flex-direction: wrap;
+  align-items: center;
+  padding: 0 25px 0 25px;
+}
+
+.photo-index-photos-container {
+  width: 100vw;
+  height: 100vh;
+  padding: 65px 25px 0 0;
+}
+
+.photo-index-photos {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  column-count: 4;
+  column-gap: 2em;
+}
+
+.photo-index-image-li {
+  list-style: none;
+}

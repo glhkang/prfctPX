@@ -17,10 +17,11 @@ const mSTP = (state, ownProps) => {
 };
 
 const mDTP = (dispatch) => {
+  // debugger;
   return {
+    action: (photo, id) => dispatch(updatePhoto(photo, id)),
     fetchPhoto: (photoId) => dispatch(fetchPhoto(photoId)),
     deletePhoto: (photoId) => dispatch(deletePhoto(photoId)),
-    action: (photo) => dispatch(updatePhoto(photo)),
   };
 };
 

@@ -84,31 +84,37 @@ class UploadPhotoForm extends React.Component {
       formData.append("photo[photographer_id]", photographer_id);
       formData.append("photo[archived]", archived);
 
+      //below is console logging the above pairs
+      for (let pair of formData.entries()) {
+        console.log(pair[0] + ", " + pair[1]);
+      }
+
       if (photoFile) {
         for (let i = 0; i < photoFile.length; i++) {
           formData.append("photo[photo][]", photoFile[i]);
         }
       }
-
-      this.props.action(formData).then(
+      // debugger;
+      console.log("this is the formData", Array.from(formData.entries()));
+      this.props.action(formData, id).then(
         this.setState({
-          // id: "",
-          // title: "",
-          // description: "",
-          // category: 1,
-          // location: "",
-          // photographer_id: "",
-          // archived: "",
+          id: id,
+          // title: title,
+          // description: description,
+          // category: category,
+          // location: location,
+          // photographer_id: photographer_id,
+          // archived: archived,
           // photoFile: [],
           // photoUrl: [],
           // redirect: true,
-          id: id,
-          title: title,
-          description: description,
-          category: category,
-          location: location,
-          photographer_id: photographer_id,
-          archived: archived,
+          // id: "",
+          title: "",
+          description: "",
+          // category: "",
+          // location: "",
+          // photographer_id: "",
+          // archived: "",
           photoFile: [],
           photoUrl: [],
           redirect: true,
@@ -122,7 +128,7 @@ class UploadPhotoForm extends React.Component {
     const { photo } = this.props;
     return (
       <button
-        className="deleteButton"
+        className="delete-button"
         onClick={() => this.props.deletePhoto(photo.id)}
       >
         Delete photo
@@ -137,31 +143,6 @@ class UploadPhotoForm extends React.Component {
 
     console.log(this.state, "this is the", formType);
 
-    // console.log(
-    //   "this is the !!!!!!!photoUrl!!!!!!!!!",
-    //   photoUrl,
-    //   // // "this is formPreview",
-    //   // // formPreview,
-    //   // "these are the errors",
-    //   // errors,
-    //   "this is the formTYPE",
-    //   formType,
-    //   "this is DA PHOTO in upload photo",
-    //   photo,
-    //   "WHITE SPACE",
-    //   // photo.photo.length,
-    //   "this.state.id",
-    //   this.state.id,
-    //   "this.state.photoFile",
-    //   this.state.photoFile
-    // );
-    // if (errors) {
-    //   const err = errors.map((error, i) => {
-    //     return <li key={i}>{error}</li>;
-    //   });
-    // }
-
-    // let uploadButton = photo.photographer_id ? "Save Changes" : "Upload";
     let uploadButton = formType === "Edit Photo" ? "Save Changes" : "Upload";
 
     if (this.state.redirect) {
@@ -292,7 +273,7 @@ class UploadPhotoForm extends React.Component {
                     value={this.state.category}
                     onChange={this.update("category")}
                   >
-                    <option value="1">Uncategorized</option>
+                    <option value="1 Uncategorized">Uncategorized</option>
                     <option value="2">Abstract</option>
                     <option value="3">Aerial</option>
                     <option value="4">Animals</option>
@@ -327,15 +308,19 @@ class UploadPhotoForm extends React.Component {
                 </div>
 
                 {/* <button onClick={this.handleSubmit}>Upload</button> */}
-                <input
-                  type="submit"
-                  className="upload-button"
-                  value={uploadButton}
-                />
+                <div className="form-bottom">
+                  <input
+                    type="submit"
+                    className="upload-button"
+                    value={uploadButton}
+                  />
 
-                {/* <button className="cancel-button">Cancel</button> */}
-                <br />
-                <Link to="/photos">Cancel</Link>
+                  {/* <button className="cancel-button">Cancel</button> */}
+                  <br />
+                  <Link className="cancel-link" to="/photos">
+                    Cancel
+                  </Link>
+                </div>
 
                 {formType === "Edit Photo" ? this.deleteButton() : null}
               </form>

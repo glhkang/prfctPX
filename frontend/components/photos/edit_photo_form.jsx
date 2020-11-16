@@ -7,23 +7,16 @@ class EditPhotoForm extends React.Component {
     this.props.fetchPhoto(this.props.match.params.photoId);
   }
 
-  // componentDidUpdate(prevProps) {
-  //   if (this.match.params.id !== prevProps.match.params.id) {
-  //     this.props.fetchPhoto(this.props.params.photoId);
-
-  //   }
-  // }
-
   render() {
     // const { action, formType, photo, session, deletephoto, cancelModal, closeModal } = this.props;
-    const { action, formType, photo, session, deletePhoto } = this.props;
+    const { action, formType, photo, session, deletePhoto, id } = this.props;
 
     console.log(
       "this is the formtype",
       formType,
       // "this is the user",
       // this.props.photo.photographer_id,
-      "this is THE PHOTOTOTOTOTOT",
+      "this is the photo",
       photo
     );
 
@@ -35,6 +28,7 @@ class EditPhotoForm extends React.Component {
           action={action}
           formType={formType}
           photo={photo}
+          id={id}
           deletePhoto={deletePhoto}
           session={session}
         />

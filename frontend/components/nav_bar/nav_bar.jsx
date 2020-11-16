@@ -32,7 +32,7 @@ export default ({ currentUser, logout }) => {
             {/* <Link to={`/users/${currentUser}`} className="dropdown-link">
               Profile
             </Link> */}
-            <Link to={`/user/${currentUser.id}`} className="dropdown-link">
+            <Link to={`/users/${currentUser.id}`} className="dropdown-link">
               Profile
             </Link>
             <br />

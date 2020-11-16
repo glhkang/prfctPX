@@ -34,7 +34,11 @@ const App = () => (
         path="/upload"
         component={UploadPhotoFormContainer}
       />
-      <ProtectedRoute exact path="/user/:userId" component={ProfileContainer} />
+      <ProtectedRoute
+        exact
+        path="/users/:userId"
+        component={ProfileContainer}
+      />
 
       <Route path="/photos/:photoId" component={PhotoShowContainer} />
       <ProtectedRoute exact path="/home" component={HomefeedContainer} />

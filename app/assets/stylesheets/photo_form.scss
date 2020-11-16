@@ -237,3 +237,18 @@
 .upload-form button:hover {
   background-color: #aac1ca;
 }
+
+.form-bottom {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.form-bottom input {
+  width: 120px;
+}
+
+.cancel-link {
+  text-decoration: none;
+}

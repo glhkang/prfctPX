@@ -27,11 +27,9 @@ class PhotoIndex extends React.Component {
     console.log("this is photo index", this.state, photos, userPhotos);
 
     return (
-      <div className="photo-index-photos-conatiner">
-        <div className="photo-index-grid-container">
-          <div className="photo-index-grid-inner">
-            <ul className="photo-index-grid-container-photos">{userPhotos}</ul>
-          </div>
+      <div className="photo-index-photos-container">
+        <div className="photo-index">
+          <ul className="photo-index-photos">{userPhotos}</ul>
         </div>
       </div>
     );

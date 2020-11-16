@@ -21,14 +21,25 @@ export const createPhoto = (photo) =>
     processData: false,
   });
 
-export const updatePhoto = (photo) =>
-  $.ajax({
-    url: `/api/photos/${photo.id}`,
+// export const updatePhoto = (photo) =>
+//   $.ajax({
+//     url: `/api/photos/${photo.id}`,
+//     method: "PATCH",
+//     data: photo,
+//     contentType: false,
+//     processData: false,
+//   });
+
+export const updatePhoto = (photo, id) => {
+  // debugger;
+  return $.ajax({
+    url: `/api/photos/${id}`,
     method: "PATCH",
     data: photo,
     contentType: false,
     processData: false,
   });
+};
 
 export const deletePhoto = (photoId) =>
   $.ajax({

@@ -16,7 +16,11 @@ class Homefeed extends React.Component {
 
     console.log("this is the homefeed index", photos);
 
-    return <ul className="rename">{allPhotos}</ul>;
+    return (
+      <div className="homefeed-container">
+        <ul className="homefeed">{allPhotos}</ul>
+      </div>
+    );
   }
 }
 
