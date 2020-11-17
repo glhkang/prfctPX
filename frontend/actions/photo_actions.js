@@ -5,7 +5,7 @@ export const RECEIVE_PHOTO = "RECEIVE_PHOTO";
 export const REMOVE_PHOTO = "REMOVE_PHOTO";
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
-debugger;
+// debugger;
 const receiveAllPhotos = (photos) => ({
   type: RECEIVE_ALL_PHOTOS,
   photos,
@@ -47,19 +47,10 @@ export const createPhoto = (photo) => (dispatch) => {
   // .fail((err) => dispatch(receiveErrors(err), console.log("you fucked up")))
 };
 
-export const updatePhoto = (photo, id) => (dispatch) => {
-  // debugger;
-  console.log("this is the formData/photo action", photo, "this is the id", id);
-  return PhotoAPIUtil.updatePhoto(photo, id)
-    .then((updatePhoto) => {
-      dispatch(receivePhoto(updatePhoto));
-      dispatch(clearErrors());
-    })
-    .fail(
-      // (err) => dispatch(receiveErrors(err), console.log("you didn't update"))
-      dispatch(console.log("you didn't update"))
-    );
-};
+export const updatePhoto = (photo, id) => (dispatch) =>
+  PhotoAPIUtil.updatePhoto(photo, id)
+    .then((updatedPhoto) => dispatch(receivePhoto(updatedPhoto)))
+    .fail((err) => console.log("you didn't update", err));
 
 export const deletePhoto = (photoId) => (dispatch) =>
   PhotoAPIUtil.deletePhoto(photoId).then(() => dispatch(removePhoto(photoId)));

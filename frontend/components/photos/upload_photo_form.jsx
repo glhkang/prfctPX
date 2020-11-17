@@ -129,7 +129,11 @@ class UploadPhotoForm extends React.Component {
     return (
       <button
         className="delete-button"
-        onClick={() => this.props.deletePhoto(photo.id)}
+        onClick={(e) => {
+          e.stopPropagation();
+          this.props.deletePhoto(photo.id);
+          this.setState({ redirect: true });
+        }}
       >
         Delete photo
       </button>
@@ -222,7 +226,8 @@ class UploadPhotoForm extends React.Component {
 
           <div className="upload-form-container">
             <div className="upload-form">
-              <form onSubmit={this.handleSubmit}>
+              {/* <form onSubmit={this.handleSubmit}> */}
+              <form>
                 <div>
                   <label>Photo Privacy</label>
                   <select
@@ -313,6 +318,7 @@ class UploadPhotoForm extends React.Component {
                     type="submit"
                     className="upload-button"
                     value={uploadButton}
+                    onClick={this.handleSubmit}
                   />
 
                   {/* <button className="cancel-button">Cancel</button> */}

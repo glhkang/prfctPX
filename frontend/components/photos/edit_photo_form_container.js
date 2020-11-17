@@ -20,6 +20,7 @@ const mDTP = (dispatch) => {
   // debugger;
   return {
     action: (photo, id) => dispatch(updatePhoto(photo, id)),
+    // action: (photo) => dispatch(updatePhoto(photo)),
     fetchPhoto: (photoId) => dispatch(fetchPhoto(photoId)),
     deletePhoto: (photoId) => dispatch(deletePhoto(photoId)),
   };

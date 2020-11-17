@@ -29,7 +29,7 @@ class Api::PhotosController < ApplicationController
     @photo = Photo.find_by(id: params[:id])
     #render json: params
     # if @photo.photographer_id == current_user.id && @photo && @photo.update(photo_params)
-
+    # debugger
     if @photo.update(photo_params)
       render 'api/photos/show'
     else
@@ -43,7 +43,8 @@ class Api::PhotosController < ApplicationController
 
     if @photo.photographer_id
       @photo.destroy
-      render 'api/photos/show'
+      # render 'api/photos/show'
+      render json: {id: params[:id]}
     end
   end
 
