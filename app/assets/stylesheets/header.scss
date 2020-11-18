@@ -2,27 +2,20 @@
   display: flex;
   flex-direction: row;
   width: 100%;
-  /* padding: 20px; */
 }
 
 .header-nav-bar {
   display: flex;
   background: white;
   width: 100%;
-  // margin-left: 7px;
-  // padding-left: 20px;
-  /* height: 50px; */
   height: 65px;
   box-sizing: border-box;
   padding: 0 55px;
   top: 0;
   z-index: 2;
-  /* opacity: .9; */
   position: sticky;
-  /* box-shadow: #afbfca 0px 2px 9px, white 0px 0px 2px; */
   margin-bottom: 2px;
   box-shadow: #f9f9f9 0px 2px 4px;
-  /* box-shadow:lightgray 0px 2px 4px, white 0px 0px 2px; */
 }
 
 .whitespace {
@@ -88,7 +81,6 @@
   color: black;
   text-decoration: none;
   font-family: sans-serif;
-  // font-family: Arial, Helvetica, sans-serif;
   font-size: 15.6px;
   letter-spacing: 0.3px;
   height: 43px;
@@ -104,17 +96,8 @@
 }
 
 .header-upload-button:hover {
-  // background-color: #aab9ca;
   background-color: #d9e0e7;
 }
-
-//inverting upload button.. need to fix so when on loading page button disappears
-// .header-upload-button:focus {
-//   // background-color: #545f87;
-//   -webkit-filter: invert(100%); /* safari 6.0 - 9.0 */
-//       filter: invert(100%);
-//   // color: white;
-// }
 
 .display-nav {
   float: right;
@@ -144,7 +127,6 @@
   color: black;
   font-size: 25px;
   text-decoration: none;
-  /* margin-right: 10px; */
   font-family: "Comfortaa", cursive;
 }
 
@@ -155,7 +137,6 @@
 .center-links {
   display: flex;
   align-items: center;
-  /* margin-top: 20px; */
   margin-left: 15px;
 }
 
@@ -181,10 +162,7 @@
 
 .user-dropdown-nav {
   width: 100%;
-  /* display: flex; */
-  /* flex-direction: column; */
   justify-content: space-between;
-  // padding: 15px 32px 10px 16px;
 }
 
 .user-dropdown-header-icon {
@@ -214,7 +192,6 @@
   display: none;
   background-color: white;
   width: 160px;
-  // height: 150px;
   margin-top: 84px;
   box-shadow: #afbfca 0px 2px 9px, white 0px 0px 2px;
   margin-left: -4px;
@@ -246,28 +223,9 @@
   border-bottom: 10px solid #dde4e8;
 }
 
-// border-right: 8px solid transparent;
-// border-bottom: 12px solid #efefef;
-// // border-right: 30px solid transparent;
-// // border-bottom: 20px solid #efefef;
-// top: -20px;
-// right: 100px;
-// content: '';
-// position: absolute;
-
-// .user-dropdown-nav-content:after {
-//     border-left: 20px solid transparent;
-//     border-top: 20px solid #efefef;
-//     bottom: -20px;
-//     content: "";
-//     position: absolute;
-//     right: 20px;
-// }
-
 .user-dropdown-nav-content:hover {
   display: block;
   cursor: pointer;
-  // background-color: ;
 }
 
 // pad around links
@@ -275,14 +233,12 @@
   display: block;
   padding: 10px;
   color: black;
-  // margin: 5px; do not margin
 }
 
 .dropdown-link {
   color: black;
   text-decoration: none;
   padding-left: 50px;
-  // padding-left: 50px;
 }
 
 .dropdown-link:hover {

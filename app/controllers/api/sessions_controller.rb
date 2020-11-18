@@ -1,5 +1,5 @@
 class Api::SessionsController < ApplicationController
-  before_action :ensure_logged_in, only: [:destroy]
+  before_action :require_logged_in, only: [:destroy]
   
   def create
     @user = User.find_by_credentials(
@@ -19,7 +19,6 @@ class Api::SessionsController < ApplicationController
     @user = current_user
     if @user
       logout
-      render json: {}
     else
       render json: ['No one to log out...'], status: 404
     end

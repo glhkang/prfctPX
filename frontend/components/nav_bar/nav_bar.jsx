@@ -16,7 +16,7 @@ export default ({ currentUser, logout }) => {
   });
 
   const clicked = () => {
-    return document.getElementById("navDropdown").classList.toggle("show");
+    return document.getElementById("nav-dropdown").classList.toggle("show");
   };
 
   const displayNav = currentUser ? (
@@ -27,11 +27,8 @@ export default ({ currentUser, logout }) => {
           onClick={() => clicked()}
           className="user-dropdown-header-icon"
         />
-        <div id="navDropdown" className="user-dropdown-nav-content">
+        <div id="nav-dropdown" className="user-dropdown-nav-content">
           <div className="dropdown-link-container">
-            {/* <Link to={`/users/${currentUser}`} className="dropdown-link">
-              Profile
-            </Link> */}
             <Link to={`/users/${currentUser.id}`} className="dropdown-link">
               Profile
             </Link>

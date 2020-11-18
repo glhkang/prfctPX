@@ -1,25 +1,9 @@
 .session-form-container {
   display: flex;
   flex-direction: column;
-  /* height: calc(100vh - 50px); */
   height: calc(100vh - 62px);
   width: 100%;
-  /* padding-top: 15px; */
-  /* background-color: #edf2f3; */
-  /* light baby blue.. find a warmer blue???? */
-  /* background-color: #ebf0f7; */
-  /* lightest gray below */
-  /* background-color: rgb(249, 249, 249); */
-  /* another light gray */
   background-color: #f9f9f9;
-  /* darker gray */
-  /* background-color: #D8D8D8; */
-  /* another light blue.. doens't quite match*/
-  /* background-color: #dce3e4; */
-  /* too aggressive dark gray blue*/
-  /* background-color: #acb3b8; */
-  /* background-color: #ebedee; */
-  /* background-color: #e0e3e5; */
 }
 
 .session-form {
@@ -28,13 +12,9 @@
   align-items: center;
   width: 290px;
   min-height: 300px;
-  /* height: 430px; */
-  /* border: 1px solid #D8D8D8; */
   border: 1px solid #e1eaeb;
   background: white;
   margin: auto;
-  /* margin-left: 65px; */
-  /* border-radius: 20px; */
   padding-left: 50px;
   padding-right: 50px;
   padding-top: 7px;
@@ -46,14 +26,12 @@
   font-size: 23px;
   font-family: "Raleway", sans-serif;
   margin-bottom: 15px;
-  /* letter-spacing: 0.5px; */
 }
 .session-form > h2 {
   font-weight: normal;
   font-size: 23px;
   font-family: "Raleway", sans-serif;
   margin-bottom: 15px;
-  /* letter-spacing: 0.5px; */
 }
 
 .session-signup-text {
@@ -61,8 +39,6 @@
   font-family: "Raleway", sans-serif;
   font-size: 15px;
   margin: 0px;
-  /* margin-right: 0px; */
-  /* color: #405368; */
   color: #404968;
 }
 
@@ -94,19 +70,15 @@
 }
 
 .already-account {
-  /* align-items: center; */
   margin-bottom: 5px;
   font-size: 15px;
   font-family: "Raleway", sans-serif;
   color: gray;
-  /* justify-content: space-evenly; */
 }
 .already-account:hover {
-  /* align-items: center; */
   margin-bottom: 5px;
   font-size: 15px;
   font-family: "Raleway", sans-serif;
-  /* justify-content: space-evenly; */
 }
 
 .session-form a {
@@ -164,12 +136,9 @@
   width: 300px;
   min-height: 200px;
   max-height: 440px;
-  /* border: 1px solid #D8D8D8; */
   border: 1px solid #e1eaeb;
   background: white;
   margin: auto;
-  /* margin-left: 65px; */
-  /* border-radius: 20px; */
   padding-left: 50px;
   padding-right: 50px;
   padding-top: 7px;
@@ -214,7 +183,6 @@
   background-color: white;
   -webkit-animation: fadeinout 1s linear forwards;
   animation: fadeinout 3s linear forwards;
-  /* box-shadow: 0 4px 12px white; */
 }
 
 @-webkit-keyframes fadeinout {

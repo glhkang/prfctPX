@@ -1,7 +1,6 @@
 .upload-photo-title {
   display: flex;
   margin-left: 64px;
-  // font-family: 'Raleway', sans-serif;
   font-family: sans-serif;
   border-bottom: 10px black;
   margin-bottom: 20px;
@@ -16,7 +15,6 @@
   padding-top: 100px;
 }
 
-//EDIT BELOW
 .upload-photo-form {
   margin-left: 60px;
 }
@@ -33,12 +31,10 @@
 
 .upload-icon {
   display: flex;
-  // position: inherit;
   align-items: center;
 }
 
 .upload-form-bottom {
-  // padding-top: 0px;
   width: 390px;
   background-color: #e9e9e9;
   padding: 12px;
@@ -95,13 +91,7 @@
   align-self: center;
   background: #545f87;
   align-content: center;
-  // margin-left: 80px;
   width: 140px;
-  // padding: 10px;
-  // height: 45px;
-  // margin-top: 10px;
-  // margin-bottom: 8px;
-  // margin-left: 20px;
   padding: 20px;
   border-radius: 40px;
   border: 0;
@@ -110,47 +100,26 @@
   font-size: 16px;
   font-weight: bolder;
   letter-spacing: 1px;
-  // background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
-  // border: 1px solid #999;
-  // border-radius: 3px;
-  // // padding: 5px 8px;
   outline: none;
   white-space: nowrap;
   -webkit-user-select: none;
   overflow: hidden;
-  // cursor: pointer;
-  // text-shadow: 1px 1px #fff;
-  // font-weight: 700;
-  // font-size: 10pt;
-  // -webkit-appearance: none;
 }
 
-// .custom-file-input:active::hover {
-//   color: #aac1ca;
-// }
 .custom-file-input:hover::before {
   background-color: #aac1ca;
 }
 
-// .custom-file-input:active::before {
-//   background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
-// }
-
-////
-
 .upload-form-container {
   padding-left: 63px;
   padding-right: 30px;
-  // padding-top: 15px;
   display: flex;
   justify-content: space-between;
-  // flex-direction: row;
 }
 
 .upload-form-preview {
   display: flex;
   flex-direction: row;
-  // padding-top: 20px;
 }
 
 .upload-form-preview > img {
@@ -159,14 +128,8 @@
 }
 
 .upload-form > form {
-  // display: flex;
-  // flex-direction: column;
-  // margin: -63px;
   padding: 15px;
   width: 345px;
-  // height: 500px;
-  // border-style: solid;
-  // border-color: lightgray;
   border: 2px solid #e1eaeb;
   align-items: center;
 }
@@ -216,7 +179,6 @@
   margin-top: 15px;
   margin-left: 70px;
   background-color: #545f87;
-  // padding: 0,10px;
   width: 180px;
   height: 40px;
   color: white;
@@ -228,7 +190,6 @@
   font-weight: bolder;
   align-items: center;
   justify-content: center;
-  // transition: color 0.1s ease 0s;
   -webkit-appearance: none;
   //this gets rid of click-border
   outline: none;

@@ -22,13 +22,11 @@
   font-weight: bolder;
   border-bottom: 0px;
   margin-bottom: -5px;
-  // margin-right: 200px;
 }
 
 .main-splash-content > div > p {
   line-height: 22px;
   font-size: 18px;
-  // margin-top: 15px;
 }
 
 .main-splash-content > a {
@@ -70,10 +68,6 @@
   margin-top: 50px;
   position: relative;
 }
-
-// .splash-2-cover {
-//     background-image: url('https://web.500px.com/static/media/purple_swirl_mobile.017ee2a3.svg');
-// }
 
 .splash-2-cover {
   position: absolute;
@@ -118,7 +112,6 @@
 .splash-2-body .splash-2-col {
   padding: 20px;
   width: 32%;
-  // height: 100px;
   font-weight: lighter;
 }
 
@@ -127,11 +120,7 @@
 }
 
 .bottom-splash {
-  // background-color:#5e6a97;
   background-color: #545f87;
-  // margin-top: 20px;
-  // margin-bottom: 20px;
-  // padding-top: 20px;
   padding-bottom: 40px;
   color: white;
   height: 320px;
@@ -160,20 +149,15 @@
   font-size: 24px;
   border-radius: 32px;
   text-decoration: none;
-  // background-color: #7b92ad;
   background-color: white;
   color: black;
   display: inline-flex;
   justify-content: center;
   align-items: center;
   z-index: 2;
-  // margin-top: 250px;
-  // margin-left: -800px;
-  // margin-right: 800px;
   transition: color 0.1s ease 0s;
 }
 
 .bottom-splash-signup > a:hover {
-  // color: #afbfca;
   color: #545f87;
 }
