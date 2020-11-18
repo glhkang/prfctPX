@@ -1,8 +1,7 @@
 import React from "react";
-import { Route, Switch, Router } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { AuthRoute, ProtectedRoute } from "../util/route_util";
 import { withRouter } from "react-router";
-import { createBrowserHistory } from "history";
 import NavBarContainer from "./nav_bar/nav_bar_container";
 import SplashPageContainer from "./splash_page/splash_page";
 import LoginFormContainer from "./session_form/login_form_container";
@@ -13,11 +12,8 @@ import PhotoIndexContainer from "./photos/photo_index_container";
 import HomefeedContainer from "./homefeed/homefeed_container";
 import PhotoShowContainer from "./photos/photo_show_container";
 import ProfileContainer from "./profile/profile_container";
-export const history = createBrowserHistory();
 
 const App = () => (
-  // <Router history={history}>
-  // <Router>
   <div>
     <header className="header-nav-bar">
       <Route path="/" component={NavBarContainer} />
@@ -49,7 +45,6 @@ const App = () => (
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
     </Switch>
   </div>
-  // </Router>
 );
 
 export default withRouter(App);

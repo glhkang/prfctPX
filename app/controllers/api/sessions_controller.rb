@@ -1,5 +1,5 @@
 class Api::SessionsController < ApplicationController
-  # before_action :ensure_logged_in, only: [:destroy]
+  before_action :ensure_logged_in, only: [:destroy]
   
   def create
     @user = User.find_by_credentials(
@@ -11,7 +11,6 @@ class Api::SessionsController < ApplicationController
       login(@user)
       render 'api/users/show'
     else
-      # render json: ['Invalid username and or password.'], status: 401
       render json: ['Oops! We didn’t recognize that login. Please try again.'], status: 401
     end
   end

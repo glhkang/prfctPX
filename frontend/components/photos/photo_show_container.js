@@ -4,7 +4,6 @@ import PhotoShow from "./photo_show";
 import { fetchLikes, createLike, deleteLike } from "../../actions/like_actions";
 
 const mSTP = (state, ownProps) => {
-  // debugger;
   return {
     photo: state.entities.photos[ownProps.match.params.photoId],
     session: state.session.id,

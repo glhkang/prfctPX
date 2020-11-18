@@ -1,6 +1,5 @@
 import React from "react";
 import { Redirect, Link } from "react-router-dom";
-import { withRouter } from "react-router";
 
 class UploadPhotoForm extends React.Component {
   constructor(props) {
@@ -20,7 +19,6 @@ class UploadPhotoForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFile = this.handleFile.bind(this);
-    // this.update = this.update.bind(this);
   }
 
   update(property) {
@@ -62,7 +60,6 @@ class UploadPhotoForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    // debugger;
     const {
       id,
       title,
@@ -85,41 +82,28 @@ class UploadPhotoForm extends React.Component {
       formData.append("photo[archived]", archived);
 
       //below is console logging the above pairs
-      for (let pair of formData.entries()) {
-        console.log(pair[0] + ", " + pair[1]);
-      }
+      // for (let pair of formData.entries()) {
+      //console.log(pair[0] + ", " + pair[1]);
+      // }
 
       if (photoFile) {
         for (let i = 0; i < photoFile.length; i++) {
           formData.append("photo[photo][]", photoFile[i]);
         }
       }
-      // debugger;
-      console.log("this is the formData", Array.from(formData.entries()));
       this.props.action(formData, id).then(
         this.setState({
           id: id,
-          // title: title,
-          // description: description,
-          // category: category,
-          // location: location,
-          // photographer_id: photographer_id,
-          // archived: archived,
-          // photoFile: [],
-          // photoUrl: [],
-          // redirect: true,
-          // id: "",
-          title: "",
-          description: "",
-          // category: "",
-          // location: "",
-          // photographer_id: "",
-          // archived: "",
+          title: title,
+          description: description,
+          category: category,
+          location: location,
+          photographer_id: photographer_id,
+          archived: archived,
           photoFile: [],
           photoUrl: [],
           redirect: true,
-        })
-        // (data) => this.props.history.push(`/photos/${data.photo.id}`)
+        }).then((data) => this.props.history.push(`/photos/${data.photo.id}`))
       );
     }
   }
@@ -141,11 +125,8 @@ class UploadPhotoForm extends React.Component {
   }
 
   render() {
-    // const { formType, photo, errors } = this.props;
     const { formType, photo, errors } = this.props;
     const { photoUrl } = this.state;
-
-    console.log(this.state, "this is the", formType);
 
     let uploadButton = formType === "Edit Photo" ? "Save Changes" : "Upload";
 
@@ -210,7 +191,6 @@ class UploadPhotoForm extends React.Component {
       <>
         <div className="upload-photo-title">
           <h3>{formType === "Create Photo" ? "Upload" : "Photo Manager"}</h3>
-          {/* <h3>{photo.photographer_id ? "Photo Manager" : "Create Photo"}</h3> */}
         </div>
 
         <div className="upload-form-container">
@@ -219,14 +199,11 @@ class UploadPhotoForm extends React.Component {
               <img
                 src={formType === "Create Photo" ? photoUrl : photo.photoUrl}
               />
-              {/* {photo.photoUrl} */}
-              {/* {formPreview} */}
             </div>
           </div>
 
           <div className="upload-form-container">
             <div className="upload-form">
-              {/* <form onSubmit={this.handleSubmit}> */}
               <form>
                 <div>
                   <label>Photo Privacy</label>
@@ -267,9 +244,6 @@ class UploadPhotoForm extends React.Component {
                     value={this.state.location}
                     onChange={this.update("location")}
                   />
-                  {/* <small>
-                {this.state.locationValid ? '' : 'This field is required.'}
-              </small> */}
                 </div>
 
                 <div>
@@ -312,7 +286,6 @@ class UploadPhotoForm extends React.Component {
                   </select>
                 </div>
 
-                {/* <button onClick={this.handleSubmit}>Upload</button> */}
                 <div className="form-bottom">
                   <input
                     type="submit"
@@ -320,8 +293,6 @@ class UploadPhotoForm extends React.Component {
                     value={uploadButton}
                     onClick={this.handleSubmit}
                   />
-
-                  {/* <button className="cancel-button">Cancel</button> */}
                   <br />
                   <Link className="cancel-link" to="/photos">
                     Cancel
@@ -337,10 +308,6 @@ class UploadPhotoForm extends React.Component {
     );
 
     return (
-      // <div>{photo.photo.length === 0 && !photoUrl ? uploadForm : upload}</div>
-
-      // <div>{photoUrl.length > 0 ? uploadForm : upload}</div>
-
       <div>
         {(photoUrl.length > 0 && formType === "Create Photo") ||
         formType === "Edit Photo"

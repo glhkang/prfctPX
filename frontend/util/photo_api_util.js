@@ -20,17 +20,8 @@ export const createPhoto = (photo) =>
     contentType: false,
     processData: false,
   });
-// export const updatePhoto = (photo) =>
-//   $.ajax({
-//     url: `/api/photos/${photo.id}`,
-//     method: "PATCH",
-//     data: photo,
-//     contentType: false,
-//     processData: false,
-//   });
 
 export const updatePhoto = (photo, id) =>
-  // debugger;
   $.ajax({
     url: `/api/photos/${id}`,
     method: "PATCH",

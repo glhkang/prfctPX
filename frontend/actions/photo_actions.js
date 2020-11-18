@@ -1,11 +1,10 @@
 import * as PhotoAPIUtil from "../util/photo_api_util";
-
 export const RECEIVE_ALL_PHOTOS = "RECEIVE_ALL_PHOTOS";
 export const RECEIVE_PHOTO = "RECEIVE_PHOTO";
 export const REMOVE_PHOTO = "REMOVE_PHOTO";
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
-// debugger;
+
 const receiveAllPhotos = (photos) => ({
   type: RECEIVE_ALL_PHOTOS,
   photos,
@@ -37,20 +36,18 @@ export const fetchPhoto = (photoId) => (dispatch) =>
   PhotoAPIUtil.fetchPhoto(photoId).then((data) => dispatch(receivePhoto(data)));
 
 export const createPhoto = (photo) => (dispatch) => {
-  // debugger;
   return PhotoAPIUtil.createPhoto(photo)
     .then((createPhoto) => {
       dispatch(receivePhoto(createPhoto));
       dispatch(clearErrors());
     })
-    .fail((err) => dispatch(console.log("you fucked up")));
-  // .fail((err) => dispatch(receiveErrors(err), console.log("you fucked up")))
+    .fail((err) => dispatch(receiveErrors(err)));
 };
 
 export const updatePhoto = (photo, id) => (dispatch) =>
   PhotoAPIUtil.updatePhoto(photo, id)
     .then((updatedPhoto) => dispatch(receivePhoto(updatedPhoto)))
-    .fail((err) => console.log("you didn't update", err));
+    .fail((err) => receiveErrors(err));
 
 export const deletePhoto = (photoId) => (dispatch) =>
   PhotoAPIUtil.deletePhoto(photoId).then(() => dispatch(removePhoto(photoId)));

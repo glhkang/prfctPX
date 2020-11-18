@@ -1,6 +1,5 @@
 import React from "react";
-import { Link, Route } from "react-router-dom";
-import { currentUser } from "../nav_bar/nav_bar";
+import { Link } from "react-router-dom";
 
 class PhotoShow extends React.Component {
   componentDidMount() {
@@ -16,10 +15,8 @@ class PhotoShow extends React.Component {
 
   photoBar() {
     const { photo, session, like, deleteLike, createLike } = this.props;
-    // const { photo } = this.props;
 
-    ////////edit
-
+    //edit
     let liked = false;
     let photoLikeId = [];
 
@@ -78,18 +75,6 @@ class PhotoShow extends React.Component {
       ? photo.photoUrl
       : [photo.photoUrl];
 
-    console.log("this is photo show", photo);
-    console.log(
-      "this is the photoArray",
-      photoArray,
-      // "this is the photoUrl",
-      // photoUrl
-      "this is the session",
-      this.props.session,
-      currentUser
-    );
-    console.log("these are the likes", this.props.like);
-
     const categories = [
       "Uncategorized",
       "Abstract",
@@ -136,7 +121,6 @@ class PhotoShow extends React.Component {
     let date = new Date(year, month - 1, day, hour, minute);
     let currentDate = new Date();
 
-    // console.log("this is created at", photo.created_at);
     const thePhoto = photoArray.map((url, i) => {
       return <img src={url} key={i} className="photo-show-image" />;
     });
@@ -159,9 +143,6 @@ class PhotoShow extends React.Component {
               <b>Category:</b> {photoCategory}
             </p>
           </div>
-          {/* <div className="photo-comments">
-          TBD
-        </div> */}
         </div>
       </div>
     );

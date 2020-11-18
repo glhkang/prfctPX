@@ -14,7 +14,7 @@ class Homefeed extends React.Component {
       return <AllPhotos photo={photo} currentUser={session} key={photo.id} />;
     });
 
-    console.log("this is the homefeed index", photos);
+    // //console.log("this is the homefeed index", photos);
 
     return (
       <div className="homefeed-container">

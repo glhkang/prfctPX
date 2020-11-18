@@ -3,7 +3,6 @@ import UploadPhotoForm from "./upload_photo_form";
 import { createPhoto } from "../../actions/photo_actions";
 
 const mSTP = ({ errors, session }) => {
-  // debugger;
   return {
     errors: Object.values(errors.photos),
 

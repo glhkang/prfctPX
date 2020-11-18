@@ -60,15 +60,6 @@ class Profile extends React.Component {
       }
     });
 
-    console.log(
-      "this is the session",
-      session,
-      "this is the user",
-      user,
-      "this is the follows",
-      follow
-    );
-
     return (
       <div className="profile-container">
         <div className="profile-header-container">

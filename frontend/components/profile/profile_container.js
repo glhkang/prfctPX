@@ -8,10 +8,9 @@ import {
   deleteFollow,
   fetchFollows,
 } from "../../actions/follow_actions";
-// import { fetchLikes, createLike, deleteLike } from "../../actions/like_actions";
 
 const mSTP = (state, ownProps) => {
-  // debugger;
+  // ;
   return {
     user: state.entities.users[ownProps.match.params.userId],
     // like: Object.values(state.entities.like),
@@ -31,9 +30,6 @@ const mDTP = (dispatch) => ({
     dispatch(createFollow(userId, followerId)),
   deleteFollow: (followId) => dispatch(deleteFollow(followId)),
   fetchFollows: () => dispatch(fetchFollows()),
-  // fetchLikes: () => dispatch(fetchLikes()),
-  // createLike: (userId, postId) => dispatch(createLike(userId, postId)),
-  // deleteLike: (likeId) => dispatch(deleteLike(likeId)),
 });
 
 export default connect(mSTP, mDTP)(Profile);
