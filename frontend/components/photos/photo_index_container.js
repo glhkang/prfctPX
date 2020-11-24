@@ -1,24 +1,19 @@
 import { connect } from "react-redux";
-import { fetchPhoto } from "../../actions/photo_actions";
-import PhotoShow from "./photo_show";
-import { fetchLikes, createLike, deleteLike } from "../../actions/like_actions";
+import { fetchPhotos } from "../../actions/photo_actions";
+import PhotoIndex from "./photo_index";
 
-const mSTP = (state, ownProps) => {
+const mSTP = (state) => {
   return {
-    photo: state.entities.photos[ownProps.match.params.photoId],
+    photos: Object.values(state.entities.photos),
     session: state.session.id,
-    like: Object.values(state.entities.like),
     currentUser: state.entities.users[state.session.id],
   };
 };
 
 const mDTP = (dispatch) => {
   return {
-    fetchPhoto: (photoId) => dispatch(fetchPhoto(photoId)),
-    fetchLikes: () => dispatch(fetchLikes()),
-    createLike: (userId, photoId) => dispatch(createLike(userId, photoId)),
-    deleteLike: (likeId) => dispatch(deleteLike(likeId)),
+    fetchPhotos: () => dispatch(fetchPhotos()),
   };
 };
 
-export default connect(mSTP, mDTP)(PhotoShow);
+export default connect(mSTP, mDTP)(PhotoIndex);

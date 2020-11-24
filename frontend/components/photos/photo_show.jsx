@@ -20,7 +20,6 @@ class PhotoShow extends React.Component {
   componentDidUpdate(prevProps) {
     if (prevProps.match.params.photoId !== this.props.match.params.photoId) {
       this.props.fetchPhoto(this.props.match.params.photoId);
-      this.props.fetchLikes();
     }
   }
 
@@ -78,6 +77,7 @@ class PhotoShow extends React.Component {
           style={{ fontSize: "25px" }}
           onClick={() => {
             deleteLike(photoLikeIds.slice(-1)[0]);
+            // this.props.deleteLike(photoLikeIds.slice(-1)[0]);
             this.setState({ liked: false });
             liked = false;
             fetchLikes();
@@ -89,6 +89,7 @@ class PhotoShow extends React.Component {
           style={{ fontSize: "25px" }}
           onClick={() => {
             createLike(session, photo.id);
+            // this.props.createLike(session, photo.id);
             this.setState({ liked: true });
             liked = true;
             fetchLikes();

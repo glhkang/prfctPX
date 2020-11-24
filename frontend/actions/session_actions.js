@@ -32,7 +32,6 @@ export const clearErrors = () => {
 };
 
 export const signup = (user) => (dispatch) => {
-  //
   return SessionAPIUtil.signup(user).then(
     (currentUser) => dispatch(receiveCurrentUser(currentUser)),
     (error) => dispatch(receiveSessionErrors(error.responseJSON))
@@ -47,6 +46,5 @@ export const login = (user) => (dispatch) => {
 };
 
 export const logout = () => (dispatch) => {
-  //
   return SessionAPIUtil.logout().then(() => dispatch(logoutCurrentUser()));
 };

@@ -38,6 +38,7 @@ const App = () => (
       <Route path="/photos/:photoId" component={PhotoShowContainer} />
       <ProtectedRoute exact path="/home" component={HomefeedContainer} />
       <ProtectedRoute exact path="/photos" component={PhotoIndexContainer} />
+
       <AuthRoute exact path="/" component={SplashPageContainer} />
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
