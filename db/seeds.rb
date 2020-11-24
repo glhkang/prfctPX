@@ -11,8 +11,8 @@ require 'open-uri'
 User.destroy_all
 Photo.destroy_all
 
-user1 = User.create!(email: 'tester@gmail.com', password:'testertest', username: 'tester')
-user2 = User.create!(email: 'gloria@gmail.com', password:'gloriaspassword', username: 'gloria')
+user1 = User.create!(email: 'tester@gmail.com', password:'testertest', username: 'Guest')
+user2 = User.create!(email: 'gloria@gmail.com', password:'gloriaspassword', username: 'Gloria')
 user3 = User.create!(email: 'andywarhol@iCloud.com', password:'andyandyandy', username: 'andywarhol')
 ##
 user4 = User.create!(email: 'aleibovitz@gmail.com', password:'portraits4eva', username: 'annieleibovitz')

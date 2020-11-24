@@ -16,7 +16,16 @@ class Homefeed extends React.Component {
 
     return (
       <div className="homefeed-container">
-        <ul className="homefeed">{allPhotos}</ul>
+        <div className="homefeed-header">
+          <h1>Home Feed</h1>
+          <h4>
+            See published photos from fellow photographers. Click on a photo for
+            more information.
+          </h4>
+        </div>
+        <div className="homefeed-photos">
+          <ul className="homefeed">{allPhotos}</ul>
+        </div>
       </div>
     );
   }

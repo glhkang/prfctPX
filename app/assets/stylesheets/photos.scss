@@ -2,10 +2,56 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+%photo-header {
+  display: block;
+  position: sticky;
+  background-color: white;
+  height: 18px;
+  padding: 5px 0 0 60px;
+  margin-bottom: 125px;
+}
+
+%column {
+  column-count: 4;
+  column-gap: 0;
+  margin: 0 60px 0 15px;
+}
+
+%fit-image {
+  display: block;
+  max-width: 100%;
+  object-fit: contain;
+  max-height: fit-content;
+}
+
+//all photos
+.photo-index-photos {
+  list-style: none;
+}
+
+.photo-index-image {
+  padding: 3px 0 3px 0;
+}
+
+//photo index
+.photo-index-header {
+  @extend %photo-header;
+}
+
+.photo-index {
+  @extend %column;
+}
+
+.photo-index-photos img {
+  @extend %fit-image;
+}
+
+//photo show
 .photo-show-parent-container {
   display: flex;
   flex-direction: column;
 }
+
 .photo-show-image-container {
   display: flex;
   flex-direction: column;
@@ -27,46 +73,51 @@
   margin: 45px;
 }
 
+.photo-bar-likes {
+  display: flex;
+  min-width: 100px;
+}
+
 .photo-bar {
   display: flex;
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
-  width: 200px;
+  width: 150px;
   margin: 0;
 }
+
 .photo-bar img {
-  height: 30px;
-  width: 30px;
+  height: 25px;
+  width: 25px;
 }
 
-.homefeed-container ul {
+.heart-photo-bar {
+  width: 90px;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+//home
+.homefeed-container {
   width: 100vw;
   height: 100vh;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  flex-direction: wrap;
-  align-items: center;
-  padding: 0 25px 0 25px;
 }
 
-.photo-index-photos-container {
-  width: 100vw;
-  height: 100vh;
-  padding: 65px 25px 0 0;
+.homefeed-header {
+  @extend %photo-header;
 }
 
-.photo-index-photos {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-around;
-  column-count: 4;
-  column-gap: 2em;
+.homefeed-header h4 {
+  color: gray;
+  font-weight: lighter;
 }
 
-.photo-index-image-li {
-  list-style: none;
+.homefeed-photos {
+  @extend %column;
+}
+
+.homefeed img {
+  @extend %fit-image;
 }

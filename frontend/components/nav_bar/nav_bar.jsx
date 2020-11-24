@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 
 export default ({ currentUser, logout }) => {
   window.addEventListener("click", function (event) {
-    if (!event.target.matches(".user-dropdown-button")) {
-      let dropdown = document.getElementsByClassName("header-dropdown-nav");
+    if (!event.target.matches(".user-dropdown-header-icon")) {
+      let dropdown = document.getElementsByClassName(
+        "user-dropdown-nav-content"
+      );
       let i;
       for (i = 0; i < dropdown.length; i++) {
         let dropdowned = dropdown[i];
@@ -32,7 +34,34 @@ export default ({ currentUser, logout }) => {
             <Link to={`/users/${currentUser.id}`} className="dropdown-link">
               Profile
             </Link>
-            <br />
+            <a
+              href="https://bit.ly/glorias-linkedin"
+              className="dropdown-link"
+              target="_blank"
+            >
+              LinkedIn
+            </a>
+            <a
+              href="https://bit.ly/glorias-github"
+              className="dropdown-link"
+              target="_blank"
+            >
+              Github
+            </a>
+            <a
+              href="http://bit.ly/glorias-angellist"
+              className="dropdown-link"
+              target="_blank"
+            >
+              AngelList
+            </a>
+            <a
+              href="https://bit.ly/glorias-portfolio"
+              className="dropdown-link"
+              target="_blank"
+            >
+              Gloria Kang
+            </a>
             <a className="dropdown-link" onClick={logout}>
               Log out
             </a>
@@ -93,6 +122,13 @@ export default ({ currentUser, logout }) => {
                 target="_blank"
               >
                 Github
+              </a>
+              <a
+                href="http://bit.ly/glorias-angellist"
+                className="center-link"
+                target="_blank"
+              >
+                AngelList
               </a>
               <a
                 href="https://bit.ly/glorias-portfolio"

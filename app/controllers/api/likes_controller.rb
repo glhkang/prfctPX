@@ -10,28 +10,31 @@ class Api::LikesController < ApplicationController
   end
 
   def create
-    if params[:user_id].to_i == current_user.id
       @like = Like.new
-      @like.user_id = current_user.id
+      @like.user = current_user
       @like.photo_id = params[:photo_id].to_i
-
-      if @like.save
-        render 'api/likes/show'
-      else
-        render json: @like.errors.full_messages, status: 422
-      end
-    end
+        if @like.save
+          render 'api/likes/show'
+        else
+          render json: @likes.errors.full_messages, status: 422
+        end
+    
   end
 
   def destroy
     @like = Like.find_by(id: params[:id])
-    @like.destroy
-    render 'api/likes/show'
+    
+    if @like.destroy
+      #render 'api/likes/show'
+      render json: { id: params[:id] }
+    end
   end
 
-
+  
   private
+
   def like_params
     params.require(:like).permit(:id, :user_id, :photo_id)
   end
+
 end

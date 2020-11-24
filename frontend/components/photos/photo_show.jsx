@@ -1,7 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Icon, { HeartOutlined, HeartTwoTone } from "@ant-design/icons";
+import { fetchLikes } from "../../util/like_api_util";
+// import Likes from "../likes/likes;
 
 class PhotoShow extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      liked: false,
+    };
+  }
+
   componentDidMount() {
     this.props.fetchPhoto(this.props.match.params.photoId);
     this.props.fetchLikes();
@@ -10,20 +20,41 @@ class PhotoShow extends React.Component {
   componentDidUpdate(prevProps) {
     if (prevProps.match.params.photoId !== this.props.match.params.photoId) {
       this.props.fetchPhoto(this.props.match.params.photoId);
+      this.props.fetchLikes();
     }
   }
 
-  photoBar() {
-    const { photo, session, like, deleteLike, createLike } = this.props;
+  photoBarLikes() {
+    const {
+      photo,
+      session,
+      like,
+      deleteLike,
+      createLike,
+      currentUser,
+    } = this.props;
 
-    //edit
+    //get the length of all likes on photo
+    let allLikes = like.filter((el) => el.photo_id === photo.id).length;
+    let totalLikes;
+    if (allLikes === 0 || allLikes === undefined) {
+      totalLikes = 0;
+    } else {
+      totalLikes = allLikes;
+    }
+
+    //get all of the current user's likes
+    let userLikes = like.map((el) => el.user_id);
     let liked = false;
-    let photoLikeId = [];
 
+    if (userLikes.includes(session)) {
+      liked = true;
+    }
+
+    let photoLikeIds = [];
     for (let i = 0; i < like.length; i++) {
       if (like && photo.id === like[i].photo_id) {
-        photoLikeId.push(like[i].id);
-        liked = true;
+        photoLikeIds.push(like[i].id);
       }
     }
 
@@ -35,40 +66,54 @@ class PhotoShow extends React.Component {
           </Link>
           <Link to={`/photos/${photo.id}/edit`}>
             <img src={window.moreIcon} className="more-icon" />
-          </Link>{" "}
-          {photoLikeId.length === 1
-            ? photoLikeId.length + " like"
-            : photoLikeId.length + " likes"}{" "}
+          </Link>
+          {totalLikes === 1 ? totalLikes + " like" : totalLikes + " likes"}{" "}
         </div>
       );
     } else {
+      let heart = liked ? (
+        <HeartTwoTone
+          className="heart-button"
+          twoToneColor="red"
+          style={{ fontSize: "25px" }}
+          onClick={() => {
+            deleteLike(photoLikeIds.slice(-1)[0]);
+            this.setState({ liked: false });
+            liked = false;
+            fetchLikes();
+          }}
+        />
+      ) : (
+        <HeartOutlined
+          className="heart-button"
+          style={{ fontSize: "25px" }}
+          onClick={() => {
+            createLike(session, photo.id);
+            this.setState({ liked: true });
+            liked = true;
+            fetchLikes();
+          }}
+        />
+      );
       return (
         <div className="photo-bar">
-          {liked ? (
-            <button
-              className="heart-button"
-              onClick={() => deleteLike(photoLikeId[0])}
-            >
-              ❤️
-            </button>
-          ) : (
-            <button
-              className="heart-button"
-              onClick={() => createLike(session, photo.id)}
-            >
-              🤍
-            </button>
-          )}{" "}
-          {photoLikeId.length === 1
-            ? photoLikeId.length + " like"
-            : photoLikeId.length + " likes"}{" "}
+          <span
+            className="heart-photo-bar"
+            style={{
+              cursor: "auto",
+            }}
+          >
+            {heart}
+            {totalLikes === 1 ? totalLikes + " like" : totalLikes + " likes"}
+          </span>
         </div>
       );
     }
   }
 
   render() {
-    const { currentUser, photo } = this.props;
+    const { photo, like, currentUser } = this.props;
+
     if (!photo) return null;
 
     const photoArray = Array.isArray(photo.photoUrl)
@@ -130,14 +175,18 @@ class PhotoShow extends React.Component {
         <div className="photo-show-image-container">{thePhoto}</div>
         <div className="photo-show-info-bar">
           <div className="photo-info-bar">
-            {this.photoBar()}
+            <div className="photo-bar-likes">{this.photoBarLikes()}</div>
+            {/* <Likes
+              photoId={photo.id}
+              userId={photo.photographer_id}
+              currentUserId={currentUser.id}
+            /> */}
             <h2>{photo.title}</h2>
-            <h4>
-              by{" "}
-              {currentUser.username ? currentUser.username : currentUser.email}
-            </h4>
+            <h3>by {photo.username ? photo.username : photo.email}</h3>
             <p>{photo.location}</p>
-            <p>Uploaded: {date.toString().substring(0, 15)}</p>
+            <p>
+              <b>Uploaded:</b> {date.toString().substring(0, 15)}
+            </p>
             <p>{photo.description}</p>
             <p>
               <b>Category:</b> {photoCategory}

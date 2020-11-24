@@ -6,7 +6,7 @@ class UploadPhotoForm extends React.Component {
     super(props);
     this.state = {
       id: this.props.photo.id,
-      title: this.props.photo.title,
+      title: this.props.photo.title || "",
       description: this.props.photo.description || "",
       category: this.props.photo.category,
       location: this.props.photo.location || "",

@@ -25,6 +25,9 @@ class PhotoIndex extends React.Component {
 
     return (
       <div className="photo-index-photos-container">
+        <div className="photo-index-header">
+          <h1>Your Photos</h1>
+        </div>
         <div className="photo-index">
           <ul className="photo-index-photos">{userPhotos}</ul>
         </div>
