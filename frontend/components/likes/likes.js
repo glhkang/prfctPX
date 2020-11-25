@@ -62,12 +62,10 @@ const Likes = ({ photoId, userId, currentUserId }) => {
 
     if (relevantResponseData.length === 0 && LikeAction === null) {
       Axios.post("/api/likes", obj).then((response) => {
-        console.log("response.data", response.data);
         if (response.data && currentUserId) {
           setLikes(Likes + 1);
           setLikeAction("liked");
           setLikeIcon(HeartTwoTone);
-          console.log("LikeAction", LikeAction);
         } else {
           alert("You already like this photo.");
         }
@@ -81,7 +79,6 @@ const Likes = ({ photoId, userId, currentUserId }) => {
             setLikes(Likes - 1);
             setLikeAction(null);
             setLikeIcon(HeartOutlined);
-            console.log("Delete like action", LikeAction);
           } else {
             alert("Could not unlike this photo.");
           }

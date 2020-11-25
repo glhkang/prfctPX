@@ -1,22 +1,11 @@
 import React from "react";
 import { Redirect, Link, withRouter } from "react-router-dom";
-// import Icon, { HeartOutlined, HeartTwoTone } from "@ant-design/icons";
-import { fetchLikes } from "../../util/like_api_util";
 import Likes from "../likes/likes";
 
 class PhotoShow extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     // liked: false,
-  //     redirect: false,
-  //   };
-  // }
-
   componentDidMount() {
     this.props.fetchPhoto(this.props.match.params.photoId);
     this.props.fetchLikes();
-    // this.props.history.push();
   }
 
   componentDidUpdate(prevProps) {
@@ -26,25 +15,7 @@ class PhotoShow extends React.Component {
   }
 
   photoBarLikes() {
-    const {
-      photo,
-      session,
-      like,
-      // deleteLike,
-      // createLike,
-      currentUser,
-    } = this.props;
-
-    console.log("currentuser", currentUser);
-
-    //get likes count for photo
-    // const likesCount = likes.filter(
-    //   (like) => { <Likes />}
-
-    //   (like.photo_id === photo.id).length
-    // );
-
-    // console.log("this is the likes count", likesCount)
+    const { photo, session, like, currentUser } = this.props;
 
     // //get the length of all likes on photo
     let allLikes = like.filter((el) => el.photo_id === photo.id).length;
@@ -55,25 +26,7 @@ class PhotoShow extends React.Component {
       totalLikes = allLikes;
     }
 
-    // console.log("likes", like, "all likes", allLikes);
-
-    // //get all of the current user's likes
-    // let userLikes = like.map((el) => el.user_id);
-    // let liked = false;
-
-    // if (userLikes.includes(session)) {
-    //   liked = true;
-    // }
-
-    // let photoLikeIds = [];
-    // for (let i = 0; i < like.length; i++) {
-    //   if (like && photo.id === like[i].photo_id) {
-    //     photoLikeIds.push(like[i].id);
-    //   }
-    // }
-
     if (photo.photographer_id === session) {
-      // let likes = { Likes };
       return (
         <div className="photo-bar">
           <Link to="/upload">
@@ -83,8 +36,6 @@ class PhotoShow extends React.Component {
             <img src={window.moreIcon} className="more-icon" />
           </Link>
           {totalLikes === 1 ? totalLikes + " like" : totalLikes + " likes"}{" "}
-          {/* LIKES COUNT HERE */}
-          {/* {likesCount} */}
         </div>
       );
     } else {
@@ -111,26 +62,9 @@ class PhotoShow extends React.Component {
     }
   }
 
-  // if (this.state.redirect) {
-  //   return <Redirect to="/" />;
-  // }
-  // if (currentUser === undefined) {
-  //   this.setState({ redirect: true });
-  // }
-
-  // redirect() {
-  //   this.setState({ redirect: true });
-  //   if (this.state.redirect) {
-  //     return <Redirect to="/" />;
-  //   }
-  // }
-
   render() {
     const { photo, like, currentUser } = this.props;
     if (!photo) return null;
-    // if (currentUser === undefined) {
-    //   this.redirect();
-    // }
 
     const photoArray = Array.isArray(photo.photoUrl)
       ? photo.photoUrl
@@ -180,20 +114,24 @@ class PhotoShow extends React.Component {
     let hour = dateString.substring(12, 13);
     let minute = dateString.substring(15, 16);
     let date = new Date(year, month - 1, day, hour, minute);
-    let currentDate = new Date();
 
     const thePhoto = photoArray.map((url, i) => {
       return <img src={url} key={i} className="photo-show-image" />;
     });
 
-    return (
+    return currentUser ? (
       <div className="photo-show-parent-container">
         <div className="photo-show-image-container">{thePhoto}</div>
         <div className="photo-show-info-bar">
           <div className="photo-info-bar">
             <div className="photo-bar-likes">{this.photoBarLikes()}</div>
             <h2>{photo.title}</h2>
-            <h3>by {photo.username ? photo.username : photo.email}</h3>
+            <h3>
+              {" "}
+              By {/* <Link to={`/users/${photo.photographer_id}`}> */}
+              {photo.username ? photo.username : photo.email}
+              {/* </Link>{" "} */}
+            </h3>
             <p>{photo.location}</p>
             <p>
               <b>Uploaded:</b> {date.toString().substring(0, 15)}
@@ -205,6 +143,8 @@ class PhotoShow extends React.Component {
           </div>
         </div>
       </div>
+    ) : (
+      <Redirect to="/" />
     );
   }
 }

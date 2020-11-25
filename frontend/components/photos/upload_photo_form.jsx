@@ -103,7 +103,8 @@ class UploadPhotoForm extends React.Component {
           photoFile: [],
           photoUrl: [],
           redirect: true,
-        }).then((data) => this.props.history.push(`/photos/${data.photo.id}`))
+        })
+        // .then((data) => this.props.history.push(`/photos/${data.photo.id}`))
       );
     }
   }

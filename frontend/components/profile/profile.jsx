@@ -1,5 +1,4 @@
 import React from "react";
-import { createFollow, deleteFollow } from "../../util/follow_api_util";
 import AllPhotos from "../photos/all_photos";
 import Follows from "../follows/follows";
 
@@ -11,6 +10,13 @@ class Profile extends React.Component {
   componentDidMount() {
     this.props.fetchUser(this.props.match.params.userId);
     this.props.fetchPhotos();
+    this.props.fetchFollows();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.match.params.userId !== this.props.match.params.userId) {
+      this.props.fetchUser(this.props.match.params.userId);
+    }
   }
 
   render() {
@@ -21,10 +27,7 @@ class Profile extends React.Component {
       }
     });
 
-    // console.log(follow);
-    // console.log("these are the follows", this.state.follows);
-
-    // let followButton = "Follow";
+    console.log("user", user, "session", session, "follow", follow);
 
     return (
       <div className="profile-container">
@@ -32,15 +35,7 @@ class Profile extends React.Component {
           <div className="profile-header-info">
             <div className="profile-header-picture"></div>
             {user.username ? user.username : user.email}
-            {/* <div>*follow button here*</div>
-            <input
-              type="button"
-              className="follow-button"
-              value={followButton}
-              onClick={this.handleFollow}
-            />
-            <div>{follow.length} followers</div> */}
-            {/* {this.currentProfile()} */}
+            {/* <Follows followerId={session} /> */}
           </div>
         </div>
 

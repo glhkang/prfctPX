@@ -27,13 +27,13 @@ const App = () => (
       />
       <ProtectedRoute
         exact
-        path="/upload"
-        component={UploadPhotoFormContainer}
+        path="/users/:userId"
+        component={ProfileContainer}
       />
       <ProtectedRoute
         exact
-        path="/users/:userId"
-        component={ProfileContainer}
+        path="/upload"
+        component={UploadPhotoFormContainer}
       />
       <Route path="/photos/:photoId" component={PhotoShowContainer} />
       <ProtectedRoute exact path="/home" component={HomefeedContainer} />

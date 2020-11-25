@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { fetchPhoto } from "../../actions/photo_actions";
 import PhotoShow from "./photo_show";
-import { fetchLikes, createLike, deleteLike } from "../../actions/like_actions";
+import { fetchLikes } from "../../actions/like_actions";
 
 const mSTP = (state, ownProps) => {
   return {
@@ -16,8 +16,6 @@ const mDTP = (dispatch) => {
   return {
     fetchPhoto: (photoId) => dispatch(fetchPhoto(photoId)),
     fetchLikes: () => dispatch(fetchLikes()),
-    createLike: (userId, photoId) => dispatch(createLike(userId, photoId)),
-    deleteLike: (likeId) => dispatch(deleteLike(likeId)),
   };
 };
 
