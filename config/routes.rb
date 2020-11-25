@@ -8,10 +8,5 @@ Rails.application.routes.draw do
     resources :photos, only: [:index, :show, :create, :update, :destroy]
     resources :likes, only: [:index, :show, :create, :destroy]
     resources :follows, only: [:index, :show, :create, :destroy]
-    
-    # post '/likes/getLikes', to: 'likes#index'
-    # post '/likes/upLike', to: 'likes#create'
-    # post 'likes/unLike', to: 'likes#destroy'
-  
   end
 end

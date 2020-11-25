@@ -1,62 +1,17 @@
 import React from "react";
 import { createFollow, deleteFollow } from "../../util/follow_api_util";
 import AllPhotos from "../photos/all_photos";
+import Follows from "../follows/follows";
 
 class Profile extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   follows: [],
-    // };
   }
 
   componentDidMount() {
     this.props.fetchUser(this.props.match.params.userId);
     this.props.fetchPhotos();
-    // this.props.fetchFollows();
   }
-
-  // currentProfile() {
-  //   const { session, photo, user } = this.props;
-  //   // const { follow, session, photo, user } = this.props;
-  //   let followed = false;
-  //   let followedId = [];
-
-  //   for (let i = 0; i < follow.length; i++) {
-  //     if (follow && user.id === follow[i].user_id) {
-  //       followedId.push(follow[i].id);
-  //       followed = true;
-  //     }
-  //   }
-
-  //   if (user.id === session) {
-  //     return (
-  //       <div>
-  //         {followedId.length === 1
-  //           ? followedId.length + " follower"
-  //           : followedId.length + " followers"}
-  //       </div>
-  //     );
-  //   } else {
-  //     return (
-  //       <div>
-  //         {followed ? (
-  //           <button onClick={() => deleteFollow(followedId[0])}>
-  //             Following or Unfollow
-  //           </button>
-  //         ) : (
-  //           <button onClick={() => createFollow(session, user)}>Follow</button>
-  //         )}
-  //         {followedId.length === 1
-  //           ? followedId.length + " follower"
-  //           : followedId.length + " followers"}
-  //         {/* following count here */}
-  //       </div>
-  //     );
-  //   }
-  // }
-
-  // handleFollow() {}
 
   render() {
     const { session, user, follow } = this.props;
