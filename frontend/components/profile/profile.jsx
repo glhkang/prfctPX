@@ -27,15 +27,18 @@ class Profile extends React.Component {
       }
     });
 
-    console.log("user", user, "session", session, "follow", follow);
-
     return (
       <div className="profile-container">
         <div className="profile-header-container">
           <div className="profile-header-info">
             <div className="profile-header-picture"></div>
-            {user.username ? user.username : user.email}
+            <h2>{user.username ? user.username : user.email}</h2>
             {/* <Follows followerId={session} /> */}
+            <p>
+              Hi! I'm a Software Engineer out of NYC. If you'd like to connect,
+              please do so using the links above in the navigation bar or in the
+              user dropdown. Hope to connect with you soon!
+            </p>
           </div>
         </div>
 

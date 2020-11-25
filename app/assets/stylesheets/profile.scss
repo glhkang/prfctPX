@@ -15,17 +15,25 @@
   height: 45vh;
   background-image: url("profile-header.jpg");
   background-size: cover;
+  margin-bottom: 60px;
 }
 
 .profile-header-info {
   display: flex;
   position: absolute;
-  left: (90vw / 2);
+  /* left: (90vw / 2); */
+  left: (75vw / 2);
   top: 48vh;
   text-align: center;
-  justify-content: flex-end;
   flex-direction: column;
-  margin: 0 0 90px 0;
+  max-width: 400px;
+}
+
+.profile-header-info p {
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  /* border: 1px solid grey;*/
 }
 
 .profile-header-picture {
@@ -39,7 +47,7 @@
   border-radius: 50%;
   align-self: center;
   flex-direction: row;
-  margin-bottom: 25px;
+  margin-bottom: 5px;
 }
 .profile-user-photos {
   display: flex;
@@ -47,5 +55,5 @@
   justify-content: space-around;
   flex-wrap: wrap;
   list-style-type: none;
-  margin-top: 120px;
+  margin-top: 200px;
 }
