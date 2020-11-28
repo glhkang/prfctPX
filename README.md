@@ -9,6 +9,7 @@ PrfctPX was built using:
 * Ruby on Rails
 * PostgreSQL
 * Webpack
+* SCSS and CSS
 
 ## Background and Overview
 
