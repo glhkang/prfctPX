@@ -1,6 +1,6 @@
-#PrfctPX
+# PrfctPX
 ## Architecture and Technologies
-Prfctpx was built using:
+PrfctPX was built using:
 * JavaScript
 * AWS S3
 * React
@@ -12,9 +12,9 @@ Prfctpx was built using:
 
 ## Background and Overview
 
-PrfctPX, inspired by 500px, is an app for inspiration and creative discovery, where photographers share their own work and explore others.
+PrfctPX, inspired by 500px, is an app for inspiration and creative discovery, where photographers share their own work and explore others.  
 &nbsp;&nbsp;&nbsp;&nbsp;
-[Live Demo](https://bit.ly/prfctpx)
+[Live Demo](https://bit.ly/prfctpx)  
 &nbsp;&nbsp;&nbsp;&nbsp;
 ![PrfctPX Preview](/app/assets/images/prfctpx.gif "PrfctPX Preview")
 
