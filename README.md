@@ -1,28 +1,27 @@
-# prfcpx
-
-prfctpx is a full-stack, single-page appliation clone of 500px. Users can upload photos to share their work and view others' photos.
-
-[Live Demo](http://prfctpx.herokuapp.com/#/)
-
-## Technologies Used
-
-### Backend
-* PostgreSQL
-* Ruby on Rails
-
-### Frontend
+#PrfctPX
+## Architecture and Technologies
+Prfctpx was built using:
+* JavaScript
+* AWS S3
 * React
+* React Hooks
 * Redux
+* Ruby on Rails
+* PostgreSQL
+* Webpack
 
-### Packages/Apis
-* AWS for image hosting
+## Background and Overview
+
+PrfctPX, inspired by 500px, is an app for inspiration and creative discovery, where photographers share their own work and explore others.
+&nbsp;&nbsp;&nbsp;&nbsp;
+[Live Demo](https://bit.ly/prfctpx)
+&nbsp;&nbsp;&nbsp;&nbsp;
+![PrfctPX Preview](/app/assets/images/prfctpx.gif "PrfctPX Preview")
 
 ## Features
-* Full user authentication (sign-up, login, logout) with security
-* More to come! (Please see below :))
+### Full User Authentication
 
-## Future Implementations
-* Upload images to user's account
-* Follow other users
-* Personalized homefeed, accessible only to logged-in users
-* Profile page, accessible only to logged-in users
+### AWS S3
+
+### Likes/Dislikes
+
