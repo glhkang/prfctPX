@@ -29,6 +29,9 @@ PrfctPX was built using:
 ---
 
 Upload images directly to AWS S3 with custom upload form input, which is then organized and attached to it's respective ActiveRecord object.
+&nbsp;&nbsp;&nbsp;&nbsp;
+
+![PrfctPX Upload Preview](/app/assets/images/prfctpx-upload.gif "PrfctPX Upload Preview")
 
 ### Full User Authentication
 
