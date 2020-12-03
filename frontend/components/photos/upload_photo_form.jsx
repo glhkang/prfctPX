@@ -295,12 +295,11 @@ class UploadPhotoForm extends React.Component {
                     onClick={this.handleSubmit}
                   />
                   <br />
+                  {formType === "Edit Photo" ? this.deleteButton() : null}
                   <Link className="cancel-link" to="/photos">
                     Cancel
                   </Link>
                 </div>
-
-                {formType === "Edit Photo" ? this.deleteButton() : null}
               </form>
             </div>
           </div>

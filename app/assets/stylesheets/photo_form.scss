@@ -123,8 +123,10 @@
 }
 
 .upload-form-preview > img {
-  width: 500px;
-  height: auto;
+  min-width: 400px;
+  min-height: 400px;
+  max-width: 555px;
+  max-height: 555px;
 }
 
 .upload-form > form {
@@ -145,13 +147,48 @@
   color: #4a4a4a;
 }
 
-.upload-form input {
+.upload-form input[type="text"] {
   font-size: 14px;
   font-family: sans-serif;
   padding: 10px 14px;
   color: #525558;
   border-radius: 3px;
   border: 1px solid rgba(185, 185, 185, 0.5);
+}
+
+%button-styling {
+  width: 180px;
+  height: 40px;
+  display: block;
+  align-self: center;
+  border-radius: 20px;
+  border: 0;
+  font-size: 16px;
+  font-weight: bolder;
+  outline: none;
+}
+
+.upload-form input[type="submit"] {
+  @extend %button-styling;
+  background-color: #545f87;
+  color: white;
+}
+
+.upload-form input[type="submit"]:hover {
+  background-color: #aac1ca;
+}
+
+.delete-button {
+  @extend %button-styling;
+  background-color: white;
+  color: #545f87;
+  margin-bottom: 20px;
+  border: 1px solid #545f87;
+}
+
+.delete-button:hover {
+  background-color: #7b92ad;
+  color: white;
 }
 
 .upload-form textarea {
@@ -174,31 +211,6 @@
   -webkit-appearance: none;
 }
 
-.upload-form button {
-  display: flex;
-  margin-top: 15px;
-  margin-left: 70px;
-  background-color: #545f87;
-  width: 180px;
-  height: 40px;
-  color: white;
-  display: block;
-  align-self: center;
-  border-radius: 20px;
-  border: 0;
-  font-size: 16px;
-  font-weight: bolder;
-  align-items: center;
-  justify-content: center;
-  -webkit-appearance: none;
-  //this gets rid of click-border
-  outline: none;
-}
-
-.upload-form button:hover {
-  background-color: #aac1ca;
-}
-
 .form-bottom {
   display: flex;
   flex-direction: row;
@@ -212,4 +224,10 @@
 
 .cancel-link {
   text-decoration: none;
+  color: darkslateblue;
+}
+
+.cancel-link:hover {
+  text-decoration: underline;
+  color: black;
 }

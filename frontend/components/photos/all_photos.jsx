@@ -5,7 +5,8 @@ const AllPhotos = (props) => {
   const { photo } = props;
 
   return (
-    <li className="photo-index-photos">
+    // <li className="photo-index-photos">
+    <li className="all-photos-li">
       <Link to={`/photos/${photo.id}`}>
         <img className="photo-index-image" src={photo.photoUrl} />
       </Link>
