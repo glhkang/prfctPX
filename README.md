@@ -72,20 +72,19 @@ useEffect(() => {
 
 Sass's `@extend` allows `%fit-image` to be shared from one selector to another.
 
-```sass
+```
 %fit-image {
-  display: block;
-  max-width: 100%;
-  object-fit: contain;
-  max-height: fit-content;
+display: block;
+max-width: 100%;
+object-fit: contain;
+max-height: fit-content;
 }
 
 .photo-index-photos img {
-  @extend %fit-image;
+@extend %fit-image;
 }
 
 .homefeed img {
-  @extend %fit-image;
+@extend %fit-image;
 }
-
 ```

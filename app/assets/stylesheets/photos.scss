@@ -14,12 +14,13 @@
   margin: 0 15px 0 15px;
   width: 100%;
   padding: 0;
-  /* display: inline-block;*/
+  display: inline-block;
 }
 
 %fit-image {
   display: block;
-  object-fit: cover;
+  object-fit: contain;
+  max-width: 100%;
   max-height: fit-content;
   padding: 0;
   margin: 0;
@@ -27,6 +28,8 @@
 
 //all photos
 .all-photos-li {
+  // @extend %column;
+  list-style: none;
   margin: 0;
   padding: 0;
   ///????
@@ -36,6 +39,8 @@
 .all-photos img {
   margin: 0;
   padding: 0;
+  width: 100%;
+  height: 100%;
 }
 
 //photo index
@@ -43,14 +48,14 @@
   @extend %photo-header;
 }
 
-.photo-index {
-  @extend %column;
-}
+// .photo-index {
+//   @extend %column;
+// }
 
 .photo-index-photos {
-  // @extend %column;
-  list-style: none;
-  margin: 0;
+  @extend %column;
+  // list-style: none;
+  // margin: 0;
 }
 
 .photo-index-photos img {
@@ -67,7 +72,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /*padding: 25px;*/
   border: 1px solid rgb(31, 31, 31);
   background-color: rgb(31, 31, 31);
   width: 100vw;
