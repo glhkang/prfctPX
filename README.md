@@ -75,7 +75,7 @@ useEffect(() => {
 
 Sass's `@extend` allows `%fit-image` to be shared from one selector to another.
 
-```
+```css
 %fit-image {
 display: block;
 max-width: 100%;
