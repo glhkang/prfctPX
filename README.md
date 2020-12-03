@@ -37,13 +37,13 @@ Upload images directly to AWS S3 with custom upload form input, which is then or
 
 ---
 
-Users can sign up, log in, and log out knowing that their session will be secure thanks to Rail cookies. Issues upon signing up, logging in, and logging out are handled via error handling and validations.
+Users can sign up, log in, and log out knowing that their session will be secure thanks to Rails cookies. Issues upon signing up, logging in, and logging out are handled via error handling and validations.
 
-### Likes/Dislikes
+### Likes
 
 ---
 
-The Effect Hook performs side effects (fetches likes data, manually changes the DOM, alerts user of errors ) after every render. The `useEffect()` hook is unique to React Hooks.
+A `GET` request is made after the first render and after every update thanks to the `useEffect()` hook that is unique to React Hooks. The Effect Hook then performs these side effects: fetches likes data, manually changes the DOM, and alerts user of errors. From the returned `responseData`, the `photoLikes` count for each photo can be set. If the current user liked a photo, then the `likeIcon` will be set to `HeartTwoTone` but if not, then it will be set to `HeartOutlined`. Otherwise, if there is an issue, an alert will notify the user that the likes could not be retrieved.
 
 ```javascript
 useEffect(() => {
@@ -77,17 +77,17 @@ Sass's `@extend` allows `%fit-image` to be shared from one selector to another.
 
 ```css
 %fit-image {
-display: block;
-max-width: 100%;
-object-fit: contain;
-max-height: fit-content;
+  display: block;
+  max-width: 100%;
+  object-fit: contain;
+  max-height: fit-content;
 }
 
 .photo-index-photos img {
-@extend %fit-image;
+  @extend %fit-image;
 }
 
 .homefeed img {
-@extend %fit-image;
+  @extend %fit-image;
 }
 ```
