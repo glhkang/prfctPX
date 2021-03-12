@@ -43,7 +43,7 @@ Users can sign up, log in, and log out knowing that their session will be secure
 
 ---
 
-A `GET` request is made after the first render and after every update thanks to the `useEffect()` hook that is unique to React Hooks. The Effect Hook then performs these side effects: fetches likes data, manually changes the DOM, and alerts user of errors. From the returned `responseData`, the `photoLikes` count for each photo can be set. If the current user liked a photo, then the `likeIcon` will be set to `HeartTwoTone` but if not, then it will be set to `HeartOutlined`. Otherwise, if there is an issue, an alert will notify the user that the likes could not be retrieved.
+A `GET` request is made after the first render and after every update thanks to the `useEffect()` hook that is unique to React Hooks. The Effect Hook then performs these actions: fetches likes data, manually changes the DOM, and alerts user of errors. From the returned `responseData`, the `photoLikes` count for each photo can be set. If the current user liked a photo, then the `likeIcon` will be set to `HeartTwoTone` but if not, then it will be set to `HeartOutlined`. Otherwise, if there is an issue, an alert will notify the user that the likes could not be retrieved.
 
 ```javascript
 useEffect(() => {
