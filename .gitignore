@@ -29,7 +29,7 @@ bundle.js.map
 /config/master.key
 
 #Ignore dem ymlz: https://github.com/marketplace/actions/dependabot-auto-merge
-.github/workflows/auto-merge.yml
-.github/auto-merge.yml
+github/workflows/auto-merge.yml
+github/auto-merge.yml
 .yml
 
